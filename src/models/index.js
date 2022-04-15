@@ -1,0 +1,21 @@
+import { applyMiddleware, combineReducers, createStore } from "redux";
+import { composeWithDevTools } from "@redux-devtools/extension"
+import { addressReducer } from "./address";
+import { authReducer } from "./auth";
+import thunk from "redux-thunk";
+import { initReducer } from "./init";
+import { userReducer } from "./user";
+import { requestsReducer } from "./requests";
+import { shopsReducer } from "./shops";
+
+const rootReducer = combineReducers({
+    init: initReducer,
+    auth: authReducer,
+    address: addressReducer,
+    user: userReducer,
+    requests: requestsReducer,
+    shops: shopsReducer
+})
+
+
+export const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)))
