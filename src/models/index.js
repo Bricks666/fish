@@ -7,6 +7,7 @@ import { initReducer } from "./init";
 import { userReducer } from "./user";
 import { requestsReducer } from "./requests";
 import { shopsReducer } from "./shops";
+import { salesmenReducer } from "./slesmen";
 
 const rootReducer = combineReducers({
     init: initReducer,
@@ -14,7 +15,8 @@ const rootReducer = combineReducers({
     address: addressReducer,
     user: userReducer,
     requests: requestsReducer,
-    shops: shopsReducer
+    shops: shopsReducer,
+    salesmen: salesmenReducer
 })
 
 

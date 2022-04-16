@@ -10,7 +10,6 @@ export const getRequestApi = async(id) => {
 }
 
 export const addRequestApi = async(address, type, shopAddress = "0x0000000000000000000000000000000000000000") => {
-    console.log(type)
     return await contract.methods.request(type, shopAddress).send({ from: address })
 }
 export const acceptRequestApi = async(address, requestId) => {

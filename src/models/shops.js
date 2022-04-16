@@ -1,4 +1,4 @@
-import { addShopApi, deleteShopApi, getShopAddressesApi, getShopApi } from "../api"
+import { addShopApi, deleteShopApi, getSalesmenAddressesApi, getShopAddressesApi, getShopApi } from "../api"
 import { subscribe } from "../api/core"
 import { toValidShop } from "./utils/toValidShop"
 
@@ -131,7 +131,11 @@ export const loadShopsThunk = () => {
         dispatch(toggleLoadingAC(true))
         const addresses = await getShopAddressesApi()
         const shops = await Promise.all(addresses.map(getShopApi))
-        dispatch(setShopsAC(shops.filter(shop => shop.city !== "").map(toValidShop)))
+        const shopsWithSalesmen = await Promise.all(shops.filter(shop => shop.city !== "").map(async(shop) => {
+            const salesmen = await getSalesmenAddressesApi(shop.Address)
+            return toValidShop({...shop, shopers: salesmen})
+        }))
+        dispatch(setShopsAC(shopsWithSalesmen))
         dispatch(toggleLoadingAC(false))
     }
 }

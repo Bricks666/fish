@@ -1,5 +1,4 @@
 export const toValidShop = (shop) => {
-    console.log(shop, "SHOP")
     return {
         id: +shop.id,
         address: shop.Address,

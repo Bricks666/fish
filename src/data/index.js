@@ -1,4 +1,4 @@
-export const address = "0x3A5a6d7C1712ef7F9d252162a51AAB65b38ee183"
+export const address = "0xd53bED10825B3a9E6B357791d08B4738362C94E0"
 export const abi = [
 	{
 		"inputs": [],
@@ -361,51 +361,6 @@ export const abi = [
 				"internalType": "address[]",
 				"name": "",
 				"type": "address[]"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "getUsers",
-		"outputs": [
-			{
-				"components": [
-					{
-						"internalType": "string",
-						"name": "login",
-						"type": "string"
-					},
-					{
-						"internalType": "address",
-						"name": "Address",
-						"type": "address"
-					},
-					{
-						"internalType": "bytes32",
-						"name": "password",
-						"type": "bytes32"
-					},
-					{
-						"internalType": "string",
-						"name": "FIO",
-						"type": "string"
-					},
-					{
-						"internalType": "enum Shops.ROLES",
-						"name": "role",
-						"type": "uint8"
-					},
-					{
-						"internalType": "address",
-						"name": "shopAddress",
-						"type": "address"
-					}
-				],
-				"internalType": "struct Shops.User",
-				"name": "",
-				"type": "tuple"
 			}
 		],
 		"stateMutability": "view",

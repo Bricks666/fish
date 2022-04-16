@@ -18,7 +18,7 @@ export const lockAccount = async(address) => {
 
 export const subscribe = ({ event, callback, filter }) => {
     return contract.events[event]({ filter }, (error, data) => {
-        debugger;
+        
         if(!error) {
             callback(data.returnValues)
         }

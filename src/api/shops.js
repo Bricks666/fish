@@ -14,3 +14,7 @@ export const addShopApi = async(address, shopAddress, login, name, city)  => {
 export const deleteShopApi = async(address, shopAddress) => {
     return await contract.methods.deleteShop(shopAddress).send({ from: address })
 }
+
+export const getSalesmenAddressesApi = async(address) => {
+    return await contract.methods.getShopersOfShop(address).call()
+}

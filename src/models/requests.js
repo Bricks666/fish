@@ -109,7 +109,6 @@ const addRequestAC = (request) => {
     }
 }
 const changeStatusRequestAC = (requestId, status) => {
-    console.log("a")
     return {
         type: CHANGE_STATUS_REQUEST,
         payload: {
