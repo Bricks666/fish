@@ -1,553 +1,848 @@
-export const address = "0xd53bED10825B3a9E6B357791d08B4738362C94E0"
+export const address = "0xd53bED10825B3a9E6B357791d08B4738362C94E0";
 export const abi = [
 	{
-		"inputs": [],
-		"stateMutability": "nonpayable",
-		"type": "constructor"
+		inputs: [],
+		stateMutability: "nonpayable",
+		type: "constructor",
 	},
 	{
-		"anonymous": false,
-		"inputs": [
+		anonymous: false,
+		inputs: [
 			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "Address",
-				"type": "address"
+				indexed: true,
+				internalType: "address",
+				name: "Address",
+				type: "address",
 			},
 			{
-				"indexed": true,
-				"internalType": "enum Shops.ROLES",
-				"name": "newRole",
-				"type": "uint8"
-			}
+				indexed: false,
+				internalType: "bool",
+				name: "onRequest",
+				type: "bool",
+			},
 		],
-		"name": "changeRoleEvent",
-		"type": "event"
+		name: "changeOnRequestEvent",
+		type: "event",
 	},
 	{
-		"anonymous": false,
-		"inputs": [
+		anonymous: false,
+		inputs: [
 			{
-				"indexed": false,
-				"internalType": "address",
-				"name": "Address",
-				"type": "address"
-			}
+				indexed: true,
+				internalType: "address",
+				name: "Address",
+				type: "address",
+			},
+			{
+				indexed: true,
+				internalType: "enum Users.ROLES",
+				name: "newRole",
+				type: "uint8",
+			},
 		],
-		"name": "delShop",
-		"type": "event"
+		name: "changeRoleEvent",
+		type: "event",
 	},
 	{
-		"anonymous": false,
-		"inputs": [
+		anonymous: false,
+		inputs: [
 			{
-				"indexed": false,
-				"internalType": "uint256",
-				"name": "id",
-				"type": "uint256"
+				indexed: false,
+				internalType: "address",
+				name: "Address",
+				type: "address",
 			},
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "AddressSender",
-				"type": "address"
-			}
 		],
-		"name": "newRequest",
-		"type": "event"
+		name: "delShop",
+		type: "event",
 	},
 	{
-		"anonymous": false,
-		"inputs": [
+		anonymous: false,
+		inputs: [
 			{
-				"indexed": false,
-				"internalType": "address",
-				"name": "Address",
-				"type": "address"
-			}
+				indexed: true,
+				internalType: "address",
+				name: "shopAddress",
+				type: "address",
+			},
+			{
+				indexed: true,
+				internalType: "uint256",
+				name: "reviewId",
+				type: "uint256",
+			},
+			{
+				indexed: false,
+				internalType: "enum Reviews.Mark",
+				name: "mark",
+				type: "uint8",
+			},
 		],
-		"name": "newShop",
-		"type": "event"
+		name: "markReview",
+		type: "event",
 	},
 	{
-		"anonymous": false,
-		"inputs": [
+		anonymous: false,
+		inputs: [
 			{
-				"indexed": false,
-				"internalType": "uint256",
-				"name": "id",
-				"type": "uint256"
+				indexed: true,
+				internalType: "address",
+				name: "shopAddress",
+				type: "address",
 			},
 			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "Address",
-				"type": "address"
+				indexed: true,
+				internalType: "uint256",
+				name: "reviewId",
+				type: "uint256",
 			},
 			{
-				"indexed": false,
-				"internalType": "enum Shops.STATUS",
-				"name": "status",
-				"type": "uint8"
-			}
+				indexed: false,
+				internalType: "uint256",
+				name: "idComment",
+				type: "uint256",
+			},
 		],
-		"name": "newStatusRequest",
-		"type": "event"
+		name: "newComment",
+		type: "event",
 	},
 	{
-		"anonymous": false,
-		"inputs": [
+		anonymous: false,
+		inputs: [
 			{
-				"indexed": false,
-				"internalType": "address",
-				"name": "Address",
-				"type": "address"
-			}
+				indexed: false,
+				internalType: "uint256",
+				name: "id",
+				type: "uint256",
+			},
+			{
+				indexed: true,
+				internalType: "address",
+				name: "senderAddress",
+				type: "address",
+			},
 		],
-		"name": "newUser",
-		"type": "event"
+		name: "newRequest",
+		type: "event",
 	},
 	{
-		"inputs": [
+		anonymous: false,
+		inputs: [
 			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
+				indexed: true,
+				internalType: "address",
+				name: "shopAddress",
+				type: "address",
+			},
+			{
+				indexed: false,
+				internalType: "uint256",
+				name: "id",
+				type: "uint256",
+			},
 		],
-		"name": "Shops",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "id",
-				"type": "uint256"
-			},
-			{
-				"internalType": "address",
-				"name": "Address",
-				"type": "address"
-			},
-			{
-				"internalType": "string",
-				"name": "Name",
-				"type": "string"
-			},
-			{
-				"internalType": "string",
-				"name": "city",
-				"type": "string"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
+		name: "newReview",
+		type: "event",
 	},
 	{
-		"inputs": [
+		anonymous: false,
+		inputs: [
 			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
+				indexed: false,
+				internalType: "address",
+				name: "Address",
+				type: "address",
+			},
 		],
-		"name": "Users",
-		"outputs": [
-			{
-				"internalType": "string",
-				"name": "login",
-				"type": "string"
-			},
-			{
-				"internalType": "address",
-				"name": "Address",
-				"type": "address"
-			},
-			{
-				"internalType": "bytes32",
-				"name": "password",
-				"type": "bytes32"
-			},
-			{
-				"internalType": "string",
-				"name": "FIO",
-				"type": "string"
-			},
-			{
-				"internalType": "enum Shops.ROLES",
-				"name": "role",
-				"type": "uint8"
-			},
-			{
-				"internalType": "address",
-				"name": "shopAddress",
-				"type": "address"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
+		name: "newShop",
+		type: "event",
 	},
 	{
-		"inputs": [
+		anonymous: false,
+		inputs: [
 			{
-				"internalType": "uint256",
-				"name": "idRequest",
-				"type": "uint256"
-			}
-		],
-		"name": "accRequest",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "Address",
-				"type": "address"
+				indexed: false,
+				internalType: "uint256",
+				name: "id",
+				type: "uint256",
 			},
 			{
-				"internalType": "string",
-				"name": "loginShop",
-				"type": "string"
+				indexed: true,
+				internalType: "address",
+				name: "Address",
+				type: "address",
 			},
 			{
-				"internalType": "string",
-				"name": "NameShop",
-				"type": "string"
+				indexed: false,
+				internalType: "enum Requests.STATUS",
+				name: "status",
+				type: "uint8",
+			},
+		],
+		name: "newStatusRequest",
+		type: "event",
+	},
+	{
+		anonymous: false,
+		inputs: [
+			{
+				indexed: false,
+				internalType: "address",
+				name: "Address",
+				type: "address",
+			},
+		],
+		name: "newUser",
+		type: "event",
+	},
+	{
+		inputs: [
+			{
+				internalType: "uint256",
+				name: "requestId",
+				type: "uint256",
+			},
+		],
+		name: "acceptRequest",
+		outputs: [],
+		stateMutability: "nonpayable",
+		type: "function",
+	},
+	{
+		inputs: [
+			{
+				internalType: "uint256",
+				name: "reviewId",
+				type: "uint256",
 			},
 			{
-				"internalType": "string",
-				"name": "city",
-				"type": "string"
-			}
+				internalType: "string",
+				name: "text",
+				type: "string",
+			},
+			{
+				internalType: "address",
+				name: "shopAddress",
+				type: "address",
+			},
 		],
-		"name": "addShop",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
+		name: "addComment",
+		outputs: [],
+		stateMutability: "nonpayable",
+		type: "function",
 	},
 	{
-		"inputs": [
+		inputs: [
 			{
-				"internalType": "uint256",
-				"name": "idRequest",
-				"type": "uint256"
-			}
+				internalType: "enum Requests.TYPE",
+				name: "requestType",
+				type: "uint8",
+			},
+			{
+				internalType: "address",
+				name: "shopAddress",
+				type: "address",
+			},
 		],
-		"name": "cancelRequest",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
+		name: "addRequest",
+		outputs: [],
+		stateMutability: "nonpayable",
+		type: "function",
 	},
 	{
-		"inputs": [
+		inputs: [
 			{
-				"internalType": "address",
-				"name": "shopAddress",
-				"type": "address"
-			}
+				internalType: "string",
+				name: "text",
+				type: "string",
+			},
+			{
+				internalType: "address",
+				name: "shopAddress",
+				type: "address",
+			},
+			{
+				internalType: "uint256",
+				name: "mark",
+				type: "uint256",
+			},
 		],
-		"name": "deleteShop",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
+		name: "addReviews",
+		outputs: [],
+		stateMutability: "nonpayable",
+		type: "function",
 	},
 	{
-		"inputs": [],
-		"name": "getAddress",
-		"outputs": [
+		inputs: [
 			{
-				"internalType": "address[]",
-				"name": "",
-				"type": "address[]"
-			}
+				internalType: "address",
+				name: "Address",
+				type: "address",
+			},
+			{
+				internalType: "string",
+				name: "login",
+				type: "string",
+			},
+			{
+				internalType: "string",
+				name: "shopName",
+				type: "string",
+			},
+			{
+				internalType: "string",
+				name: "city",
+				type: "string",
+			},
 		],
-		"stateMutability": "view",
-		"type": "function"
+		name: "addShop",
+		outputs: [],
+		stateMutability: "nonpayable",
+		type: "function",
 	},
 	{
-		"inputs": [
+		inputs: [
 			{
-				"internalType": "string",
-				"name": "word",
-				"type": "string"
-			}
+				internalType: "uint256",
+				name: "requestId",
+				type: "uint256",
+			},
 		],
-		"name": "getByteString",
-		"outputs": [
-			{
-				"internalType": "bytes32",
-				"name": "",
-				"type": "bytes32"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
+		name: "cancelRequest",
+		outputs: [],
+		stateMutability: "nonpayable",
+		type: "function",
 	},
 	{
-		"inputs": [],
-		"name": "getRequests",
-		"outputs": [
+		inputs: [
 			{
-				"components": [
+				internalType: "address",
+				name: "",
+				type: "address",
+			},
+			{
+				internalType: "uint256",
+				name: "",
+				type: "uint256",
+			},
+			{
+				internalType: "uint256",
+				name: "",
+				type: "uint256",
+			},
+		],
+		name: "comments",
+		outputs: [
+			{
+				internalType: "uint256",
+				name: "idReviews",
+				type: "uint256",
+			},
+			{
+				internalType: "uint256",
+				name: "idComment",
+				type: "uint256",
+			},
+			{
+				internalType: "string",
+				name: "text",
+				type: "string",
+			},
+			{
+				internalType: "address",
+				name: "shopAddress",
+				type: "address",
+			},
+		],
+		stateMutability: "view",
+		type: "function",
+	},
+	{
+		inputs: [
+			{
+				internalType: "address",
+				name: "shopAddress",
+				type: "address",
+			},
+		],
+		name: "deleteShop",
+		outputs: [],
+		stateMutability: "nonpayable",
+		type: "function",
+	},
+	{
+		inputs: [
+			{
+				internalType: "address",
+				name: "shopAddress",
+				type: "address",
+			},
+			{
+				internalType: "uint256",
+				name: "reviewId",
+				type: "uint256",
+			},
+		],
+		name: "dislikeReview",
+		outputs: [],
+		stateMutability: "nonpayable",
+		type: "function",
+	},
+	{
+		inputs: [],
+		name: "getRequests",
+		outputs: [
+			{
+				components: [
 					{
-						"internalType": "uint256",
-						"name": "id",
-						"type": "uint256"
+						internalType: "uint256",
+						name: "id",
+						type: "uint256",
 					},
 					{
-						"internalType": "enum Shops.TYPE",
-						"name": "typeRequest",
-						"type": "uint8"
+						internalType: "enum Requests.TYPE",
+						name: "requestType",
+						type: "uint8",
 					},
 					{
-						"internalType": "address",
-						"name": "AddressSender",
-						"type": "address"
+						internalType: "address",
+						name: "senderAddress",
+						type: "address",
 					},
 					{
-						"internalType": "enum Shops.ROLES",
-						"name": "currentRole",
-						"type": "uint8"
+						internalType: "enum Users.ROLES",
+						name: "currentRole",
+						type: "uint8",
 					},
 					{
-						"internalType": "enum Shops.ROLES",
-						"name": "newRole",
-						"type": "uint8"
+						internalType: "enum Users.ROLES",
+						name: "newRole",
+						type: "uint8",
 					},
 					{
-						"internalType": "enum Shops.STATUS",
-						"name": "status",
-						"type": "uint8"
+						internalType: "enum Requests.STATUS",
+						name: "status",
+						type: "uint8",
 					},
 					{
-						"internalType": "address",
-						"name": "shopAddress",
-						"type": "address"
-					}
+						internalType: "address",
+						name: "shopAddress",
+						type: "address",
+					},
 				],
-				"internalType": "struct Shops.Request[]",
-				"name": "",
-				"type": "tuple[]"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "Address",
-				"type": "address"
-			}
-		],
-		"name": "getShopersOfShop",
-		"outputs": [
-			{
-				"internalType": "address[]",
-				"name": "",
-				"type": "address[]"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "getShops",
-		"outputs": [
-			{
-				"internalType": "address[]",
-				"name": "",
-				"type": "address[]"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "string",
-				"name": "login",
-				"type": "string"
+				internalType: "struct Requests.Request[]",
+				name: "",
+				type: "tuple[]",
 			},
-			{
-				"internalType": "bytes32",
-				"name": "password",
-				"type": "bytes32"
-			}
 		],
-		"name": "login",
-		"outputs": [
+		stateMutability: "view",
+		type: "function",
+	},
+	{
+		inputs: [
 			{
-				"components": [
+				internalType: "address",
+				name: "subjectAddress",
+				type: "address",
+			},
+		],
+		name: "getReviews",
+		outputs: [
+			{
+				components: [
 					{
-						"internalType": "string",
-						"name": "login",
-						"type": "string"
+						internalType: "uint256",
+						name: "id",
+						type: "uint256",
 					},
 					{
-						"internalType": "address",
-						"name": "Address",
-						"type": "address"
+						internalType: "string",
+						name: "text",
+						type: "string",
 					},
 					{
-						"internalType": "bytes32",
-						"name": "password",
-						"type": "bytes32"
+						internalType: "address",
+						name: "shopAddress",
+						type: "address",
 					},
 					{
-						"internalType": "string",
-						"name": "FIO",
-						"type": "string"
+						internalType: "uint256",
+						name: "mark",
+						type: "uint256",
 					},
 					{
-						"internalType": "enum Shops.ROLES",
-						"name": "role",
-						"type": "uint8"
+						internalType: "address[]",
+						name: "likes",
+						type: "address[]",
 					},
 					{
-						"internalType": "address",
-						"name": "shopAddress",
-						"type": "address"
-					}
+						internalType: "address[]",
+						name: "dislikes",
+						type: "address[]",
+					},
 				],
-				"internalType": "struct Shops.User",
-				"name": "",
-				"type": "tuple"
-			}
+				internalType: "struct Reviews.Review[]",
+				name: "",
+				type: "tuple[]",
+			},
 		],
-		"stateMutability": "view",
-		"type": "function"
+		stateMutability: "view",
+		type: "function",
 	},
 	{
-		"inputs": [
+		inputs: [
 			{
-				"internalType": "string",
-				"name": "login",
-				"type": "string"
+				internalType: "address",
+				name: "Address",
+				type: "address",
 			},
-			{
-				"internalType": "bytes32",
-				"name": "password",
-				"type": "bytes32"
-			},
-			{
-				"internalType": "string",
-				"name": "FIO",
-				"type": "string"
-			}
 		],
-		"name": "registration",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
+		name: "getShopShopers",
+		outputs: [
+			{
+				internalType: "address[]",
+				name: "",
+				type: "address[]",
+			},
+		],
+		stateMutability: "view",
+		type: "function",
 	},
 	{
-		"inputs": [
+		inputs: [],
+		name: "getShopsAddreesses",
+		outputs: [
 			{
-				"internalType": "enum Shops.TYPE",
-				"name": "typeRequest",
-				"type": "uint8"
+				internalType: "address[]",
+				name: "",
+				type: "address[]",
 			},
-			{
-				"internalType": "address",
-				"name": "shopAddress",
-				"type": "address"
-			}
 		],
-		"name": "request",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
+		stateMutability: "view",
+		type: "function",
 	},
 	{
-		"inputs": [
+		inputs: [],
+		name: "getUsersAddresses",
+		outputs: [
 			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
+				internalType: "address[]",
+				name: "",
+				type: "address[]",
+			},
 		],
-		"name": "requestsRole",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "id",
-				"type": "uint256"
-			},
-			{
-				"internalType": "enum Shops.TYPE",
-				"name": "typeRequest",
-				"type": "uint8"
-			},
-			{
-				"internalType": "address",
-				"name": "AddressSender",
-				"type": "address"
-			},
-			{
-				"internalType": "enum Shops.ROLES",
-				"name": "currentRole",
-				"type": "uint8"
-			},
-			{
-				"internalType": "enum Shops.ROLES",
-				"name": "newRole",
-				"type": "uint8"
-			},
-			{
-				"internalType": "enum Shops.STATUS",
-				"name": "status",
-				"type": "uint8"
-			},
-			{
-				"internalType": "address",
-				"name": "shopAddress",
-				"type": "address"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
+		stateMutability: "view",
+		type: "function",
 	},
 	{
-		"inputs": [
+		inputs: [
 			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"name": "shopsArray",
-		"outputs": [
+				internalType: "address",
+				name: "shopAddress",
+				type: "address",
+			},
 			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
+				internalType: "uint256",
+				name: "reviewId",
+				type: "uint256",
+			},
 		],
-		"stateMutability": "view",
-		"type": "function"
+		name: "likeReview",
+		outputs: [],
+		stateMutability: "nonpayable",
+		type: "function",
 	},
 	{
-		"inputs": [
+		inputs: [
 			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"name": "usersArray",
-		"outputs": [
+				internalType: "string",
+				name: "login",
+				type: "string",
+			},
 			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
+				internalType: "bytes32",
+				name: "password",
+				type: "bytes32",
+			},
 		],
-		"stateMutability": "view",
-		"type": "function"
-	}
-]
+		name: "login",
+		outputs: [
+			{
+				components: [
+					{
+						internalType: "string",
+						name: "login",
+						type: "string",
+					},
+					{
+						internalType: "address",
+						name: "Address",
+						type: "address",
+					},
+					{
+						internalType: "bytes32",
+						name: "password",
+						type: "bytes32",
+					},
+					{
+						internalType: "string",
+						name: "FIO",
+						type: "string",
+					},
+					{
+						internalType: "enum Users.ROLES",
+						name: "role",
+						type: "uint8",
+					},
+					{
+						internalType: "bool",
+						name: "onRequest",
+						type: "bool",
+					},
+					{
+						internalType: "address",
+						name: "shopAddress",
+						type: "address",
+					},
+				],
+				internalType: "struct Users.User",
+				name: "",
+				type: "tuple",
+			},
+		],
+		stateMutability: "view",
+		type: "function",
+	},
+	{
+		inputs: [
+			{
+				internalType: "string",
+				name: "login",
+				type: "string",
+			},
+			{
+				internalType: "bytes32",
+				name: "password",
+				type: "bytes32",
+			},
+			{
+				internalType: "string",
+				name: "FIO",
+				type: "string",
+			},
+		],
+		name: "registration",
+		outputs: [],
+		stateMutability: "nonpayable",
+		type: "function",
+	},
+	{
+		inputs: [
+			{
+				internalType: "uint256",
+				name: "",
+				type: "uint256",
+			},
+		],
+		name: "requests",
+		outputs: [
+			{
+				internalType: "uint256",
+				name: "id",
+				type: "uint256",
+			},
+			{
+				internalType: "enum Requests.TYPE",
+				name: "requestType",
+				type: "uint8",
+			},
+			{
+				internalType: "address",
+				name: "senderAddress",
+				type: "address",
+			},
+			{
+				internalType: "enum Users.ROLES",
+				name: "currentRole",
+				type: "uint8",
+			},
+			{
+				internalType: "enum Users.ROLES",
+				name: "newRole",
+				type: "uint8",
+			},
+			{
+				internalType: "enum Requests.STATUS",
+				name: "status",
+				type: "uint8",
+			},
+			{
+				internalType: "address",
+				name: "shopAddress",
+				type: "address",
+			},
+		],
+		stateMutability: "view",
+		type: "function",
+	},
+	{
+		inputs: [
+			{
+				internalType: "address",
+				name: "",
+				type: "address",
+			},
+			{
+				internalType: "uint256",
+				name: "",
+				type: "uint256",
+			},
+		],
+		name: "reveiws",
+		outputs: [
+			{
+				internalType: "uint256",
+				name: "id",
+				type: "uint256",
+			},
+			{
+				internalType: "string",
+				name: "text",
+				type: "string",
+			},
+			{
+				internalType: "address",
+				name: "shopAddress",
+				type: "address",
+			},
+			{
+				internalType: "uint256",
+				name: "mark",
+				type: "uint256",
+			},
+		],
+		stateMutability: "view",
+		type: "function",
+	},
+	{
+		inputs: [
+			{
+				internalType: "address",
+				name: "",
+				type: "address",
+			},
+		],
+		name: "shops",
+		outputs: [
+			{
+				internalType: "uint256",
+				name: "id",
+				type: "uint256",
+			},
+			{
+				internalType: "address",
+				name: "Address",
+				type: "address",
+			},
+			{
+				internalType: "string",
+				name: "Name",
+				type: "string",
+			},
+			{
+				internalType: "string",
+				name: "city",
+				type: "string",
+			},
+		],
+		stateMutability: "view",
+		type: "function",
+	},
+	{
+		inputs: [
+			{
+				internalType: "uint256",
+				name: "",
+				type: "uint256",
+			},
+		],
+		name: "shopsAddresses",
+		outputs: [
+			{
+				internalType: "address",
+				name: "",
+				type: "address",
+			},
+		],
+		stateMutability: "view",
+		type: "function",
+	},
+	{
+		inputs: [
+			{
+				internalType: "address",
+				name: "",
+				type: "address",
+			},
+		],
+		name: "users",
+		outputs: [
+			{
+				internalType: "string",
+				name: "login",
+				type: "string",
+			},
+			{
+				internalType: "address",
+				name: "Address",
+				type: "address",
+			},
+			{
+				internalType: "bytes32",
+				name: "password",
+				type: "bytes32",
+			},
+			{
+				internalType: "string",
+				name: "FIO",
+				type: "string",
+			},
+			{
+				internalType: "enum Users.ROLES",
+				name: "role",
+				type: "uint8",
+			},
+			{
+				internalType: "bool",
+				name: "onRequest",
+				type: "bool",
+			},
+			{
+				internalType: "address",
+				name: "shopAddress",
+				type: "address",
+			},
+		],
+		stateMutability: "view",
+		type: "function",
+	},
+	{
+		inputs: [
+			{
+				internalType: "uint256",
+				name: "",
+				type: "uint256",
+			},
+		],
+		name: "usersAddresses",
+		outputs: [
+			{
+				internalType: "address",
+				name: "",
+				type: "address",
+			},
+		],
+		stateMutability: "view",
+		type: "function",
+	},
+];
