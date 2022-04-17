@@ -6,3 +6,4 @@ export { useShops } from "./useShops";
 export { useComments } from "./useComments";
 export { useReviews } from "./useReviews";
 export { useSalesmen } from "./useSalesmen";
+export { useSearchParam } from "./useSearchParam";

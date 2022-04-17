@@ -4,6 +4,7 @@ import {
 	ProfilePage,
 	RegistrationPage,
 	RequestsPage,
+	ReviewPage,
 	SalesmanPage,
 	ShopsPage,
 } from "../pages";
@@ -37,6 +38,10 @@ export const routes = [
 	},
 	{
 		Component: SalesmanPage,
-		path: "/salesmen/:address",
+		path: "/salesmen",
+	},
+	{
+		Component: ReviewPage,
+		path: "/reviews",
 	},
 ];

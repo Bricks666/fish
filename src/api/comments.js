@@ -5,7 +5,7 @@ export const getCommentsApi = async (subjectAddress, reviewId) => {
 };
 export const getCommentApi = async (subjectAddress, reviewId, commentId) => {
 	return await contract.methods
-		.comments(subjectAddress, reviewId, commentId)
+		.getComment(subjectAddress, reviewId, commentId)
 		.call();
 };
 

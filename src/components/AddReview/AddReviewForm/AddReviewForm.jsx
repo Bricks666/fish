@@ -36,7 +36,7 @@ export const AddReviewForm = ({ subjectAddress }) => {
 			</Row>
 			<Row>
 				<Col>
-					<Button type="submit">Добавить</Button>
+					<Button type="submit">Опубликовать</Button>
 				</Col>
 			</Row>
 		</Form>

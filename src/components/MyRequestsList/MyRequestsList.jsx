@@ -5,7 +5,7 @@ import { useMyRequests } from "./useMyRequests"
 export const MyRequestsList = () => {
     const { isLoading,requests } = useMyRequests()
     return <Container>
-        {isLoading? <Spinner />:
+        {isLoading? <Spinner variant="border" />:
             <ListGroup>
                 {requests.map(request => <ListGroup.Item key={request.id}>
                     <RequestCard {...request}/>

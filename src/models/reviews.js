@@ -38,6 +38,7 @@ export const reviewsReducer = (state = initialState, { type, payload }) => {
 			};
 		}
 		case CHANGE_REVIEW: {
+			debugger;
 			return {
 				...state,
 				list: state.list.map((review) =>
@@ -122,6 +123,7 @@ export const loadReviewsThunk = (subjectAddress) => {
 	return async (dispatch) => {
 		dispatch(toggleLoadingAC(true));
 		const reviews = await getReviewsApi(subjectAddress);
+		console.log(reviews);
 		dispatch(setReviewsAC(reviews.map(toValidReview), subjectAddress));
 		dispatch(toggleLoadingAC(false));
 	};
@@ -135,16 +137,18 @@ export const addReviewThunk = (subjectAddress, text, mark) => {
 };
 
 export const likeReviewThunk = (subjectAddress, reviewId) => {
-	return async (dispatch, getState) => {
+	return async (_, getState) => {
 		const { address } = getState().auth;
-		dispatch(likeReviewApi(address, subjectAddress, reviewId));
+		console.log(address);
+		await likeReviewApi(address, subjectAddress, reviewId);
 	};
 };
 
 export const dislikeReviewThunk = (subjectAddress, reviewId) => {
-	return async (dispatch, getState) => {
+	return async (_, getState) => {
 		const { address } = getState().auth;
-		dispatch(dislikeReviewApi(address, subjectAddress, reviewId));
+		console.log(address);
+		await dislikeReviewApi(address, subjectAddress, reviewId);
 	};
 };
 
@@ -166,9 +170,10 @@ export const subscribeNewReviewThunk = (subjectAddress) => {
 export const subscribeChangeReviewThunk = (subjectAddress) => {
 	return async (dispatch) => {
 		const subscription = subscribe({
-			event: "reviewId",
-			callback: async ({ id }) => {
-				const review = await getReviewApi(subjectAddress, id);
+			event: "markReview",
+			callback: async ({ reviewId }) => {
+				const review = await getReviewApi(subjectAddress, reviewId);
+				console.log(review);
 				dispatch(changeReviewAC(toValidReview(review)));
 			},
 			filter: { subjectAddress },

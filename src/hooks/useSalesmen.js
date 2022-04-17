@@ -7,17 +7,17 @@ import {
 	subscribeNewSalesmanThunk,
 } from "../models/slesmen";
 
-export const useSalesmen = (shopId) => {
+export const useSalesmen = (shopAddress) => {
 	const salesmen = useSelector((state) => state.salesmen.salesmen);
 	const isLoading = useSelector((state) => state.salesmen.isLoading);
 	const dispatch = useDispatch();
 
 	useEffect(() => {
 		if (!salesmen.length) {
-			dispatch(loadSalesmenThunk(shopId));
-			dispatch(subscribeNewSalesmanThunk(shopId));
+			dispatch(loadSalesmenThunk(shopAddress));
+			dispatch(subscribeNewSalesmanThunk(shopAddress));
 		}
-	}, [dispatch, salesmen.length, shopId]);
+	}, [dispatch, salesmen.length, shopAddress]);
 
 	useEffect(() => {
 		return () => {

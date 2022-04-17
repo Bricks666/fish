@@ -32,15 +32,13 @@ export const Shop = () => {
 			<Routes>
 				<Route
 					path="salesmen"
-					element={
-						<SalesmenList shopId={shop.id} salesmenAddress={shop.shopers} />
-					}
+					element={<SalesmenList shopAddress={shop.address} />}
 				/>
 				<Route
 					path="reviews"
-					element={<Reviews salesmenAddress={shop.shopers} />}
+					element={<Reviews subjectAddress={shop.address} />}
 				/>
-				<Route path="*" element={<Navigate to="salesman" replace={true} />} />
+				<Route path="*" element={<Navigate to="salesmen" replace={true} />} />
 			</Routes>
 		</Container>
 	);

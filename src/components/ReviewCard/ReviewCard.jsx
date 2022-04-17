@@ -1,5 +1,7 @@
 import { Card, Col, Row } from "react-bootstrap";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { SEARCH_PARAMS } from "../../consts";
 import { Buttons } from "./Buttons";
 
 export const ReviewCard = ({
@@ -12,7 +14,8 @@ export const ReviewCard = ({
 	isMarked,
 	isGuest,
 }) => {
-	const mayMark = !(isMarked || isGuest);
+	const address = useSelector((state) => state.auth.address);
+	const mayMark = !(isMarked || isGuest) && !!address;
 	return (
 		<Card>
 			<Card.Header>
@@ -38,7 +41,10 @@ export const ReviewCard = ({
 				</Row>
 			</Card.Body>
 			<Card.Footer>
-				<Card.Link as={Link} to={`/reviews/${id}`}>
+				<Card.Link
+					as={Link}
+					to={`/reviews?${SEARCH_PARAMS.SUBJECT_ADDRESS}=${subjectAddress}&${SEARCH_PARAMS.REVIEW_ID}=${id}`}
+				>
 					Подробнее
 				</Card.Link>
 				{mayMark && <Buttons subjectAddress={subjectAddress} reviewId={id} />}

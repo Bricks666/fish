@@ -18,7 +18,7 @@ export const App = () => {
 		<Container>
 			<Header />
 			{isInit ? (
-				<Spinner />
+				<Spinner variant="border" />
 			) : (
 				<Routes>
 					{routes.map(({ Component, path, isOnlyAuth }) => {

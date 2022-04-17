@@ -24,8 +24,8 @@ export const RegistrationForm = () => {
     return <Container>
         <Form onSubmit={onSubmit}>
                 <Form.Group>
-                    {isLoading? 
-                        <Spinner /> :
+                    {isLoading?
+                        <Spinner variant="border" /> :
                         <>
                             <Form.Label>Аккаунт</Form.Label>
                             <Form.Select {...account}>

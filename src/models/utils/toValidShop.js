@@ -4,6 +4,5 @@ export const toValidShop = (shop) => {
         address: shop.Address,
         name: shop.Name,
         city: shop.city,
-        shopers: shop.shopers ?? []
     }
 }

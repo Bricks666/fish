@@ -9,7 +9,7 @@ export const Reviews = ({ subjectAddress }) => {
 		<Container>
 			<h3>Отзывы</h3>
 			<RoleFilter roles={[ROLES.USER, ROLES.ADMIN, ROLES.SHOPER]}>
-				<AddReview />
+				<AddReview subjectAddress={subjectAddress} />
 			</RoleFilter>
 			<ReviewsList subjectAddress={subjectAddress} />
 		</Container>

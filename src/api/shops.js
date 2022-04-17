@@ -1,10 +1,10 @@
 import { contract } from "./core"
 
 export const getShopAddressesApi = async() => {
-    return await contract.methods.getShops().call()
+    return await contract.methods.getShopsAddresses().call()
 }
 export const getShopApi = async(address) => {
-    return await contract.methods.Shops(address).call()
+    return await contract.methods.shops(address).call()
 }
 
 export const addShopApi = async(address, shopAddress, login, name, city)  => {
@@ -16,5 +16,5 @@ export const deleteShopApi = async(address, shopAddress) => {
 }
 
 export const getSalesmenAddressesApi = async(address) => {
-    return await contract.methods.getShopersOfShop(address).call()
+    return await contract.methods.getShopShopers(address).call()
 }

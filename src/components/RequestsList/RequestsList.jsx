@@ -6,7 +6,7 @@ export const RequestsList = () => {
     const { requests, isLoading } = useRequests()
 
     return <Container>
-        {isLoading? <Spinner /> :<ListGroup>
+        {isLoading? <Spinner variant="border" /> :<ListGroup>
             {requests.map((request) => <ListGroup.Item key={request.id}>
                 <AdminRequestCard {...request}/>
             </ListGroup.Item>)}

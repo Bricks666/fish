@@ -6,10 +6,10 @@ import { useUser } from "../../hooks";
 import { addRequestThunk } from "../../models/requests";
 import { deleteShopThunk } from "../../models/shops";
 
-export const ShopCard = ({ name, city, shopers, address }) => {
+export const ShopCard = ({ name, city, address }) => {
 	const dispatch = useDispatch();
 	const {
-		info: { role },
+		info: { role, onRequest },
 	} = useUser();
 	const toBeShoper = useCallback(() => {
 		dispatch(addRequestThunk(REQUEST_TYPE.TO_SHOPER, address));
@@ -24,10 +24,9 @@ export const ShopCard = ({ name, city, shopers, address }) => {
 			</Card.Header>
 			<Card.Body>
 				<Card.Text>Город {city}</Card.Text>
-				<Card.Text>Количество продавцов {shopers.length}</Card.Text>
 			</Card.Body>
 			<Card.Footer>
-				{role === ROLES.USER && (
+				{role === ROLES.USER && !onRequest && (
 					<Button onClick={toBeShoper}>Стать продавцом</Button>
 				)}
 				{role === ROLES.ADMIN && (

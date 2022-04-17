@@ -1,4 +1,4 @@
-export const address = "0xd53bED10825B3a9E6B357791d08B4738362C94E0";
+export const address = "0xb603A3451298fC45bfe523223E02674bBcb6b9Af";
 export const abi = [
 	{
 		inputs: [],
@@ -62,7 +62,7 @@ export const abi = [
 			{
 				indexed: true,
 				internalType: "address",
-				name: "shopAddress",
+				name: "subjectAddress",
 				type: "address",
 			},
 			{
@@ -87,7 +87,7 @@ export const abi = [
 			{
 				indexed: true,
 				internalType: "address",
-				name: "shopAddress",
+				name: "subjectAddress",
 				type: "address",
 			},
 			{
@@ -131,7 +131,7 @@ export const abi = [
 			{
 				indexed: true,
 				internalType: "address",
-				name: "shopAddress",
+				name: "subjectAddress",
 				type: "address",
 			},
 			{
@@ -211,6 +211,11 @@ export const abi = [
 	{
 		inputs: [
 			{
+				internalType: "address",
+				name: "subjectAddress",
+				type: "address",
+			},
+			{
 				internalType: "uint256",
 				name: "reviewId",
 				type: "uint256",
@@ -219,11 +224,6 @@ export const abi = [
 				internalType: "string",
 				name: "text",
 				type: "string",
-			},
-			{
-				internalType: "address",
-				name: "shopAddress",
-				type: "address",
 			},
 		],
 		name: "addComment",
@@ -252,14 +252,14 @@ export const abi = [
 	{
 		inputs: [
 			{
+				internalType: "address",
+				name: "subjectAddress",
+				type: "address",
+			},
+			{
 				internalType: "string",
 				name: "text",
 				type: "string",
-			},
-			{
-				internalType: "address",
-				name: "shopAddress",
-				type: "address",
 			},
 			{
 				internalType: "uint256",
@@ -267,7 +267,7 @@ export const abi = [
 				type: "uint256",
 			},
 		],
-		name: "addReviews",
+		name: "addReview",
 		outputs: [],
 		stateMutability: "nonpayable",
 		type: "function",
@@ -335,12 +335,12 @@ export const abi = [
 		outputs: [
 			{
 				internalType: "uint256",
-				name: "idReviews",
+				name: "id",
 				type: "uint256",
 			},
 			{
 				internalType: "uint256",
-				name: "idComment",
+				name: "reviewId",
 				type: "uint256",
 			},
 			{
@@ -350,7 +350,7 @@ export const abi = [
 			},
 			{
 				internalType: "address",
-				name: "shopAddress",
+				name: "subjectAddress",
 				type: "address",
 			},
 		],
@@ -374,7 +374,7 @@ export const abi = [
 		inputs: [
 			{
 				internalType: "address",
-				name: "shopAddress",
+				name: "subjectAddress",
 				type: "address",
 			},
 			{
@@ -386,6 +386,103 @@ export const abi = [
 		name: "dislikeReview",
 		outputs: [],
 		stateMutability: "nonpayable",
+		type: "function",
+	},
+	{
+		inputs: [
+			{
+				internalType: "address",
+				name: "subjectAddress",
+				type: "address",
+			},
+			{
+				internalType: "uint256",
+				name: "reviewId",
+				type: "uint256",
+			},
+			{
+				internalType: "uint256",
+				name: "commentId",
+				type: "uint256",
+			},
+		],
+		name: "getComment",
+		outputs: [
+			{
+				components: [
+					{
+						internalType: "uint256",
+						name: "id",
+						type: "uint256",
+					},
+					{
+						internalType: "uint256",
+						name: "reviewId",
+						type: "uint256",
+					},
+					{
+						internalType: "string",
+						name: "text",
+						type: "string",
+					},
+					{
+						internalType: "address",
+						name: "subjectAddress",
+						type: "address",
+					},
+				],
+				internalType: "struct Comments.Comment",
+				name: "",
+				type: "tuple",
+			},
+		],
+		stateMutability: "view",
+		type: "function",
+	},
+	{
+		inputs: [
+			{
+				internalType: "address",
+				name: "subjectAddress",
+				type: "address",
+			},
+			{
+				internalType: "uint256",
+				name: "reviewId",
+				type: "uint256",
+			},
+		],
+		name: "getComments",
+		outputs: [
+			{
+				components: [
+					{
+						internalType: "uint256",
+						name: "id",
+						type: "uint256",
+					},
+					{
+						internalType: "uint256",
+						name: "reviewId",
+						type: "uint256",
+					},
+					{
+						internalType: "string",
+						name: "text",
+						type: "string",
+					},
+					{
+						internalType: "address",
+						name: "subjectAddress",
+						type: "address",
+					},
+				],
+				internalType: "struct Comments.Comment[]",
+				name: "",
+				type: "tuple[]",
+			},
+		],
+		stateMutability: "view",
 		type: "function",
 	},
 	{
@@ -445,6 +542,62 @@ export const abi = [
 				name: "subjectAddress",
 				type: "address",
 			},
+			{
+				internalType: "uint256",
+				name: "reviewId",
+				type: "uint256",
+			},
+		],
+		name: "getReview",
+		outputs: [
+			{
+				components: [
+					{
+						internalType: "uint256",
+						name: "id",
+						type: "uint256",
+					},
+					{
+						internalType: "string",
+						name: "text",
+						type: "string",
+					},
+					{
+						internalType: "address",
+						name: "subjectAddress",
+						type: "address",
+					},
+					{
+						internalType: "uint256",
+						name: "mark",
+						type: "uint256",
+					},
+					{
+						internalType: "address[]",
+						name: "likes",
+						type: "address[]",
+					},
+					{
+						internalType: "address[]",
+						name: "dislikes",
+						type: "address[]",
+					},
+				],
+				internalType: "struct Reviews.Review",
+				name: "",
+				type: "tuple",
+			},
+		],
+		stateMutability: "view",
+		type: "function",
+	},
+	{
+		inputs: [
+			{
+				internalType: "address",
+				name: "subjectAddress",
+				type: "address",
+			},
 		],
 		name: "getReviews",
 		outputs: [
@@ -462,7 +615,7 @@ export const abi = [
 					},
 					{
 						internalType: "address",
-						name: "shopAddress",
+						name: "subjectAddress",
 						type: "address",
 					},
 					{
@@ -510,7 +663,7 @@ export const abi = [
 	},
 	{
 		inputs: [],
-		name: "getShopsAddreesses",
+		name: "getShopsAddresses",
 		outputs: [
 			{
 				internalType: "address[]",
@@ -538,7 +691,7 @@ export const abi = [
 		inputs: [
 			{
 				internalType: "address",
-				name: "shopAddress",
+				name: "subjectAddress",
 				type: "address",
 			},
 			{
@@ -619,11 +772,6 @@ export const abi = [
 				internalType: "string",
 				name: "login",
 				type: "string",
-			},
-			{
-				internalType: "bytes32",
-				name: "password",
-				type: "bytes32",
 			},
 			{
 				internalType: "string",
@@ -712,7 +860,7 @@ export const abi = [
 			},
 			{
 				internalType: "address",
-				name: "shopAddress",
+				name: "subjectAddress",
 				type: "address",
 			},
 			{

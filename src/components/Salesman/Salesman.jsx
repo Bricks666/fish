@@ -1,11 +1,11 @@
-import { useSearchParams } from "react-router-dom";
 import { useSalesman } from "./useSalesman";
 import { UserInfo } from "../UserInfo";
+import { SEARCH_PARAMS } from "../../consts";
+import { useSearchParam } from "../../hooks";
 
 export const Salesman = ({ address }) => {
-	const [searchParams] = useSearchParams();
-	const shopId = +searchParams.get("shop-id");
-	const salesman = useSalesman(shopId, address);
+	const shopAddress = useSearchParam(SEARCH_PARAMS.SHOP_ADDRESS);
+	const salesman = useSalesman(shopAddress, address);
 
 	if (!salesman) {
 		return null;

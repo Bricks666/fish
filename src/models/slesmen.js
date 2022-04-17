@@ -1,4 +1,4 @@
-import { getUserApi } from "../api";
+import { getUserApi, getSalesmenAddressesApi } from "../api";
 import { subscribe } from "../api/core";
 import { toValidUser } from "./utils/toValidUser";
 import { ROLES } from "../consts";
@@ -79,15 +79,6 @@ const addSalesmanAC = (salesman) => {
 	};
 };
 
-const deleteSalesmanAC = (salesmanAddress) => {
-	return {
-		type: DELETE_SALESMAN,
-		payload: {
-			salesmanAddress,
-		},
-	};
-};
-
 const toggleLoadingAC = (isLoading) => {
 	return {
 		type: TOGGLE_LOADING,
@@ -112,27 +103,23 @@ export const resetSalesmenAC = () => {
 	};
 };
 
-export const loadSalesmenThunk = (shopId) => {
-	return async (dispatch, getState) => {
+export const loadSalesmenThunk = (shopAddress) => {
+	return async (dispatch) => {
 		dispatch(toggleLoadingAC(true));
-		const shop = getState().shops.shops.find((shop) => shop.id === shopId);
-		const salesmenAddresses = shop.shopers;
+		const salesmenAddresses = await getSalesmenAddressesApi(shopAddress);
 		const salesmen = await Promise.all(salesmenAddresses.map(getUserApi));
 		dispatch(setSalesmenAC(salesmen.map(toValidUser)));
 		dispatch(toggleLoadingAC(false));
 	};
 };
 
-export const subscribeNewSalesmanThunk = (shopId) => {
-	return async (dispatch, getState) => {
-		const { address } = getState().shops.shops.find(
-			(shop) => shop.id === +shopId
-		);
+export const subscribeNewSalesmanThunk = (shopAddress) => {
+	return async (dispatch) => {
 		const subscribes = subscribe({
 			event: "changeRoleEvent",
 			callback: async ({ Address }) => {
 				const salesman = toValidUser(await getUserApi(Address));
-				if (salesman.shopAddress === address) {
+				if (salesman.shopAddress === shopAddress) {
 					dispatch(addSalesmanAC(salesman));
 				}
 			},
