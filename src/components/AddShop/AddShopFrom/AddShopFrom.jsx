@@ -23,7 +23,17 @@ export const AddShopFrom = () => {
 			resetName();
 			resetCity();
 		},
-		[account.value, name.value, login.value, dispatch, city.value]
+		[
+			account.value,
+			name.value,
+			login.value,
+			dispatch,
+			city.value,
+			resetAccount,
+			resetLogin,
+			resetName,
+			resetCity,
+		]
 	);
 
 	return (

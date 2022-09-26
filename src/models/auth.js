@@ -78,7 +78,7 @@ export const logoutAC = () => {
 export const loginThunk = (address, login, password) => {
 	return async (dispatch) => {
 		try {
-			const response = await loginApi(address, login, password);
+			await loginApi(address, login, password);
 			dispatch(setAuthAC(address));
 			dispatch(setLoginErrorAC(null));
 			return true;

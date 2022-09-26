@@ -23,7 +23,7 @@ export const LoginForm = () => {
 				navigate("/profile", { replace: true });
 			}
 		},
-		[account.value, password.value, login.value, dispatch]
+		[account.value, password.value, login.value, dispatch, navigate]
 	);
 
 	return (

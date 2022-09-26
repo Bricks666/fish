@@ -16,7 +16,7 @@ export const AddReviewForm = ({ subjectAddress }) => {
 			resetMark();
 			resetReview();
 		},
-		[dispatch, subjectAddress, review.value, mark.value]
+		[dispatch, subjectAddress, review.value, mark.value, resetReview, resetMark]
 	);
 	return (
 		<Form onSubmit={onSubmit}>
