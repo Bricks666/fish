@@ -20,7 +20,7 @@ export const App: React.FC = () => {
 				<Spinner animation='border' />
 			) : (
 				<Routes>
-					{routes.map(({ Component, path, isOnlyAuth }) => {
+					{routes.map(({ Component, path, isOnlyAuth, }) => {
 						return (
 							<Route
 								path={path}
