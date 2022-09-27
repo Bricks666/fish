@@ -3,9 +3,10 @@ import { Button, Form } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { useField } from '@/hooks/useField';
 import { addCommentThunk } from '@/models/comments';
+import { Address } from '@/interfaces/web3';
 
 export interface AddCommentFormProps {
-	readonly subjectAddress: string;
+	readonly subjectAddress: Address;
 	readonly reviewId: number;
 }
 

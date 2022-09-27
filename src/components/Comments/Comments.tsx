@@ -1,10 +1,18 @@
+import * as React from 'react';
 import { Container } from 'react-bootstrap';
-import { ROLES } from '../../consts';
-import { AddComment } from '../AddComment/AddComment';
+import { ROLES } from '@/consts';
+import { AddComment } from '../AddComment';
 import { RoleFilter } from '../RoleFilter';
 import { CommentsList } from './CommentsList';
+import { Address } from '@/interfaces/web3';
 
-export const Comments = ({ reviewId, subjectAddress, }) => {
+export interface CommentsProps {
+	readonly reviewId: number;
+	readonly subjectAddress: Address;
+}
+
+export const Comments: React.FC<CommentsProps> = (props) => {
+	const { reviewId, subjectAddress } = props;
 	return (
 		<Container>
 			<h3>Комментарии</h3>

@@ -1,14 +1,22 @@
+import * as React from 'react';
 import { Container, ListGroup, Spinner } from 'react-bootstrap';
-import { useComments } from '@/hooks';
+import { Address } from '@/interfaces/web3';
 import { CommentCard } from './CommentCard';
+import { useComments } from '@/hooks/useComments';
 
-export const CommentsList = ({ subjectAddress, reviewId, }) => {
-	const { comments, isLoading, } = useComments(subjectAddress, reviewId);
+export interface CommentsListProps {
+	readonly subjectAddress: Address;
+	readonly reviewId: number;
+}
+
+export const CommentsList: React.FC<CommentsListProps> = (props) => {
+	const { subjectAddress, reviewId } = props;
+	const { comments, isLoading } = useComments(subjectAddress, reviewId);
 
 	return (
 		<Container>
 			{isLoading ? (
-				<Spinner variant='border' />
+				<Spinner animation='border' />
 			) : (
 				<ListGroup>
 					{comments.map((comment) => (

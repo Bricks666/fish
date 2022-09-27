@@ -12,7 +12,7 @@ export interface UserResponse {
 }
 
 export interface ShopResponse {
-	readonly id: number;
+	readonly id: string;
 	readonly Address: Address;
 	readonly Name: string;
 	readonly city: string;
@@ -20,7 +20,7 @@ export interface ShopResponse {
 }
 
 export interface RequestResponse {
-	readonly id: number;
+	readonly id: string;
 	readonly requestType: RequestType;
 	readonly senderAddress: Address;
 	readonly currentRole: Role;
@@ -30,17 +30,17 @@ export interface RequestResponse {
 }
 
 export interface ReviewResponse {
-	readonly id: number;
+	readonly id: string;
 	readonly text: string;
 	readonly subjectAddress: Address;
-	readonly mark: number;
+	readonly mark: string;
 	readonly likes: Address[];
 	readonly dislikes: Address[];
 }
 
 export interface CommentResponse {
-	readonly id: number;
-	readonly reviewId: number;
+	readonly id: string;
+	readonly reviewId: string;
 	readonly text: string;
 	readonly subjectAddress: Address;
 }

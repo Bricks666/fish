@@ -1,1 +1,1 @@
-export { CommentCard } from './CommentCard';
+export { CommentCard, type CommentCardProps } from './CommentCard';

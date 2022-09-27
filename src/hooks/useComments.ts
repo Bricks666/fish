@@ -1,15 +1,23 @@
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { Address } from '@/interfaces/web3';
 import {
+	Comment,
 	loadCommentsThunk,
 	resetCommentsAC,
-	subscribeNewCommentThunk
-} from '../models/comments';
+	subscribeNewCommentThunk,
+} from '@/models/comments';
+import { useTypedDispatch } from './useTypedDispatch';
+import { useTypedSelector } from './useTypedSelector';
 
-export const useComments = (subjectAddress, reviewId) => {
-	const comments = useSelector((state) => state.comments.list);
-	const isLoading = useSelector((state) => state.comments.isLoading);
-	const dispatch = useDispatch();
+export interface UseCommentsResult {
+	readonly isLoading: boolean;
+	readonly comments: Comment[];
+}
+
+export const useComments = (subjectAddress: Address, reviewId: number) => {
+	const comments = useTypedSelector((state) => state.comments.list);
+	const isLoading = useTypedSelector((state) => state.comments.isLoading);
+	const dispatch = useTypedDispatch();
 
 	useEffect(() => {
 		dispatch(loadCommentsThunk(subjectAddress, reviewId));

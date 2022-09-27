@@ -1,1 +1,1 @@
-export { CommentsList } from './CommentsList';
+export { CommentsList, type CommentsListProps } from './CommentsList';
