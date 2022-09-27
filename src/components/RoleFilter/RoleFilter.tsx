@@ -1,4 +1,4 @@
-import { useUser } from '../../hooks';
+import { useUser } from '@/hooks';
 
 export const RoleFilter = ({ children, roles, invert, }) => {
 	const {

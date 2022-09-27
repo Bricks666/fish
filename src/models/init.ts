@@ -28,7 +28,6 @@ const toggleInitAC = (isInitializing) => {
 export const initThunk = () => {
 	return async (dispatch) => {
 		dispatch(toggleInitAC(true));
-		initApi();
 		dispatch(toggleInitAC(false));
 	};
 };

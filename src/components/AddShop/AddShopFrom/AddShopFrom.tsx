@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 import { Container, Form, Spinner, Button } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
-import { useAddresses, useField } from '../../../hooks';
+import { useAddresses, useField } from '@/hooks';
 import { addShopThunk } from '../../../models/shops';
 
 export const AddShopFrom = () => {

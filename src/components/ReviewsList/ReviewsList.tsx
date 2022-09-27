@@ -1,5 +1,5 @@
 import { Container, ListGroup, Spinner } from 'react-bootstrap';
-import { useReviews, useUser } from '../../hooks';
+import { useReviews, useUser } from '@/hooks';
 import { ReviewCard } from '../ReviewCard';
 import { ROLES } from '../../consts';
 

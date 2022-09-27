@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 import { Button, Col, Form, Row } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
-import { useField } from '../../../hooks';
+import { useField } from '@/hooks';
 import { addReviewThunk } from '../../../models/reviews';
 
 export const AddReviewForm = ({ subjectAddress, }) => {

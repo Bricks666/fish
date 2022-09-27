@@ -2,7 +2,7 @@ import { useCallback } from 'react';
 import { Card, Button } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { REQUEST_TYPE, ROLES } from '../../consts';
-import { useUser } from '../../hooks';
+import { useUser } from '@/hooks';
 import { addRequestThunk } from '../../models/requests';
 import { deleteShopThunk } from '../../models/shops';
 

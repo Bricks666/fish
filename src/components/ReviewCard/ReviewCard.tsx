@@ -58,7 +58,7 @@ export const ReviewCard = ({
 			</Card.Body>
 			<Card.Footer>
 				<Card.Link
-					as={Link}
+					as={Link as any}
 					to={`/reviews?${SEARCH_PARAMS.SUBJECT_ADDRESS}=${subjectAddress}&${SEARCH_PARAMS.REVIEW_ID}=${id}`}
 				>
 					Подробнее

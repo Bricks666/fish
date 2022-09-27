@@ -6,12 +6,11 @@ import {
 import { BaseQueryFn } from '@reduxjs/toolkit/dist/query/baseQueryTypes';
 import Web3 from 'web3';
 import { Contract, EventData } from 'web3-eth-contract';
-import { Personal } from 'web3-eth-personal';
 import { abi, address } from '../data';
 
 export const web3: Web3 = new Web3('ws://localhost:8545');
-export const contract: Contract = new Contract(abi, address);
-export const personal = new Personal();
+export const contract: Contract = new web3.eth.Contract(abi, address);
+export const { personal } = web3.eth;
 
 export const unlockAccount = async (wallet: string): Promise<void> => {
 	await personal.unlockAccount(wallet, '0000', 0);

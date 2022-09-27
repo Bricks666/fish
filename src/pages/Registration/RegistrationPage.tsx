@@ -9,7 +9,7 @@ const RegistrationPage: React.FC = () => {
 		<MainLayout>
 			<h2>Регистрация</h2>
 			<RegistrationForm />
-			<Button variant='link' as={Link} to='/login'>
+			<Button variant='link' as={Link as any} to='/login'>
 				Войти
 			</Button>
 		</MainLayout>

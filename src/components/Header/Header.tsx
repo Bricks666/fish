@@ -58,7 +58,7 @@ export const Header = () => {
 			{isAuth ? (
 				<Button onClick={onLogout}>Выйти</Button>
 			) : (
-				<Button variant='link' as={Link} to='/login'>
+				<Button variant='link' as={Link as any} to='/login'>
 					Войти
 				</Button>
 			)}

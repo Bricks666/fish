@@ -1,4 +1,4 @@
-import { useShops } from '../../hooks/useShops';
+import { useShops } from '@/hooks/useShops';
 
 export const useShop = (id) => {
 	const { shops, } = useShops();

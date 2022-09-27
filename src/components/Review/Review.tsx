@@ -1,6 +1,6 @@
 import { useReview } from './useReview';
 import { ReviewCard } from '../ReviewCard';
-import { useUser } from '../../hooks';
+import { useUser } from '@/hooks';
 import { ROLES } from '../../consts';
 
 export const Review = ({ id, subjectAddress, }) => {

@@ -1,5 +1,5 @@
 import { Container, ListGroup, Spinner } from 'react-bootstrap';
-import { useComments } from '../../../hooks';
+import { useComments } from '@/hooks';
 import { CommentCard } from './CommentCard';
 
 export const CommentsList = ({ subjectAddress, reviewId, }) => {

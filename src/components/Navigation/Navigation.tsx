@@ -16,14 +16,14 @@ const NavigationItem = ({ label, path, roles, invert, }) => {
 	const item = (
 		<Nav.Item>
 			{typeof path === 'string' ? (
-				<Nav.Link as={Link} to={path}>
+				<Nav.Link as={Link as any} to={path}>
 					{label}
 				</Nav.Link>
 			) : (
 				<NavDropdown title={label}>
 					{path.map(({ label, path, roles, invert, }) => {
 						const item = (
-							<NavDropdown.Item as={Link} to={path} key={path}>
+							<NavDropdown.Item as={Link as any} to={path} key={path}>
 								{label}
 							</NavDropdown.Item>
 						);

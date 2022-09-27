@@ -1,4 +1,4 @@
-export const toValidUser = (user) => {
+export const toValidUser = (user: any): any => {
 	return {
 		login: user.login,
 		address: user.Address,
