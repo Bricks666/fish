@@ -1,1 +1,1 @@
-export { Salesman } from "./Salesman";
+export { Salesman } from './Salesman';

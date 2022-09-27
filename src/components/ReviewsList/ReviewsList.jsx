@@ -1,17 +1,17 @@
-import { Container, ListGroup, Spinner } from "react-bootstrap";
-import { useReviews, useUser } from "../../hooks";
-import { ReviewCard } from "../ReviewCard";
-import { ROLES } from "../../consts";
+import { Container, ListGroup, Spinner } from 'react-bootstrap';
+import { useReviews, useUser } from '../../hooks';
+import { ReviewCard } from '../ReviewCard';
+import { ROLES } from '../../consts';
 
-export const ReviewsList = ({ subjectAddress }) => {
-	const { isLoading, reviews } = useReviews(subjectAddress);
+export const ReviewsList = ({ subjectAddress, }) => {
+	const { isLoading, reviews, } = useReviews(subjectAddress);
 	const {
-		info: { address, role },
+		info: { address, role, },
 	} = useUser();
 	return (
 		<Container>
 			{isLoading ? (
-				<Spinner animation="border" />
+				<Spinner animation='border' />
 			) : (
 				<ListGroup>
 					{reviews.map((review) => (
@@ -20,8 +20,8 @@ export const ReviewsList = ({ subjectAddress }) => {
 								{...review}
 								isGuest={role === ROLES.GUEST}
 								isMarked={
-									review.likes.includes(address) ||
-									review.dislikes.includes(address)
+									review.likes.includes(address)
+									|| review.dislikes.includes(address)
 								}
 							/>
 						</ListGroup.Item>

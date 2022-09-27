@@ -1,5 +1,5 @@
-import { Container } from "react-bootstrap";
-import { AddCommentForm } from "./AddCommentForm";
+import { Container } from 'react-bootstrap';
+import { AddCommentForm } from './AddCommentForm';
 
 export const AddComment = (props) => {
 	return (

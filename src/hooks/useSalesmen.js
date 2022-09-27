@@ -1,11 +1,10 @@
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import {
 	loadSalesmenThunk,
 	resetSalesmenAC,
-	subscribeNewSalesmanThunk,
-} from "../models/slesmen";
+	subscribeNewSalesmanThunk
+} from '../models/slesmen';
 
 export const useSalesmen = (shopAddress) => {
 	const salesmen = useSelector((state) => state.salesmen.salesmen);

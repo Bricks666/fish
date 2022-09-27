@@ -1,10 +1,10 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import {
 	loadMyRequestsThunk,
 	subscribeMyChangeRequestStatusThunk,
-	subscribeNewMyRequestThunk,
-} from "../../models/requests";
+	subscribeNewMyRequestThunk
+} from '../../models/requests';
 
 export const useMyRequests = () => {
 	const requests = useSelector((state) => state.requests.myRequests);

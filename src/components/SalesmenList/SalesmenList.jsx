@@ -1,17 +1,17 @@
-import { Button, Container, ListGroup, Spinner } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import { UserInfo } from "../UserInfo";
-import { useSalesmen } from "../../hooks/";
-import { SEARCH_PARAMS } from "../../consts";
+import { Button, Container, ListGroup, Spinner } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import { UserInfo } from '../UserInfo';
+import { useSalesmen } from '../../hooks';
+import { SEARCH_PARAMS } from '../../consts';
 
-export const SalesmenList = ({ shopAddress }) => {
-	const { isLoading, salesmen } = useSalesmen(shopAddress);
+export const SalesmenList = ({ shopAddress, }) => {
+	const { isLoading, salesmen, } = useSalesmen(shopAddress);
 
 	return (
 		<Container>
 			<h3>Продавцы</h3>
 			{isLoading ? (
-				<Spinner variant="border" />
+				<Spinner variant='border' />
 			) : (
 				<ListGroup>
 					{salesmen.map((salesman) => (

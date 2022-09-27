@@ -1,16 +1,16 @@
-import { useCallback } from "react";
-import { Container, Form, Spinner, Button } from "react-bootstrap";
-import { useDispatch } from "react-redux";
-import { useAddresses, useField } from "../../../hooks";
-import { addShopThunk } from "../../../models/shops";
+import { useCallback } from 'react';
+import { Container, Form, Spinner, Button } from 'react-bootstrap';
+import { useDispatch } from 'react-redux';
+import { useAddresses, useField } from '../../../hooks';
+import { addShopThunk } from '../../../models/shops';
 
 export const AddShopFrom = () => {
-	const { addresses, isLoading } = useAddresses();
+	const { addresses, isLoading, } = useAddresses();
 	const dispatch = useDispatch();
 	const { reset: resetAccount, ...account } = useField(0);
-	const { reset: resetLogin, ...login } = useField("");
-	const { reset: resetName, ...name } = useField("");
-	const { reset: resetCity, ...city } = useField("");
+	const { reset: resetLogin, ...login } = useField('');
+	const { reset: resetName, ...name } = useField('');
+	const { reset: resetCity, ...city } = useField('');
 
 	const onSubmit = useCallback(
 		async (evt) => {
@@ -32,7 +32,7 @@ export const AddShopFrom = () => {
 			resetAccount,
 			resetLogin,
 			resetName,
-			resetCity,
+			resetCity
 		]
 	);
 
@@ -41,7 +41,7 @@ export const AddShopFrom = () => {
 			<Form onSubmit={onSubmit}>
 				<Form.Group>
 					{isLoading ? (
-						<Spinner variant="border" />
+						<Spinner variant='border' />
 					) : (
 						<>
 							<Form.Label>Аккаунт</Form.Label>
@@ -68,7 +68,7 @@ export const AddShopFrom = () => {
 					<Form.Label>Город</Form.Label>
 					<Form.Control {...city} />
 				</Form.Group>
-				<Button type="submit">Добавить</Button>
+				<Button type='submit'>Добавить</Button>
 			</Form>
 		</Container>
 	);

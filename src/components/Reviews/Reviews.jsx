@@ -1,10 +1,10 @@
-import { Container } from "react-bootstrap";
-import { RoleFilter } from "../RoleFilter";
-import { AddReview } from "../AddReview";
-import { ReviewsList } from "../ReviewsList";
-import { ROLES } from "../../consts";
+import { Container } from 'react-bootstrap';
+import { RoleFilter } from '../RoleFilter';
+import { AddReview } from '../AddReview';
+import { ReviewsList } from '../ReviewsList';
+import { ROLES } from '../../consts';
 
-export const Reviews = ({ subjectAddress }) => {
+export const Reviews = ({ subjectAddress, }) => {
 	return (
 		<Container>
 			<h3>Отзывы</h3>

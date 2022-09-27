@@ -21,7 +21,7 @@
 		"test": "react-scripts test",
 		"eject": "react-scripts eject",
 		"lint": "eslint --ext .tsx,.ts src",
-		"lint:fix": "eslint --ext .tsx,.ts src --fix",
+		"lint:fix": "eslint --ext .tsx,.ts,.js,.jsx src --fix",
 		"gen:component": "generate-react component",
 		"gen:page": "generate-react component --type=page"
 	},

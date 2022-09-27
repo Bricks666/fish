@@ -1,1 +1,1 @@
-export { MyRequestsList } from "./MyRequestsList"
+export { MyRequestsList } from './MyRequestsList';

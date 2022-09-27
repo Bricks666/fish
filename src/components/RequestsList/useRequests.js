@@ -1,10 +1,10 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import {
 	loadRequestsThunk,
 	subscribeChangeRequestStatusThunk,
-	subscribeNewRequestThunk,
-} from "../../models/requests";
+	subscribeNewRequestThunk
+} from '../../models/requests';
 
 export const useRequests = () => {
 	const requests = useSelector((state) => state.requests.requests);
@@ -19,5 +19,5 @@ export const useRequests = () => {
 		}
 	}, [requests.length, dispatch]);
 
-	return { requests, isLoading };
+	return { requests, isLoading, };
 };

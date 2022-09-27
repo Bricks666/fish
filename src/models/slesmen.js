@@ -1,7 +1,7 @@
-import { getUserApi, getSalesmenAddressesApi } from "../api";
-import { subscribe } from "../api/core";
-import { toValidUser } from "./utils/toValidUser";
-import { ROLES } from "../consts";
+import { getUserApi, getSalesmenAddressesApi } from '../api';
+import { subscribe } from '../api/core';
+import { toValidUser } from './utils/toValidUser';
+import { ROLES } from '../consts';
 
 const initialState = {
 	isLoading: false,
@@ -9,54 +9,54 @@ const initialState = {
 	subscribes: [],
 };
 
-const SET_SALESMEN = "salesmen/SET_SALESMEN";
-const ADD_SALESMAN = "salesmen/ADD_SALESMAN";
-const DELETE_SALESMAN = "salesmen/DELETE_SALESMAN";
-const TOGGLE_LOADING = "salesmen/TOGGLE_LOADING";
-const SET_SUBSCRIBES = "salesmen/SET_SUBSCRIBES";
-const RESET = "salesmen/RESET";
+const SET_SALESMEN = 'salesmen/SET_SALESMEN';
+const ADD_SALESMAN = 'salesmen/ADD_SALESMAN';
+const DELETE_SALESMAN = 'salesmen/DELETE_SALESMAN';
+const TOGGLE_LOADING = 'salesmen/TOGGLE_LOADING';
+const SET_SUBSCRIBES = 'salesmen/SET_SUBSCRIBES';
+const RESET = 'salesmen/RESET';
 
-export const salesmenReducer = (state = initialState, { type, payload }) => {
+export const salesmenReducer = (state = initialState, { type, payload, }) => {
 	switch (type) {
-		case SET_SALESMEN: {
-			return {
-				...state,
-				salesmen: payload.salesmen,
-			};
-		}
-		case ADD_SALESMAN: {
-			return {
-				...state,
-				salesmen: [...state.salesmen, payload.salesman],
-			};
-		}
-		case DELETE_SALESMAN: {
-			return {
-				...state,
-				salesmen: state.salesmen.filter(
-					(salesman) => salesman.address !== payload.salesmanAddress
-				),
-			};
-		}
-		case TOGGLE_LOADING: {
-			return {
-				...state,
-				isLoading: payload.isLoading,
-			};
-		}
-		case SET_SUBSCRIBES: {
-			return {
-				...state,
-				subscribes: [...state.subscribes, ...payload.subscribes],
-			};
-		}
-		case RESET: {
-			state.subscribes.forEach((subscribe) => subscribe.unsubscribe());
-			return initialState;
-		}
-		default: {
-			return state;
-		}
+	case SET_SALESMEN: {
+		return {
+			...state,
+			salesmen: payload.salesmen,
+		};
+	}
+	case ADD_SALESMAN: {
+		return {
+			...state,
+			salesmen: [...state.salesmen, payload.salesman],
+		};
+	}
+	case DELETE_SALESMAN: {
+		return {
+			...state,
+			salesmen: state.salesmen.filter(
+				(salesman) => salesman.address !== payload.salesmanAddress
+			),
+		};
+	}
+	case TOGGLE_LOADING: {
+		return {
+			...state,
+			isLoading: payload.isLoading,
+		};
+	}
+	case SET_SUBSCRIBES: {
+		return {
+			...state,
+			subscribes: [...state.subscribes, ...payload.subscribes],
+		};
+	}
+	case RESET: {
+		state.subscribes.forEach((subscribe) => subscribe.unsubscribe());
+		return initialState;
+	}
+	default: {
+		return state;
+	}
 	}
 };
 
@@ -116,8 +116,8 @@ export const loadSalesmenThunk = (shopAddress) => {
 export const subscribeNewSalesmanThunk = (shopAddress) => {
 	return async (dispatch) => {
 		const subscribes = subscribe({
-			event: "changeRoleEvent",
-			callback: async ({ Address }) => {
+			event: 'changeRoleEvent',
+			callback: async ({ Address, }) => {
 				const salesman = toValidUser(await getUserApi(Address));
 				if (salesman.shopAddress === shopAddress) {
 					dispatch(addSalesmanAC(salesman));

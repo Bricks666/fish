@@ -1,9 +1,9 @@
-import { useCallback } from "react";
-import { Button } from "react-bootstrap";
-import { useDispatch } from "react-redux";
-import { dislikeReviewThunk, likeReviewThunk } from "../../../models/reviews";
+import { useCallback } from 'react';
+import { Button } from 'react-bootstrap';
+import { useDispatch } from 'react-redux';
+import { dislikeReviewThunk, likeReviewThunk } from '../../../models/reviews';
 
-export const Buttons = ({ subjectAddress, reviewId }) => {
+export const Buttons = ({ subjectAddress, reviewId, }) => {
 	const dispatch = useDispatch();
 
 	const onLike = useCallback(() => {

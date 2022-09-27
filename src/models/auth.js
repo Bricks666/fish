@@ -1,44 +1,44 @@
-import { loginApi, registrationApi } from "../api";
+import { loginApi, registrationApi } from '../api';
 
 const initialState = {
 	isAuth: false,
-	address: "",
+	address: '',
 	registrationError: null,
 	loginError: null,
 };
 
-const SET_AUTH = "auth/SET_AUTH";
-const SET_LOGIN_ERROR = "auth/SET_LOGIN_ERROR";
-const SET_REGISTRATION_ERROR = "auth/SET_REGISTRATION_ERROR";
-export const LOGOUT = "auth/LOGOUT";
+const SET_AUTH = 'auth/SET_AUTH';
+const SET_LOGIN_ERROR = 'auth/SET_LOGIN_ERROR';
+const SET_REGISTRATION_ERROR = 'auth/SET_REGISTRATION_ERROR';
+export const LOGOUT = 'auth/LOGOUT';
 
-export const authReducer = (state = initialState, { type, payload }) => {
+export const authReducer = (state = initialState, { type, payload, }) => {
 	switch (type) {
-		case SET_AUTH: {
-			return {
-				...state,
-				address: payload.address,
-				isAuth: true,
-			};
-		}
-		case SET_LOGIN_ERROR: {
-			return {
-				...state,
-				loginError: payload.loginError,
-			};
-		}
-		case SET_REGISTRATION_ERROR: {
-			return {
-				...state,
-				registrationError: payload.registrationError,
-			};
-		}
-		case LOGOUT: {
-			return initialState;
-		}
-		default: {
-			return state;
-		}
+	case SET_AUTH: {
+		return {
+			...state,
+			address: payload.address,
+			isAuth: true,
+		};
+	}
+	case SET_LOGIN_ERROR: {
+		return {
+			...state,
+			loginError: payload.loginError,
+		};
+	}
+	case SET_REGISTRATION_ERROR: {
+		return {
+			...state,
+			registrationError: payload.registrationError,
+		};
+	}
+	case LOGOUT: {
+		return initialState;
+	}
+	default: {
+		return state;
+	}
 	}
 };
 
@@ -86,7 +86,7 @@ export const loginThunk = (address, login, password) => {
 			console.log(e);
 			dispatch(
 				setLoginErrorAC(
-					"Пользователь не зарегистрирован/Невеный логин или паоль"
+					'Пользователь не зарегистрирован/Невеный логин или паоль'
 				)
 			);
 		}
@@ -101,7 +101,7 @@ export const registrationThunk = (address, login, name) => {
 			return true;
 		} catch (e) {
 			console.log(e);
-			dispatch(setLoginErrorAC("Пользователь уже зарегистрирован"));
+			dispatch(setLoginErrorAC('Пользователь уже зарегистрирован'));
 		}
 	};
 };

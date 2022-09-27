@@ -1,1 +1,1 @@
-export { RoleFilter } from "./RoleFilter";
+export { RoleFilter } from './RoleFilter';

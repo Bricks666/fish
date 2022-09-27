@@ -1,11 +1,11 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import {
 	loadReviewsThunk,
 	resetReviewsAC,
 	subscribeChangeReviewThunk,
-	subscribeNewReviewThunk,
-} from "../models/reviews";
+	subscribeNewReviewThunk
+} from '../models/reviews';
 
 export const useReviews = (subjectAddress) => {
 	const reviews = useSelector((state) => state.reviews.list);

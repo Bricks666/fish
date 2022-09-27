@@ -1,7 +1,7 @@
-import { Container } from "react-bootstrap";
-import { AddReviewForm } from "./AddReviewForm";
+import { Container } from 'react-bootstrap';
+import { AddReviewForm } from './AddReviewForm';
 
-export const AddReview = ({ subjectAddress }) => {
+export const AddReview = ({ subjectAddress, }) => {
 	return (
 		<Container>
 			<h3>Добавить отзыв</h3>

@@ -1,1 +1,1 @@
-export { AddComment } from "./AddComment";
+export { AddComment } from './AddComment';

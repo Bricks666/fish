@@ -1,24 +1,24 @@
-import { Container } from "react-bootstrap";
-import { useParams, Routes, Route, Navigate } from "react-router";
-import { useShop } from "./useShop";
-import { ShopCard } from "../ShopCard";
-import { SalesmenList } from "../SalesmenList";
-import { Reviews } from "../Reviews";
-import { Navigation } from "../Navigation";
+import { Container } from 'react-bootstrap';
+import { useParams, Routes, Route, Navigate } from 'react-router';
+import { useShop } from './useShop';
+import { ShopCard } from '../ShopCard';
+import { SalesmenList } from '../SalesmenList';
+import { Reviews } from '../Reviews';
+import { Navigation } from '../Navigation';
 
 const navigation = [
 	{
-		label: "Продавцы",
-		path: "salesmen",
+		label: 'Продавцы',
+		path: 'salesmen',
 	},
 	{
-		label: "Отзывы",
-		path: "reviews",
-	},
+		label: 'Отзывы',
+		path: 'reviews',
+	}
 ];
 
 export const Shop = () => {
-	const { id } = useParams();
+	const { id, } = useParams();
 	const shop = useShop(id);
 
 	if (!shop) {
@@ -31,14 +31,14 @@ export const Shop = () => {
 			<Navigation navigation={navigation} />
 			<Routes>
 				<Route
-					path="salesmen"
+					path='salesmen'
 					element={<SalesmenList shopAddress={shop.address} />}
 				/>
 				<Route
-					path="reviews"
+					path='reviews'
 					element={<Reviews subjectAddress={shop.address} />}
 				/>
-				<Route path="*" element={<Navigate to="salesmen" replace={true} />} />
+				<Route path='*' element={<Navigate to='salesmen' replace />} />
 			</Routes>
 		</Container>
 	);

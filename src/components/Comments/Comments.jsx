@@ -1,10 +1,10 @@
-import { Container } from "react-bootstrap";
-import { ROLES } from "../../consts";
-import { AddComment } from "../AddComment/AddComment";
-import { RoleFilter } from "../RoleFilter";
-import { CommentsList } from "./CommentsList/";
+import { Container } from 'react-bootstrap';
+import { ROLES } from '../../consts';
+import { AddComment } from '../AddComment/AddComment';
+import { RoleFilter } from '../RoleFilter';
+import { CommentsList } from './CommentsList';
 
-export const Comments = ({ reviewId, subjectAddress }) => {
+export const Comments = ({ reviewId, subjectAddress, }) => {
 	return (
 		<Container>
 			<h3>Комментарии</h3>

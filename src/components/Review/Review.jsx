@@ -1,19 +1,18 @@
-import { useReview } from "./useReview";
-import { ReviewCard } from "../ReviewCard";
-import { useUser } from "../../hooks";
-import { ROLES } from "../../consts";
+import { useReview } from './useReview';
+import { ReviewCard } from '../ReviewCard';
+import { useUser } from '../../hooks';
+import { ROLES } from '../../consts';
 
-export const Review = ({ id, subjectAddress }) => {
+export const Review = ({ id, subjectAddress, }) => {
 	const review = useReview(subjectAddress, id);
 	const {
-		info: { role, address },
+		info: { role, address, },
 	} = useUser();
 
 	if (!review) {
 		return null;
 	}
-	const isMarked =
-		review.dislikes.includes(address) || review.likes.includes(address);
+	const isMarked =		review.dislikes.includes(address) || review.likes.includes(address);
 	return (
 		<ReviewCard
 			{...review}

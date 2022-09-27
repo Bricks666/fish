@@ -16,8 +16,8 @@ export const lockAccount = async (address) => {
 	await web3.eth.personal.lockAccount(address);
 };
 
-export const subscribe = ({ event, callback, filter }) => {
-	return contract.events[event]({ filter }, (error, data) => {
+export const subscribe = ({ event, callback, filter, }) => {
+	return contract.events[event]({ filter, }, (error, data) => {
 		if (!error) {
 			callback(data.returnValues);
 		}

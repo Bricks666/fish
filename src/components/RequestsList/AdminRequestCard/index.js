@@ -1,1 +1,1 @@
-export { AdminRequestCard } from "./AdminRequestCard"
+export { AdminRequestCard } from './AdminRequestCard';

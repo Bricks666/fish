@@ -1,15 +1,15 @@
-import { useCallback } from "react";
-import { Container, Form, Button, Spinner } from "react-bootstrap";
-import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router";
-import { useAddresses, useField } from "../../hooks";
-import { registrationThunk } from "../../models/auth";
+import { useCallback } from 'react';
+import { Container, Form, Button, Spinner } from 'react-bootstrap';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router';
+import { useAddresses, useField } from '../../hooks';
+import { registrationThunk } from '../../models/auth';
 
 export const RegistrationForm = () => {
-	const { addresses, isLoading } = useAddresses();
+	const { addresses, isLoading, } = useAddresses();
 	const account = useField(0);
-	const login = useField("");
-	const name = useField("");
+	const login = useField('');
+	const name = useField('');
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 
@@ -20,7 +20,7 @@ export const RegistrationForm = () => {
 				registrationThunk(account.value, login.value, name.value)
 			);
 			if (isRegistration) {
-				navigate("/login", { replace: true });
+				navigate('/login', { replace: true, });
 			}
 		},
 		[account.value, name.value, dispatch, login.value, navigate]
@@ -31,7 +31,7 @@ export const RegistrationForm = () => {
 			<Form onSubmit={onSubmit}>
 				<Form.Group>
 					{isLoading ? (
-						<Spinner variant="border" />
+						<Spinner variant='border' />
 					) : (
 						<>
 							<Form.Label>Аккаунт</Form.Label>
@@ -54,7 +54,7 @@ export const RegistrationForm = () => {
 					<Form.Label>Имя</Form.Label>
 					<Form.Control {...name} />
 				</Form.Group>
-				<Button type="submit">Зарегистрироваться</Button>
+				<Button type='submit'>Зарегистрироваться</Button>
 			</Form>
 		</Container>
 	);

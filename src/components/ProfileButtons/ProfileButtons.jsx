@@ -1,10 +1,10 @@
-import { useCallback } from "react";
-import { Container, Button } from "react-bootstrap";
-import { useDispatch } from "react-redux";
-import { REQUEST_TYPE, ROLES } from "../../consts";
-import { addRequestThunk } from "../../models/requests";
+import { useCallback } from 'react';
+import { Container, Button } from 'react-bootstrap';
+import { useDispatch } from 'react-redux';
+import { REQUEST_TYPE, ROLES } from '../../consts';
+import { addRequestThunk } from '../../models/requests';
 
-export const ProfileButtons = ({ role }) => {
+export const ProfileButtons = ({ role, }) => {
 	const dispatch = useDispatch();
 
 	const toBeAdmin = useCallback(() => {
@@ -15,18 +15,18 @@ export const ProfileButtons = ({ role }) => {
 	}, [dispatch]);
 	let button;
 	switch (role) {
-		case ROLES.USER: {
-			button = <Button onClick={toBeAdmin}>Заявка на администратора</Button>;
-			break;
-		}
-		case ROLES.SHOPER: {
-			button = <Button onClick={toBeUser}>Заявка на пользователя</Button>;
-			break;
-		}
-		default: {
-			button = null;
-			break;
-		}
+	case ROLES.USER: {
+		button = <Button onClick={toBeAdmin}>Заявка на администратора</Button>;
+		break;
+	}
+	case ROLES.SHOPER: {
+		button = <Button onClick={toBeUser}>Заявка на пользователя</Button>;
+		break;
+	}
+	default: {
+		button = null;
+		break;
+	}
 	}
 
 	return button ? <Container>{button}</Container> : null;

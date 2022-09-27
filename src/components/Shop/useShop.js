@@ -1,7 +1,7 @@
-import { useShops } from "../../hooks/useShops"
+import { useShops } from '../../hooks/useShops';
 
 export const useShop = (id) => {
-    const { shops } = useShops()
+	const { shops, } = useShops();
 
-    return shops.find(shop => shop.id === +id)
-}
+	return shops.find((shop) => shop.id === +id);
+};

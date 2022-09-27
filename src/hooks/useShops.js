@@ -1,10 +1,10 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import {
 	loadShopsThunk,
 	subscribeDeleteShopThunk,
-	subscribeNewShopThunk,
-} from "../models/shops";
+	subscribeNewShopThunk
+} from '../models/shops';
 
 export const useShops = () => {
 	const isLoading = useSelector((state) => state.shops.isLoading);

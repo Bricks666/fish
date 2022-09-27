@@ -1,8 +1,8 @@
-import { Card, Col, Row } from "react-bootstrap";
-import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import { SEARCH_PARAMS } from "../../consts";
-import { Buttons } from "./Buttons";
+import { Card, Col, Row } from 'react-bootstrap';
+import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { SEARCH_PARAMS } from '../../consts';
+import { Buttons } from './Buttons';
 
 export const ReviewCard = ({
 	id,
@@ -19,8 +19,14 @@ export const ReviewCard = ({
 	return (
 		<Card>
 			<Card.Header>
-				<Card.Title>Отзыв №{id}</Card.Title>
-				<Card.Text>На пользователя: {subjectAddress}</Card.Text>
+				<Card.Title>
+					Отзыв №
+					{id}
+				</Card.Title>
+				<Card.Text>
+					На пользователя:
+					{subjectAddress}
+				</Card.Text>
 			</Card.Header>
 			<Card.Body>
 				<Row>
@@ -30,13 +36,23 @@ export const ReviewCard = ({
 				</Row>
 				<Row>
 					<Col>
-						<Card.Text>Оценка: {mark}/10</Card.Text>
+						<Card.Text>
+							Оценка:
+							{mark}
+							/10
+						</Card.Text>
 					</Col>
 					<Col>
-						<Card.Text>Лайки: {likes.length}</Card.Text>
+						<Card.Text>
+							Лайки:
+							{likes.length}
+						</Card.Text>
 					</Col>
 					<Col>
-						<Card.Text>Дизлайки: {dislikes.length}</Card.Text>
+						<Card.Text>
+							Дизлайки:
+							{dislikes.length}
+						</Card.Text>
 					</Col>
 				</Row>
 			</Card.Body>

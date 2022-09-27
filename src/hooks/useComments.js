@@ -1,10 +1,10 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import {
 	loadCommentsThunk,
 	resetCommentsAC,
-	subscribeNewCommentThunk,
-} from "../models/comments";
+	subscribeNewCommentThunk
+} from '../models/comments';
 
 export const useComments = (subjectAddress, reviewId) => {
 	const comments = useSelector((state) => state.comments.list);

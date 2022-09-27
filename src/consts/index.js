@@ -9,13 +9,13 @@ export const ROLES = {
 };
 
 export const ROLES_NAME = {
-	[ROLES.GUEST]: "Гость",
-	[ROLES.USER]: "Пользователь",
-	[ROLES.SHOPER]: "Продавец",
-	[ROLES.ADMIN]: "Администратор",
-	[ROLES.SHOP]: "Магазин",
-	[ROLES.BANK]: "Банк",
-	[ROLES.PROVIDER]: "Поставщик",
+	[ROLES.GUEST]: 'Гость',
+	[ROLES.USER]: 'Пользователь',
+	[ROLES.SHOPER]: 'Продавец',
+	[ROLES.ADMIN]: 'Администратор',
+	[ROLES.SHOP]: 'Магазин',
+	[ROLES.BANK]: 'Банк',
+	[ROLES.PROVIDER]: 'Поставщик',
 };
 
 export const STATUSES = {
@@ -25,9 +25,9 @@ export const STATUSES = {
 };
 
 export const STATUSES_NAME = {
-	[STATUSES.WAITING]: "Ожидание",
-	[STATUSES.ACCEPTED]: "Принят",
-	[STATUSES.CANCELED]: "Отклонен",
+	[STATUSES.WAITING]: 'Ожидание',
+	[STATUSES.ACCEPTED]: 'Принят',
+	[STATUSES.CANCELED]: 'Отклонен',
 };
 
 export const REQUEST_TYPE = {
@@ -37,13 +37,13 @@ export const REQUEST_TYPE = {
 };
 
 export const REQUEST_TYPE_NAME = {
-	[REQUEST_TYPE.TO_ADMIN]: "Повышение до администратора",
-	[REQUEST_TYPE.TO_USER]: "Понижение до пользователя",
-	[REQUEST_TYPE.TO_SHOPER]: "Повышение до продавца",
+	[REQUEST_TYPE.TO_ADMIN]: 'Повышение до администратора',
+	[REQUEST_TYPE.TO_USER]: 'Понижение до пользователя',
+	[REQUEST_TYPE.TO_SHOPER]: 'Повышение до продавца',
 };
 
 export const SEARCH_PARAMS = {
-	SHOP_ADDRESS: "sp-adr",
-	REVIEW_ID: "rw-id",
-	SUBJECT_ADDRESS: "sub-adr",
+	SHOP_ADDRESS: 'sp-adr',
+	REVIEW_ID: 'rw-id',
+	SUBJECT_ADDRESS: 'sub-adr',
 };

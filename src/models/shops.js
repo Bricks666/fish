@@ -2,10 +2,10 @@ import {
 	addShopApi,
 	deleteShopApi,
 	getShopAddressesApi,
-	getShopApi,
-} from "../api";
-import { subscribe } from "../api/core";
-import { toValidShop } from "./utils/toValidShop";
+	getShopApi
+} from '../api';
+import { subscribe } from '../api/core';
+import { toValidShop } from './utils/toValidShop';
 
 const initialState = {
 	isLoading: false,
@@ -13,63 +13,62 @@ const initialState = {
 	unsubscribes: [],
 };
 
-const SET_SHOPS = "shops/SET_SHOPS";
-const ADD_SHOP = "shops/ADD_SHOP";
-const DELETE_SHOP = "shops/DELETE_SHOP";
-const TOGGLE_LOADING = "shops/TOGGLE_LOADING";
-const CHANGE_SHOP = "shops/CHANGE_SHOP";
-const SET_UNSUBSCRIBES = "shops/SET_UNSUBSCRIBES";
-const RESET = "shops/RESET";
+const SET_SHOPS = 'shops/SET_SHOPS';
+const ADD_SHOP = 'shops/ADD_SHOP';
+const DELETE_SHOP = 'shops/DELETE_SHOP';
+const TOGGLE_LOADING = 'shops/TOGGLE_LOADING';
+const CHANGE_SHOP = 'shops/CHANGE_SHOP';
+const SET_UNSUBSCRIBES = 'shops/SET_UNSUBSCRIBES';
+const RESET = 'shops/RESET';
 
-export const shopsReducer = (state = initialState, { type, payload }) => {
+export const shopsReducer = (state = initialState, { type, payload, }) => {
 	switch (type) {
-		case SET_SHOPS: {
-			return {
-				...state,
-				shops: payload.shops,
-			};
-		}
-		case ADD_SHOP: {
-			return {
-				...state,
-				shops: [...state.shops, payload.shop],
-			};
-		}
-		case DELETE_SHOP: {
-			return {
-				...state,
-				shops: state.shops.filter(
-					(shop) => shop.address !== payload.shopAddress
-				),
-			};
-		}
-		case TOGGLE_LOADING: {
-			return {
-				...state,
-				isLoading: payload.isLoading,
-			};
-		}
-		case CHANGE_SHOP: {
-			return {
-				...state,
-				shops: state.shops.map((shop) =>
-					shop.id === payload.shop.id ? payload.shop : shop
-				),
-			};
-		}
-		case SET_UNSUBSCRIBES: {
-			return {
-				...state,
-				unsubscribes: [...state.unsubscribes, ...payload.unsubscribes],
-			};
-		}
-		case RESET: {
-			state.unsubscribes.forEach((unsubscribe) => unsubscribe.unsubscribe());
-			return initialState;
-		}
-		default: {
-			return state;
-		}
+	case SET_SHOPS: {
+		return {
+			...state,
+			shops: payload.shops,
+		};
+	}
+	case ADD_SHOP: {
+		return {
+			...state,
+			shops: [...state.shops, payload.shop],
+		};
+	}
+	case DELETE_SHOP: {
+		return {
+			...state,
+			shops: state.shops.filter(
+				(shop) => shop.address !== payload.shopAddress
+			),
+		};
+	}
+	case TOGGLE_LOADING: {
+		return {
+			...state,
+			isLoading: payload.isLoading,
+		};
+	}
+	case CHANGE_SHOP: {
+		return {
+			...state,
+			shops: state.shops.map((shop) =>
+				(shop.id === payload.shop.id ? payload.shop : shop)),
+		};
+	}
+	case SET_UNSUBSCRIBES: {
+		return {
+			...state,
+			unsubscribes: [...state.unsubscribes, ...payload.unsubscribes],
+		};
+	}
+	case RESET: {
+		state.unsubscribes.forEach((unsubscribe) => unsubscribe.unsubscribe());
+		return initialState;
+	}
+	default: {
+		return state;
+	}
 	}
 };
 
@@ -130,7 +129,7 @@ export const loadShopsThunk = () => {
 		const addresses = await getShopAddressesApi();
 		const shops = await Promise.all(addresses.map(getShopApi));
 		const shopsWithSalesmen = shops
-			.filter((shop) => shop.city !== "")
+			.filter((shop) => shop.city !== '')
 			.map(toValidShop);
 		dispatch(setShopsAC(shopsWithSalesmen));
 		dispatch(toggleLoadingAC(false));
@@ -139,21 +138,21 @@ export const loadShopsThunk = () => {
 
 export const deleteShopThunk = (shopAddress) => {
 	return async (_, getState) => {
-		const { address } = getState().auth;
+		const { address, } = getState().auth;
 		await deleteShopApi(address, shopAddress);
 	};
 };
 export const addShopThunk = (shopAddress, login, name, city) => {
 	return async (_, getState) => {
-		const { address } = getState().auth;
+		const { address, } = getState().auth;
 		await addShopApi(address, shopAddress, login, name, city);
 	};
 };
 export const subscribeNewShopThunk = () => {
 	return async (dispatch) => {
 		const unsubscribe = subscribe({
-			event: "newShop",
-			callback: async ({ Address }) => {
+			event: 'newShop',
+			callback: async ({ Address, }) => {
 				const shop = await getShopApi(Address);
 				dispatch(addShopAC(toValidShop(shop)));
 			},
@@ -165,8 +164,8 @@ export const subscribeNewShopThunk = () => {
 export const subscribeDeleteShopThunk = () => {
 	return async (dispatch) => {
 		const unsubscribe = subscribe({
-			event: "delShop",
-			callback: ({ Address }) => dispatch(deleteShopAC(Address)),
+			event: 'delShop',
+			callback: ({ Address, }) => dispatch(deleteShopAC(Address)),
 		});
 		dispatch(setUnsubscribesAC(unsubscribe));
 	};

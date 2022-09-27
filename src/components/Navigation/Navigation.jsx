@@ -1,8 +1,8 @@
-import { Nav, NavDropdown } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import { RoleFilter } from "../RoleFilter";
+import { Nav, NavDropdown } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import { RoleFilter } from '../RoleFilter';
 
-export const Navigation = ({ navigation }) => {
+export const Navigation = ({ navigation, }) => {
 	return (
 		<Nav>
 			{navigation.map((nav) => (
@@ -12,16 +12,16 @@ export const Navigation = ({ navigation }) => {
 	);
 };
 
-const NavigationItem = ({ label, path, roles, invert }) => {
+const NavigationItem = ({ label, path, roles, invert, }) => {
 	const item = (
 		<Nav.Item>
-			{typeof path === "string" ? (
+			{typeof path === 'string' ? (
 				<Nav.Link as={Link} to={path}>
 					{label}
 				</Nav.Link>
 			) : (
 				<NavDropdown title={label}>
-					{path.map(({ label, path, roles, invert }) => {
+					{path.map(({ label, path, roles, invert, }) => {
 						const item = (
 							<NavDropdown.Item as={Link} to={path} key={path}>
 								{label}

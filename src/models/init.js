@@ -1,12 +1,12 @@
-import { initApi } from "../api/core";
+import { initApi } from '../api/core';
 
 const initialState = {
 	isInitializing: true,
 };
 
-const TOGGLE_INIT = "init/TOGGLE_INIT";
+const TOGGLE_INIT = 'init/TOGGLE_INIT';
 
-export const initReducer = (state = initialState, { type, payload }) => {
+export const initReducer = (state = initialState, { type, payload, }) => {
 	if (type === TOGGLE_INIT) {
 		return {
 			...state,

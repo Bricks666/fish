@@ -3,11 +3,11 @@ import {
 	addRequestApi,
 	cancelRequestApi,
 	getRequestApi,
-	getRequestsApi,
-} from "../api";
-import { subscribe } from "../api/core";
-import { filterMyRequests } from "./utils/filterMyRequests";
-import { toValidRequest } from "./utils/toValidRequest";
+	getRequestsApi
+} from '../api';
+import { subscribe } from '../api/core';
+import { filterMyRequests } from './utils/filterMyRequests';
+import { toValidRequest } from './utils/toValidRequest';
 
 const initialState = {
 	isLoading: false,
@@ -16,81 +16,79 @@ const initialState = {
 	unsubscribes: [],
 };
 
-const SET_REQUESTS = "requests/SET_REQUESTS";
-const ADD_REQUEST = "requests/ADD_REQUESTS";
-const CHANGE_STATUS_REQUEST = "requests/CHANGE_STATUS_REQUESTS";
-const SET_MY_REQUESTS = "requests/SET_MY_REQUESTS";
-const CHANGE_STATUS_MY_REQUEST = "requests/CHANGE_STATUS_MY_REQUESTS";
-const ADD_MY_REQUEST = "requests/ADD_MY_REQUESTS";
-const TOGGLE_LOADING = "requests/TOGGLE_LOADING";
-const SET_UNSUBSCRIBES = "requests/SET_UNSUBSCRIBES";
-const RESET = "requests/RESET";
+const SET_REQUESTS = 'requests/SET_REQUESTS';
+const ADD_REQUEST = 'requests/ADD_REQUESTS';
+const CHANGE_STATUS_REQUEST = 'requests/CHANGE_STATUS_REQUESTS';
+const SET_MY_REQUESTS = 'requests/SET_MY_REQUESTS';
+const CHANGE_STATUS_MY_REQUEST = 'requests/CHANGE_STATUS_MY_REQUESTS';
+const ADD_MY_REQUEST = 'requests/ADD_MY_REQUESTS';
+const TOGGLE_LOADING = 'requests/TOGGLE_LOADING';
+const SET_UNSUBSCRIBES = 'requests/SET_UNSUBSCRIBES';
+const RESET = 'requests/RESET';
 
-export const requestsReducer = (state = initialState, { type, payload }) => {
+export const requestsReducer = (state = initialState, { type, payload, }) => {
 	switch (type) {
-		case SET_REQUESTS: {
-			return {
-				...state,
-				requests: payload.requests,
-			};
-		}
-		case ADD_REQUEST: {
-			return {
-				...state,
-				requests: [...state.requests, payload.request],
-			};
-		}
-		case CHANGE_STATUS_REQUEST: {
-			return {
-				...state,
-				requests: state.requests.map((request) =>
-					request.id === payload.requestId
-						? { ...request, status: payload.status }
-						: request
-				),
-			};
-		}
-		case SET_MY_REQUESTS: {
-			return {
-				...state,
-				myRequests: payload.myRequests,
-			};
-		}
-		case ADD_MY_REQUEST: {
-			return {
-				...state,
-				myRequests: [...state.myRequests, payload.myRequest],
-			};
-		}
-		case CHANGE_STATUS_MY_REQUEST: {
-			return {
-				...state,
-				myRequests: state.myRequests.map((request) =>
-					request.id === payload.requestId
-						? { ...request, status: payload.status }
-						: request
-				),
-			};
-		}
-		case TOGGLE_LOADING: {
-			return {
-				...state,
-				isLoading: payload.isLoading,
-			};
-		}
-		case SET_UNSUBSCRIBES: {
-			return {
-				...state,
-				unsubscribes: [...state.unsubscribes, ...payload.unsubscribes],
-			};
-		}
-		case RESET: {
-			state.unsubscribes.forEach((unsubscribe) => unsubscribe.unsubscribe());
-			return initialState;
-		}
-		default: {
-			return state;
-		}
+	case SET_REQUESTS: {
+		return {
+			...state,
+			requests: payload.requests,
+		};
+	}
+	case ADD_REQUEST: {
+		return {
+			...state,
+			requests: [...state.requests, payload.request],
+		};
+	}
+	case CHANGE_STATUS_REQUEST: {
+		return {
+			...state,
+			requests: state.requests.map((request) =>
+				(request.id === payload.requestId
+					? { ...request, status: payload.status, }
+					: request)),
+		};
+	}
+	case SET_MY_REQUESTS: {
+		return {
+			...state,
+			myRequests: payload.myRequests,
+		};
+	}
+	case ADD_MY_REQUEST: {
+		return {
+			...state,
+			myRequests: [...state.myRequests, payload.myRequest],
+		};
+	}
+	case CHANGE_STATUS_MY_REQUEST: {
+		return {
+			...state,
+			myRequests: state.myRequests.map((request) =>
+				(request.id === payload.requestId
+					? { ...request, status: payload.status, }
+					: request)),
+		};
+	}
+	case TOGGLE_LOADING: {
+		return {
+			...state,
+			isLoading: payload.isLoading,
+		};
+	}
+	case SET_UNSUBSCRIBES: {
+		return {
+			...state,
+			unsubscribes: [...state.unsubscribes, ...payload.unsubscribes],
+		};
+	}
+	case RESET: {
+		state.unsubscribes.forEach((unsubscribe) => unsubscribe.unsubscribe());
+		return initialState;
+	}
+	default: {
+		return state;
+	}
 	}
 };
 
@@ -187,7 +185,7 @@ export const loadRequestsThunk = () => {
 
 export const loadMyRequestsThunk = () => {
 	return async (dispatch, getState) => {
-		const { address } = getState().auth;
+		const { address, } = getState().auth;
 		try {
 			dispatch(toggleLoadingAC(true));
 			const response = await getRequestsApi();
@@ -204,8 +202,8 @@ export const loadMyRequestsThunk = () => {
 export const subscribeNewRequestThunk = () => {
 	return async (dispatch) => {
 		const subscribeNewRequest = subscribe({
-			event: "newRequest",
-			callback: async ({ id }) => {
+			event: 'newRequest',
+			callback: async ({ id, }) => {
 				const request = await getRequestApi(id);
 				dispatch(addRequestAC(toValidRequest(request)));
 			},
@@ -216,8 +214,8 @@ export const subscribeNewRequestThunk = () => {
 export const subscribeChangeRequestStatusThunk = () => {
 	return async (dispatch) => {
 		const subscribeNewRequest = subscribe({
-			event: "newStatusRequest",
-			callback: ({ id, status }) =>
+			event: 'newStatusRequest',
+			callback: ({ id, status, }) =>
 				dispatch(changeStatusRequestAC(+id, status)),
 		});
 		dispatch(setUnsubscribesAC(subscribeNewRequest));
@@ -226,26 +224,26 @@ export const subscribeChangeRequestStatusThunk = () => {
 
 export const subscribeNewMyRequestThunk = () => {
 	return async (dispatch, getState) => {
-		const { address } = getState().auth;
+		const { address, } = getState().auth;
 		const subscribeNewRequest = subscribe({
-			event: "newRequest",
-			callback: async ({ id }) => {
+			event: 'newRequest',
+			callback: async ({ id, }) => {
 				const request = await getRequestApi(id);
 				dispatch(addMyRequestAC(toValidRequest(request)));
 			},
-			filter: { AddressSender: address },
+			filter: { AddressSender: address, },
 		});
 		dispatch(setUnsubscribesAC(subscribeNewRequest));
 	};
 };
 export const subscribeMyChangeRequestStatusThunk = () => {
 	return async (dispatch, getState) => {
-		const { address } = getState().auth;
+		const { address, } = getState().auth;
 		const subscribeNewRequest = subscribe({
-			event: "newStatusRequest",
-			callback: ({ id, status }) =>
+			event: 'newStatusRequest',
+			callback: ({ id, status, }) =>
 				dispatch(changeStatusMyRequestAC(+id, status)),
-			filter: { Address: address },
+			filter: { Address: address, },
 		});
 		dispatch(setUnsubscribesAC(subscribeNewRequest));
 	};
@@ -253,21 +251,21 @@ export const subscribeMyChangeRequestStatusThunk = () => {
 
 export const addRequestThunk = (type, shopAddress) => {
 	return async (_, getState) => {
-		const { address } = getState().auth;
+		const { address, } = getState().auth;
 		await addRequestApi(address, type, shopAddress);
 	};
 };
 
 export const acceptRequestThunk = (id) => {
 	return async (_, getState) => {
-		const { address } = getState().auth;
+		const { address, } = getState().auth;
 		await acceptRequestApi(address, id);
 	};
 };
 
 export const cancelRequestThunk = (id) => {
 	return async (_, getState) => {
-		const { address } = getState().auth;
+		const { address, } = getState().auth;
 		await cancelRequestApi(address, id);
 	};
 };
