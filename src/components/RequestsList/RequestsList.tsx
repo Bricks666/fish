@@ -1,13 +1,16 @@
+import * as React from 'react';
 import { Container, ListGroup, Spinner } from 'react-bootstrap';
 import { AdminRequestCard } from './AdminRequestCard/AdminRequestCard';
 import { useRequests } from './useRequests';
 
-export const RequestsList = () => {
-	const { requests, isLoading, } = useRequests();
+export const RequestsList: React.FC = () => {
+	const { requests, isLoading } = useRequests();
 
 	return (
 		<Container>
-			{isLoading ? <Spinner variant='border' /> : (
+			{isLoading ? (
+				<Spinner animation='border' />
+			) : (
 				<ListGroup>
 					{requests.map((request) => (
 						<ListGroup.Item key={request.id}>

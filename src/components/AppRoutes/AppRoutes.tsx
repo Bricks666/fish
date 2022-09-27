@@ -1,14 +1,32 @@
 import * as React from 'react';
-import cn from 'classnames';
-import { CommonProps } from '@/interfaces/common';
+import { Routes, Route } from 'react-router-dom';
+import { routes } from '@/routes';
+import { AuthRoute } from '../AuthRoute';
 
-import styles from './AppRoutes.module.css';
-
-export interface AppRoutesProps extends CommonProps {}
+export interface AppRoutesProps {}
 
 export const AppRoutes: React.FC<AppRoutesProps> = React.memo(
-	function AppRoutes(props) {
-		const { className } = props;
-		return null;
+	function AppRoutes() {
+		return (
+			<Routes>
+				{routes.map(({ Component, path, isOnlyAuth }) => {
+					return (
+						<Route
+							path={path}
+							element={
+								isOnlyAuth ? (
+									<AuthRoute>
+										<Component />
+									</AuthRoute>
+								) : (
+									<Component />
+								)
+							}
+							key={path}
+						/>
+					);
+				})}
+			</Routes>
+		);
 	}
 );

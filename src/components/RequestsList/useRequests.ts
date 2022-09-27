@@ -3,10 +3,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
 	loadRequestsThunk,
 	subscribeChangeRequestStatusThunk,
-	subscribeNewRequestThunk
-} from '../../models/requests';
+	subscribeNewRequestThunk,
+} from '@/models/requests';
 
-export const useRequests = () => {
+export interface UseRequestsResult {
+	readonly requests: unknown[];
+	readonly isLoading: boolean;
+}
+
+export const useRequests = (): UseRequestsResult => {
 	const requests = useSelector((state) => state.requests.requests);
 	const isLoading = useSelector((state) => state.requests.isLoading);
 	const dispatch = useDispatch();
@@ -19,5 +24,5 @@ export const useRequests = () => {
 		}
 	}, [requests.length, dispatch]);
 
-	return { requests, isLoading, };
+	return { requests, isLoading };
 };

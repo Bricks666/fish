@@ -1,8 +1,13 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { loadAddressesThunk } from '../models/address';
+import { loadAddressesThunk } from '@/models/address';
 
-export const useAddresses = () => {
+export interface UseAddressResult {
+	readonly addresses: string[];
+	readonly isLoading: boolean;
+}
+
+export const useAddresses = (): UseAddressResult => {
 	const addresses = useSelector((state) => state.address.addresses);
 	const isLoading = useSelector((state) => state.address.isLoading);
 	const dispatch = useDispatch();
@@ -13,5 +18,5 @@ export const useAddresses = () => {
 		}
 	}, [addresses.length, isLoading, dispatch]);
 
-	return { addresses, isLoading, };
+	return { addresses, isLoading };
 };

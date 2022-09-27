@@ -1,13 +1,13 @@
 import * as React from 'react';
-import { Container } from 'react-bootstrap';
 import { ProfileInfo } from '@/components/ProfileInfo';
+import { MainLayout } from '@/layouts/MainLayout';
 
 const ProfilePage: React.FC = () => {
 	return (
-		<Container>
+		<MainLayout>
 			<h2>Профиль</h2>
 			<ProfileInfo />
-		</Container>
+		</MainLayout>
 	);
 };
 

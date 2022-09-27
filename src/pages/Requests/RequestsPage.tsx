@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { Container } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { MyRequestsList } from '@/components/MyRequestsList';
 import { RequestsList } from '@/components/RequestsList';
 import { resetRequestsAC } from '@/models/requests';
+import { MainLayout } from '@/layouts/MainLayout';
 
 const RequestsPage: React.FC = () => {
 	const dispatch = useDispatch();
@@ -13,15 +13,16 @@ const RequestsPage: React.FC = () => {
 			dispatch(resetRequestsAC());
 		};
 	}, [dispatch]);
+
 	return (
-		<Container>
+		<MainLayout>
 			<h2>Запросы</h2>
 			<Routes>
 				<Route path='my' element={<MyRequestsList />} />
 				<Route path='all' element={<RequestsList />} />
 				<Route path='*' element={<Navigate to='my' replace />} />
 			</Routes>
-		</Container>
+		</MainLayout>
 	);
 };
 

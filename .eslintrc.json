@@ -76,5 +76,5 @@
 		"@typescript-eslint/no-unused-vars": ["error"],
 		"@typescript-eslint/no-empty-interface": ["off"]
 	},
-	"ignorePatterns": ["templates/**/*", "*.css.d.ts"]
+	"ignorePatterns": ["templates/**/*", "*.css.d.ts", "config-overrides.js"]
 }

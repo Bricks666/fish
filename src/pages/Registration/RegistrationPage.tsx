@@ -1,17 +1,18 @@
 import * as React from 'react';
-import { Container, Button } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { RegistrationForm } from '@/components/RegistrationForm';
+import { MainLayout } from '@/layouts/MainLayout';
 
 const RegistrationPage: React.FC = () => {
 	return (
-		<Container>
+		<MainLayout>
 			<h2>Регистрация</h2>
 			<RegistrationForm />
 			<Button variant='link' as={Link} to='/login'>
 				Войти
 			</Button>
-		</Container>
+		</MainLayout>
 	);
 };
 

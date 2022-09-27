@@ -6,14 +6,14 @@ export interface Route {
 	readonly isOnlyAuth?: boolean;
 }
 
-const ShopsPage = React.lazy(() => import('../pages/Shops'));
-const SalesmanPage = React.lazy(() => import('../pages/Salesman'));
-const RequestsPage = React.lazy(() => import('../pages/Requests'));
-const ReviewPage = React.lazy(() => import('../pages/Review'));
-const NotFoundPage = React.lazy(() => import('../pages/NotFound'));
 const LoginPage = React.lazy(() => import('../pages/Login'));
 const RegistrationPage = React.lazy(() => import('../pages/Registration'));
 const ProfilePage = React.lazy(() => import('../pages/Profile'));
+const RequestsPage = React.lazy(() => import('../pages/Requests'));
+const ShopsPage = React.lazy(() => import('../pages/Shops'));
+const SalesmanPage = React.lazy(() => import('../pages/Salesman'));
+const ReviewPage = React.lazy(() => import('../pages/Review'));
+const NotFoundPage = React.lazy(() => import('../pages/NotFound'));
 
 export const routes: Route[] = [
 	{
@@ -49,5 +49,5 @@ export const routes: Route[] = [
 	{
 		Component: ReviewPage,
 		path: '/reviews',
-	}
+	},
 ];
