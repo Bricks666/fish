@@ -1,7 +1,5 @@
-import { applyMiddleware, combineReducers, createStore } from 'redux';
-import { composeWithDevTools } from '@redux-devtools/extension';
-import thunk from 'redux-thunk';
-import { addressReducer } from './address';
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
+import { addressReducer, api } from './address';
 import { authReducer } from './auth';
 import { initReducer } from './init';
 import { userReducer } from './user';
@@ -21,9 +19,12 @@ const rootReducer = combineReducers({
 	salesmen: salesmenReducer,
 	reviews: reviewsReducer,
 	comments: commentsReducer,
+	[api.reducerPath]: api.reducer,
 });
 
-export const store = createStore(
-	rootReducer,
-	composeWithDevTools(applyMiddleware(thunk))
-);
+export const store = configureStore({
+	reducer: rootReducer,
+	devTools: process.env.NODE_ENV !== 'production',
+});
+
+export type AppState = ReturnType<typeof store.getState>;

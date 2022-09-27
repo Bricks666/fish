@@ -3,7 +3,7 @@ import { Container } from 'react-bootstrap';
 import { Comments } from '@/components/Comments';
 import { Review } from '@/components/Review';
 import { SEARCH_PARAMS } from '@/consts';
-import { useSearchParam } from '@/hooks';
+import { useSearchParam } from '@/hooks/useSearchParam';
 
 const ReviewPage: React.FC = () => {
 	const id = +useSearchParam(SEARCH_PARAMS.REVIEW_ID);
