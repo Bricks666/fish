@@ -23,7 +23,7 @@ export const lockAccount = async (wallet: string): Promise<void> => {
 export interface SubscribeParams {
 	readonly event: string;
 	readonly callback: Function;
-	readonly filter: object;
+	readonly filter?: object;
 }
 
 export const subscribe = (params: SubscribeParams) => {

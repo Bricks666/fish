@@ -1,4 +1,7 @@
-export const toValidRequest = (request) => {
+import { RequestResponse } from '@/interfaces/response';
+import { Request } from './types';
+
+export const converter = (request: RequestResponse): Request => {
 	return {
 		id: +request.id,
 		type: +request.requestType,

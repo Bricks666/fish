@@ -1,4 +1,5 @@
 export type Status = 'WAITING' | 'CANCELED' | 'ACCEPTED';
+export type RequestType = 'TO_ADMIN' | 'TO_USER' | 'TO_SHOPER';
 
 export const STATUSES: Record<Status, number> = {
 	WAITING: 0,
@@ -11,8 +12,6 @@ export const STATUSES_NAME: Record<number, string> = {
 	[STATUSES.ACCEPTED]: 'Принят',
 	[STATUSES.CANCELED]: 'Отклонен',
 };
-
-export type RequestType = 'TO_ADMIN' | 'TO_USER' | 'TO_SHOPER';
 
 export const REQUEST_TYPE: Record<RequestType, number> = {
 	TO_ADMIN: 0,

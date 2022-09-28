@@ -16,7 +16,7 @@ const rootReducer = combineReducers({
 	shops: shopsReducer,
 	salesmen: salesmenReducer,
 	reviews: reviewsReducer,
-	comments: commentsReducer
+	comments: commentsReducer,
 });
 
 export const store = configureStore({
