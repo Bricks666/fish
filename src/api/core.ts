@@ -1,11 +1,12 @@
-import {
-	FetchArgs,
-	FetchBaseQueryError,
-	FetchBaseQueryMeta,
-} from '@reduxjs/toolkit/dist/query';
-import { BaseQueryFn } from '@reduxjs/toolkit/dist/query/baseQueryTypes';
 import Web3 from 'web3';
-import { Contract, EventData } from 'web3-eth-contract';
+import {
+	BaseQueryApi,
+	BaseQueryFn,
+	QueryReturnValue,
+} from '@reduxjs/toolkit/dist/query/baseQueryTypes';
+import { Contract, ContractSendMethod, EventData } from 'web3-eth-contract';
+import { EmptyObject } from '@/interfaces/common';
+import { Address } from '@/interfaces/web3';
 import { abi, address } from '../data';
 
 export const web3: Web3 = new Web3('ws://localhost:8545');
@@ -34,16 +35,59 @@ export const subscribe = (params: SubscribeParams) => {
 	});
 };
 
+export interface ContractArgs {
+	readonly methodName: string;
+	readonly sender: Address;
+	readonly methodArgs: unknown[];
+	readonly value?: number | string;
+}
+
 export const contractBaseQuery = (): BaseQueryFn<
-	string | FetchArgs,
+	ContractArgs,
 	unknown,
-	FetchBaseQueryError,
-	{},
-	FetchBaseQueryMeta
+	EmptyObject,
+	EmptyObject,
+	EmptyObject
 > => {
-	return (args, api, options) => {
+	return async <
+		Args extends ContractArgs,
+		Result,
+		Error = EmptyObject,
+		Extra = EmptyObject,
+		Meta = EmptyObject
+	>(
+		args: Args,
+		api: BaseQueryApi,
+		options: Extra
+	): Promise<QueryReturnValue<Result, Error, Meta>> => {
+		const { methodArgs, methodName, sender, value } = args;
+		const { type } = api;
+		const method: ContractSendMethod = contract.methods[methodName](
+			...methodArgs
+		);
+		let data: Result | undefined;
+		let error: Error | undefined;
+		try {
+			if (type === 'query') {
+				data = await method.call({
+					from: sender,
+				});
+			} else {
+				await method.send({
+					from: sender,
+					value,
+				});
+			}
+		} catch (e) {
+			error = e as Error;
+		}
+
 		console.log(args, api, options);
 
-		return Promise.resolve;
+		return {
+			data,
+			error,
+			meta: undefined,
+		} as QueryReturnValue<Result, Error, Meta>;
 	};
 };

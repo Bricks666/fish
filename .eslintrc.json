@@ -24,7 +24,13 @@
 		/* STANDARD */
 		"no-use-before-define": "off",
 		"no-tabs": "off",
-		"indent": ["error", "tab"],
+		"indent": [
+			"error",
+			"tab",
+			{
+				"SwitchCase": 1
+			}
+		],
 		"jsx-quotes": ["error", "prefer-single"],
 		"linebreak-style": "off",
 		"no-param-reassign": "off",

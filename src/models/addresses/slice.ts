@@ -1,8 +1,10 @@
-import { contractBaseQuery } from '@/api/core';
-import { createApi } from '@reduxjs/toolkit/query/react';
-import { getAddressesApi, getUserAddressApi } from '../api';
+import { PayloadAction } from '@reduxjs/toolkit';
+import { getAddressesApi, getUserAddressApi } from '@/api';
+import { AddressesState } from './types';
+import { Address } from '@/interfaces/web3';
+import { AppDispatch } from '..';
 
-const initialState = {
+const initialState: AddressesState = {
 	isLoading: false,
 	addresses: [],
 	userAddresses: [],
@@ -13,18 +15,10 @@ const SET_USERS = 'addresses/SET_USERS';
 const TOGGLE_LOADING = 'addresses/TOGGLE_LOADING';
 const RESET = 'addresses/RESET';
 
-export const api = createApi({
-	baseQuery: contractBaseQuery(),
-	endpoints: (builder) => ({
-		test: builder.query({
-			query: () => ({
-				url: '/',
-			}),
-		}),
-	}),
-});
-
-export const addressReducer = (state = initialState, { type, payload }) => {
+export const addressReducer = (
+	state = initialState,
+	{ type, payload }: PayloadAction<any>
+): AddressesState => {
 	switch (type) {
 		case SET_ADDRESSES: {
 			return {
@@ -53,7 +47,7 @@ export const addressReducer = (state = initialState, { type, payload }) => {
 	}
 };
 
-const setAddressesAC = (addresses) => {
+const setAddressesAC = (addresses: Address[]) => {
 	return {
 		type: SET_ADDRESSES,
 		payload: {
@@ -62,7 +56,7 @@ const setAddressesAC = (addresses) => {
 	};
 };
 
-const setUsersAC = (userAddresses) => {
+const setUsersAC = (userAddresses: Address[]) => {
 	return {
 		type: SET_USERS,
 		payload: {
@@ -71,7 +65,7 @@ const setUsersAC = (userAddresses) => {
 	};
 };
 
-const toggleLoadingAC = (isLoading) => {
+const toggleLoadingAC = (isLoading: boolean) => {
 	return {
 		type: TOGGLE_LOADING,
 		payload: {
@@ -86,7 +80,7 @@ export const resetAddressAC = () => {
 };
 
 export const loadAddressesThunk = () => {
-	return async (dispatch) => {
+	return async (dispatch: AppDispatch) => {
 		dispatch(toggleLoadingAC(true));
 		const response = await getAddressesApi();
 		dispatch(setAddressesAC(response));
@@ -94,7 +88,7 @@ export const loadAddressesThunk = () => {
 	};
 };
 export const loadUserAddressesThunk = () => {
-	return async (dispatch) => {
+	return async (dispatch: AppDispatch) => {
 		dispatch(toggleLoadingAC(true));
 		const response = await getUserAddressApi();
 		dispatch(setUsersAC(response));
