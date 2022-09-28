@@ -1,4 +1,7 @@
-export const toValidReview = (review) => {
+import { ReviewResponse } from '@/interfaces/response';
+import { Review } from './types';
+
+export const converter = (review: ReviewResponse): Review => {
 	return {
 		id: +review.id,
 		body: review.text,
