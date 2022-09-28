@@ -1,7 +1,6 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import { addressReducer, api } from './address';
+import { addressReducer } from './addresses';
 import { authReducer } from './auth';
-import { initReducer } from './init';
 import { userReducer } from './user';
 import { requestsReducer } from './requests';
 import { shopsReducer } from './shops';
@@ -10,7 +9,6 @@ import { reviewsReducer } from './reviews';
 import { commentsReducer } from './comments';
 
 const rootReducer = combineReducers({
-	init: initReducer,
 	auth: authReducer,
 	address: addressReducer,
 	user: userReducer,
@@ -18,8 +16,7 @@ const rootReducer = combineReducers({
 	shops: shopsReducer,
 	salesmen: salesmenReducer,
 	reviews: reviewsReducer,
-	comments: commentsReducer,
-	[api.reducerPath]: api.reducer,
+	comments: commentsReducer
 });
 
 export const store = configureStore({
