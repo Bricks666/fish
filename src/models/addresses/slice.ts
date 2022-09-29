@@ -1,5 +1,5 @@
 import { PayloadAction } from '@reduxjs/toolkit';
-import { getAddressesApi, getUserAddressApi } from '@/api';
+import { getAddressesApi, getUserAddressApi } from '@/api/address';
 import { AddressesState } from './types';
 import { Address } from '@/interfaces/web3';
 import { AppDispatch } from '..';

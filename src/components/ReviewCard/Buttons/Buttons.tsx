@@ -1,16 +1,23 @@
-import { useCallback } from 'react';
+import * as React from 'react';
 import { Button } from 'react-bootstrap';
-import { useDispatch } from 'react-redux';
-import { dislikeReviewThunk, likeReviewThunk } from '../../../models/reviews';
+import { useTypedDispatch } from '@/hooks/useTypedDispatch';
+import { dislikeReviewThunk, likeReviewThunk } from '@/models/reviews';
+import { Address } from '@/interfaces/web3';
 
-export const Buttons = ({ subjectAddress, reviewId, }) => {
-	const dispatch = useDispatch();
+export interface ButtonsProps {
+	readonly subjectAddress: Address;
+	readonly reviewId: number;
+}
 
-	const onLike = useCallback(() => {
+export const Buttons: React.FC<ButtonsProps> = React.memo((props) => {
+	const { subjectAddress, reviewId } = props;
+	const dispatch = useTypedDispatch();
+
+	const onLike = React.useCallback(() => {
 		dispatch(likeReviewThunk(subjectAddress, reviewId));
 	}, [subjectAddress, reviewId, dispatch]);
 
-	const onDislike = useCallback(() => {
+	const onDislike = React.useCallback(() => {
 		dispatch(dislikeReviewThunk(subjectAddress, reviewId));
 	}, [subjectAddress, reviewId, dispatch]);
 
@@ -20,4 +27,4 @@ export const Buttons = ({ subjectAddress, reviewId, }) => {
 			<Button onClick={onDislike}>Дизлайк</Button>
 		</>
 	);
-};
+});

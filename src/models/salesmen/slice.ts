@@ -3,10 +3,11 @@ import { AppDispatch } from '..';
 import { Address } from '@/interfaces/web3';
 import { VoidFunction } from '@/interfaces/common';
 import { SalesmenState, User } from './types';
-import { getSalesmenAddressesApi, getUserApi } from '@/api';
+import { getUserApi } from '@/api/user';
 import { subscribe } from '@/api/core';
 import { ROLES } from '@/consts';
-import { toValidUser } from '../utils/toValidUser';
+import { getSalesmenAddressesApi } from '@/api/shops';
+import { converter } from './converter';
 
 const initialState: SalesmenState = {
 	isLoading: false,
@@ -115,7 +116,7 @@ export const loadSalesmenThunk = (shopAddress: Address) => {
 		dispatch(toggleLoadingAC(true));
 		const salesmenAddresses = await getSalesmenAddressesApi(shopAddress);
 		const salesmen = await Promise.all(salesmenAddresses.map(getUserApi));
-		dispatch(setSalesmenAC(salesmen.map(toValidUser)));
+		dispatch(setSalesmenAC(salesmen.map(converter)));
 		dispatch(toggleLoadingAC(false));
 	};
 };
@@ -125,7 +126,7 @@ export const subscribeNewSalesmanThunk = (shopAddress: Address) => {
 		const subscribes = subscribe({
 			event: 'changeRoleEvent',
 			callback: async ({ Address }: { Address: Address }) => {
-				const salesman = toValidUser(await getUserApi(Address));
+				const salesman = converter(await getUserApi(Address));
 				if (salesman.shopAddress === shopAddress) {
 					dispatch(addSalesmanAC(salesman));
 				}

@@ -13,10 +13,10 @@ export const web3: Web3 = new Web3('ws://localhost:8545');
 export const contract: Contract = new web3.eth.Contract(abi, address);
 export const { personal } = web3.eth;
 
-export const unlockAccount = async (wallet: string): Promise<void> => {
+export const unlockAccount = async (wallet: Address): Promise<void> => {
 	await personal.unlockAccount(wallet, '0000', 0);
 };
-export const lockAccount = async (wallet: string): Promise<void> => {
+export const lockAccount = async (wallet: Address): Promise<void> => {
 	await personal.lockAccount(wallet);
 };
 

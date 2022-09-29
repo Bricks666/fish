@@ -1,5 +1,5 @@
 import { PayloadAction } from '@reduxjs/toolkit';
-import { loginApi, registrationApi } from '@/api';
+import { loginApi, registrationApi } from '@/api/auth';
 import { AuthState } from './types';
 import { Address } from '@/interfaces/web3';
 import { AppDispatch } from '..';

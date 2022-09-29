@@ -1,18 +1,19 @@
-import { useCallback } from 'react';
+import * as React from 'react';
 import { Container, Form, Spinner, Button } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
-import { useAddresses, useField } from '@/hooks';
-import { addShopThunk } from '../../../models/shops';
+import { useAddresses } from '@/hooks/useAddresses';
+import { useField } from '@/hooks/useField';
+import { addShopThunk } from '@/models/shops';
 
-export const AddShopFrom = () => {
-	const { addresses, isLoading, } = useAddresses();
+export const AddShopFrom: React.FC = () => {
+	const { addresses, isLoading } = useAddresses();
 	const dispatch = useDispatch();
-	const { reset: resetAccount, ...account } = useField(0);
+	const { reset: resetAccount, ...account } = useField('0');
 	const { reset: resetLogin, ...login } = useField('');
 	const { reset: resetName, ...name } = useField('');
 	const { reset: resetCity, ...city } = useField('');
 
-	const onSubmit = useCallback(
+	const onSubmit = React.useCallback<React.FormEventHandler<HTMLFormElement>>(
 		async (evt) => {
 			evt.preventDefault();
 			dispatch(
@@ -32,7 +33,7 @@ export const AddShopFrom = () => {
 			resetAccount,
 			resetLogin,
 			resetName,
-			resetCity
+			resetCity,
 		]
 	);
 
@@ -41,12 +42,12 @@ export const AddShopFrom = () => {
 			<Form onSubmit={onSubmit}>
 				<Form.Group>
 					{isLoading ? (
-						<Spinner variant='border' />
+						<Spinner animation='border' />
 					) : (
 						<>
 							<Form.Label>Аккаунт</Form.Label>
 							<Form.Select {...account}>
-								<option value={0} />
+								<option value='0'>None</option>
 								{addresses.map((address) => (
 									<option value={address} key={address}>
 										{address}

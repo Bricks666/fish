@@ -1,5 +1,4 @@
-import { VoidFunction } from '@/interfaces/common';
-import { Address } from '@/interfaces/web3';
+import { Address, Subscription } from '@/interfaces/web3';
 
 export interface User {
 	readonly login: string;
@@ -13,5 +12,5 @@ export interface User {
 export interface SalesmenState {
 	readonly isLoading: boolean;
 	readonly salesmen: User[];
-	readonly subscribes: VoidFunction[];
+	readonly subscribes: Subscription[];
 }

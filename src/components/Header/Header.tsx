@@ -1,12 +1,14 @@
 import * as React from 'react';
 import { Button, Navbar } from 'react-bootstrap';
-import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { ROLES } from '../../consts';
-import { logoutAC } from '../../models/auth';
+import { ROLES } from '@/consts/user';
+import { logoutAC } from '@/models/auth';
 import { Navigation } from '../Navigation';
+import { useTypedSelector } from '@/hooks/useTypedSelector';
+import { useTypedDispatch } from '@/hooks/useTypedDispatch';
+import { NavigationItemDesc } from '../NavigationItem';
 
-const navigation = [
+const navigation: NavigationItemDesc[] = [
 	{
 		label: 'Магазины',
 		path: [
@@ -45,8 +47,8 @@ const navigation = [
 ];
 
 export const Header = () => {
-	const dispatch = useDispatch();
-	const isAuth = useSelector((state) => state.auth.isAuth);
+	const dispatch = useTypedDispatch();
+	const isAuth = useTypedSelector((state) => state.auth.isAuth);
 
 	const onLogout = React.useCallback(() => {
 		dispatch(logoutAC());

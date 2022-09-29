@@ -1,8 +1,7 @@
+import { UserResponse } from '@/interfaces/response';
+import { Address } from '@/interfaces/web3';
 import { contract } from './core';
 
-export const getUserApi = async (address) => {
-	return await contract.methods.users(address).call();
-};
-
-export const getShopAdditionApi = async (address) => {
+export const getUserApi = async (address: Address): Promise<UserResponse> => {
+	return contract.methods.users(address).call();
 };

@@ -1,5 +1,4 @@
 import { PayloadAction } from '@reduxjs/toolkit';
-import { getUserApi } from '@/api';
 import { subscribe } from '@/api/core';
 import { ROLES } from '@/consts';
 import { LOGOUT } from '../auth';
@@ -7,6 +6,7 @@ import { UserState } from './types';
 import { converter, User } from '../salesmen';
 import { VoidFunction } from '@/interfaces/common';
 import { AppDispatch, AppState } from '..';
+import { getUserApi } from '@/api/user';
 
 const initialState: UserState = {
 	isLoading: false,

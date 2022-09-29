@@ -1,6 +1,6 @@
 /* eslint-disable default-param-last */
 import { PayloadAction } from '@reduxjs/toolkit';
-import { addCommentApi, getCommentApi, getCommentsApi } from '@/api';
+import { addCommentApi, getCommentApi, getCommentsApi } from '@/api/comments';
 import { subscribe } from '@/api/core';
 import { converter } from './converter';
 import { Comment, CommentsState } from './types';
@@ -118,7 +118,7 @@ export const addCommentThunk = (
 	reviewId: number,
 	text: string
 ) => {
-	return async (_, getState: () => AppState) => {
+	return async (_: AppDispatch, getState: () => AppState) => {
 		const { address } = getState().auth;
 		await addCommentApi(address, subjectAddress, reviewId, text);
 	};

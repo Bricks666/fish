@@ -6,7 +6,7 @@ import {
 	getReviewsApi,
 	likeReviewApi,
 	addReviewApi,
-} from '@/api';
+} from '@/api/reviews';
 import { Review, ReviewsState } from './types';
 import { Address } from '@/interfaces/web3';
 import { VoidFunction } from '@/interfaces/common';
@@ -141,14 +141,14 @@ export const addReviewThunk = (
 	text: string,
 	mark: number
 ) => {
-	return async (_, getState: () => AppState) => {
+	return async (_: AppDispatch, getState: () => AppState) => {
 		const { address } = getState().auth;
 		await addReviewApi(address, subjectAddress, text, mark);
 	};
 };
 
 export const likeReviewThunk = (subjectAddress: Address, reviewId: number) => {
-	return async (_, getState: () => AppState) => {
+	return async (_: AppDispatch, getState: () => AppState) => {
 		const { address } = getState().auth;
 		await likeReviewApi(address, subjectAddress, reviewId);
 	};
@@ -158,7 +158,7 @@ export const dislikeReviewThunk = (
 	subjectAddress: Address,
 	reviewId: number
 ) => {
-	return async (_, getState: () => AppState) => {
+	return async (_: AppDispatch, getState: () => AppState) => {
 		const { address } = getState().auth;
 		await dislikeReviewApi(address, subjectAddress, reviewId);
 	};

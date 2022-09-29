@@ -5,7 +5,7 @@ import {
 	cancelRequestApi,
 	getRequestApi,
 	getRequestsApi,
-} from '@/api';
+} from '@/api/requests';
 import { subscribe } from '@/api/core';
 import { VoidFunction } from '@/interfaces/common';
 import { Address } from '@/interfaces/web3';
@@ -260,21 +260,21 @@ export const subscribeMyChangeRequestStatusThunk = () => {
 };
 
 export const addRequestThunk = (type: number, shopAddress?: Address) => {
-	return async (_, getState: () => AppState) => {
+	return async (_: AppDispatch, getState: () => AppState) => {
 		const { address } = getState().auth;
 		await addRequestApi(address, type, shopAddress);
 	};
 };
 
 export const acceptRequestThunk = (id: number) => {
-	return async (_, getState: () => AppState) => {
+	return async (_: AppDispatch, getState: () => AppState) => {
 		const { address } = getState().auth;
 		await acceptRequestApi(address, id);
 	};
 };
 
 export const cancelRequestThunk = (id: number) => {
-	return async (_, getState: () => AppState) => {
+	return async (_: AppDispatch, getState: () => AppState) => {
 		const { address } = getState().auth;
 		await cancelRequestApi(address, id);
 	};

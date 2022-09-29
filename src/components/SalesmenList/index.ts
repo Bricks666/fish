@@ -1,1 +1,1 @@
-export { SalesmenList } from './SalesmenList';
+export { SalesmenList, type SalesmenListProps } from './SalesmenList';

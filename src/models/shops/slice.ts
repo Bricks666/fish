@@ -4,11 +4,12 @@ import {
 	deleteShopApi,
 	getShopAddressesApi,
 	getShopApi,
-} from '@/api';
+} from '@/api/shops';
 import { subscribe } from '@/api/core';
 import { Shop, ShopsState } from './types';
 import { Address } from '@/interfaces/web3';
 import { VoidFunction } from '@/interfaces/common';
+import { converter } from './converter';
 import { AppDispatch, AppState } from '..';
 
 const initialState: ShopsState = {
@@ -137,13 +138,13 @@ export const loadShopsThunk = () => {
 		const addresses = await getShopAddressesApi();
 		const shops = await Promise.all(addresses.map(getShopApi));
 		const shopsWithSalesmen = shops.filter((shop) => shop.city !== '');
-		dispatch(setShopsAC(shopsWithSalesmen));
+		dispatch(setShopsAC(shopsWithSalesmen.map(converter)));
 		dispatch(toggleLoadingAC(false));
 	};
 };
 
 export const deleteShopThunk = (shopAddress: Address) => {
-	return async (_, getState: () => AppState) => {
+	return async (_: AppDispatch, getState: () => AppState) => {
 		const { address } = getState().auth;
 		await deleteShopApi(address, shopAddress);
 	};
@@ -154,7 +155,7 @@ export const addShopThunk = (
 	name: string,
 	city: string
 ) => {
-	return async (_, getState: () => AppState) => {
+	return async (_: AppDispatch, getState: () => AppState) => {
 		const { address } = getState().auth;
 		await addShopApi(address, shopAddress, login, name, city);
 	};
@@ -165,7 +166,7 @@ export const subscribeNewShopThunk = () => {
 			event: 'newShop',
 			callback: async ({ Address }: { Address: Address }) => {
 				const shop = await getShopApi(Address);
-				dispatch(addShopAC(shop));
+				dispatch(addShopAC(converter(shop)));
 			},
 		});
 		dispatch(setUnsubscribesAC(unsubscribe));
