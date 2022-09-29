@@ -4,7 +4,7 @@ import { authReducer } from './auth';
 import { userReducer } from './user';
 import { requestsReducer } from './requests';
 import { shopsReducer } from './shops';
-import { salesmenReducer } from './slesmen';
+import { salesmenReducer } from './salesmen';
 import { reviewsReducer } from './reviews';
 import { commentsReducer } from './comments';
 

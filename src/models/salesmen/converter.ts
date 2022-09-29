@@ -1,4 +1,6 @@
-export const toValidUser = (user: any): any => {
+import { UserResponse } from '@/interfaces/response';
+
+export const converter = (user: UserResponse): any => {
 	return {
 		login: user.login,
 		address: user.Address,
