@@ -1,1 +1,1 @@
-export { ReviewsList } from './ReviewsList';
+export { ReviewsList, type ReviewsListProps } from './ReviewsList';

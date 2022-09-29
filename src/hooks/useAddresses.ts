@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { loadAddressesThunk } from '@/models/address';
+import { loadAddressesThunk } from '@/models/addresses';
+import { useTypedSelector } from './useTypedSelector';
+import { useTypedDispatch } from './useTypedDispatch';
 
 export interface UseAddressResult {
 	readonly addresses: string[];
@@ -8,9 +9,9 @@ export interface UseAddressResult {
 }
 
 export const useAddresses = (): UseAddressResult => {
-	const addresses = useSelector((state) => state.address.addresses);
-	const isLoading = useSelector((state) => state.address.isLoading);
-	const dispatch = useDispatch();
+	const addresses = useTypedSelector((state) => state.address.addresses);
+	const isLoading = useTypedSelector((state) => state.address.isLoading);
+	const dispatch = useTypedDispatch();
 
 	useEffect(() => {
 		if (!addresses.length && !isLoading) {

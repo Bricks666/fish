@@ -6,7 +6,7 @@ import { SEARCH_PARAMS } from '@/consts';
 import { useSearchParam } from '@/hooks/useSearchParam';
 
 const SalesmanPage: React.FC = () => {
-	const address = useSearchParam(SEARCH_PARAMS.SUBJECT_ADDRESS);
+	const address = useSearchParam(SEARCH_PARAMS.subjectAddress);
 
 	if (!address) {
 		return null;

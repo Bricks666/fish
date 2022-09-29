@@ -1,20 +1,21 @@
 import * as React from 'react';
 import { Container } from 'react-bootstrap';
-import { useDispatch } from 'react-redux';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { AddShop } from '@/components/AddShop';
 import { Shop } from '@/components/Shop';
 import { ShopsList } from '@/components/ShopsList';
 import { resetShopsAC } from '@/models/shops';
+import { useTypedDispatch } from '@/hooks/useTypedDispatch';
 
 const ShopsPage: React.FC = () => {
-	const dispatch = useDispatch();
+	const dispatch = useTypedDispatch();
 
 	React.useEffect(() => {
 		return () => {
 			dispatch(resetShopsAC());
 		};
 	}, [dispatch]);
+
 	return (
 		<Container>
 			<Routes>

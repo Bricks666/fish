@@ -259,7 +259,7 @@ export const subscribeMyChangeRequestStatusThunk = () => {
 	};
 };
 
-export const addRequestThunk = (type: number, shopAddress: Address) => {
+export const addRequestThunk = (type: number, shopAddress?: Address) => {
 	return async (_, getState: () => AppState) => {
 		const { address } = getState().auth;
 		await addRequestApi(address, type, shopAddress);

@@ -1,15 +1,22 @@
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import {
 	loadShopsThunk,
+	Shop,
 	subscribeDeleteShopThunk,
-	subscribeNewShopThunk
-} from '../models/shops';
+	subscribeNewShopThunk,
+} from '@/models/shops';
+import { useTypedSelector } from './useTypedSelector';
+import { useTypedDispatch } from './useTypedDispatch';
+
+export interface UseShopsResult {
+	readonly isLoading: boolean;
+	readonly shops: Shop[];
+}
 
 export const useShops = () => {
-	const isLoading = useSelector((state) => state.shops.isLoading);
-	const shops = useSelector((state) => state.shops.shops);
-	const dispatch = useDispatch();
+	const isLoading = useTypedSelector((state) => state.shops.isLoading);
+	const shops = useTypedSelector((state) => state.shops.shops);
+	const dispatch = useTypedDispatch();
 
 	useEffect(() => {
 		if (!shops.length && !isLoading) {

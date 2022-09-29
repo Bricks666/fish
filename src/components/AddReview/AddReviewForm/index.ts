@@ -1,1 +1,1 @@
-export { AddReviewForm } from './AddReviewForm';
+export { AddReviewForm, type AddReviewFormProps } from './AddReviewForm';

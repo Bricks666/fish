@@ -1,1 +1,1 @@
-export { ReviewCard } from './ReviewCard';
+export { ReviewCard, type ReviewCardProps } from './ReviewCard';

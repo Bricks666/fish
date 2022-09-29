@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Container, ListGroup, Spinner } from 'react-bootstrap';
-import { AdminRequestCard } from './AdminRequestCard/AdminRequestCard';
+import { AdminRequestCard } from '../AdminRequestCard';
 import { useRequests } from './useRequests';
 
 export const RequestsList: React.FC = () => {

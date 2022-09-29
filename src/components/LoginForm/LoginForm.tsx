@@ -1,17 +1,17 @@
 import * as React from 'react';
 import { Button, Container, Form, Spinner } from 'react-bootstrap';
-import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useAddresses } from '@/hooks/useAddresses';
 import { useField } from '@/hooks/useField';
 import { loginThunk } from '@/models/auth';
+import { useTypedDispatch } from '@/hooks/useTypedDispatch';
 
 export interface LoginFormProps {}
 
 export const LoginForm: React.FC<LoginFormProps> = () => {
 	const { addresses, isLoading } = useAddresses();
-	const dispatch = useDispatch();
-	const account = useField(0);
+	const dispatch = useTypedDispatch();
+	const account = useField('0');
 	const login = useField('');
 	const password = useField('');
 	const navigate = useNavigate();
@@ -39,7 +39,7 @@ export const LoginForm: React.FC<LoginFormProps> = () => {
 						<>
 							<Form.Label>Аккаунт</Form.Label>
 							<Form.Select {...account}>
-								<option value={0}>None</option>
+								<option value='0'>None</option>
 								{addresses.map((address) => (
 									<option value={address} key={address}>
 										{address}

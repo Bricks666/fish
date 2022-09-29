@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { Button, Form } from 'react-bootstrap';
-import { useDispatch } from 'react-redux';
 import { useField } from '@/hooks/useField';
 import { addCommentThunk } from '@/models/comments';
 import { Address } from '@/interfaces/web3';
+import { useTypedDispatch } from '@/hooks/useTypedDispatch';
 
 export interface AddCommentFormProps {
 	readonly subjectAddress: Address;
@@ -15,7 +15,7 @@ export const AddCommentForm: React.FC<AddCommentFormProps> = ({
 	reviewId,
 }) => {
 	const { reset: resetComment, ...comment } = useField('');
-	const dispatch = useDispatch();
+	const dispatch = useTypedDispatch();
 
 	const onSubmit = React.useCallback<React.FormEventHandler<HTMLFormElement>>(
 		async (evt) => {

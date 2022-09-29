@@ -1,9 +1,17 @@
+import * as React from 'react';
 import { useReview } from './useReview';
 import { ReviewCard } from '../ReviewCard';
-import { useUser } from '@/hooks';
-import { ROLES } from '../../consts';
+import { useUser } from '@/hooks/useUser';
+import { ROLES } from '@/consts/user';
+import { Address } from '@/interfaces/web3';
 
-export const Review = ({ id, subjectAddress }) => {
+export interface ReviewProps {
+	readonly id: number;
+	readonly subjectAddress: Address;
+}
+
+export const Review: React.FC<ReviewProps> = (props) => {
+	const { id, subjectAddress } = props;
 	const review = useReview(subjectAddress, id);
 	const {
 		info: { role, address },
@@ -19,6 +27,7 @@ export const Review = ({ id, subjectAddress }) => {
 			{...review}
 			isGuest={role === ROLES.GUEST}
 			isMarked={isMarked}
+			authAddress={address}
 		/>
 	);
 };

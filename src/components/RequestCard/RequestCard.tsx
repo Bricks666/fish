@@ -1,14 +1,32 @@
+import * as React from 'react';
 import { Card } from 'react-bootstrap';
-import { REQUEST_TYPE, REQUEST_TYPE_NAME, ROLES_NAME, STATUSES_NAME } from '../../consts';
+import { Request } from '@/models/requests';
+import {
+	REQUEST_TYPE,
+	REQUEST_TYPE_NAME,
+	STATUSES_NAME,
+} from '@/consts/request';
+import { ROLES_NAME } from '@/consts';
 
-export const RequestCard = ({ id, type, sender, currentRole, newRole, status, shopAddress, children, }) => {
+export interface RequestCardProps extends Request {}
+
+export const RequestCard: React.FC<
+	React.PropsWithChildren<RequestCardProps>
+> = (props) => {
+	const {
+		id,
+		type,
+		sender,
+		currentRole,
+		newRole,
+		status,
+		shopAddress,
+		children,
+	} = props;
 	return (
 		<Card>
 			<Card.Header>
-				<Card.Title>
-					Заявка #
-					{id}
-				</Card.Title>
+				<Card.Title>Заявка #{id}</Card.Title>
 			</Card.Header>
 			<Card.Body>
 				<Card.Text>
@@ -31,7 +49,9 @@ export const RequestCard = ({ id, type, sender, currentRole, newRole, status, sh
 					Текущий статус:
 					{STATUSES_NAME[status]}
 				</Card.Text>
-				{type === REQUEST_TYPE.TO_SHOPER && <Card.Text>{shopAddress}</Card.Text>}
+				{type === REQUEST_TYPE.TO_SHOPER && (
+					<Card.Text>{shopAddress}</Card.Text>
+				)}
 			</Card.Body>
 			{children}
 		</Card>

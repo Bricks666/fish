@@ -19,7 +19,7 @@ export const SalesmenList = ({ shopAddress, }) => {
 							<UserInfo {...salesman}>
 								<Button
 									as={Link as any}
-									to={`/salesmen?${SEARCH_PARAMS.SHOP_ADDRESS}=${shopAddress}&${SEARCH_PARAMS.SUBJECT_ADDRESS}=${salesman.address}`}
+									to={`/salesmen?${SEARCH_PARAMS.SHOP_ADDRESS}=${shopAddress}&${SEARCH_PARAMS.subjectAddress}=${salesman.address}`}
 								>
 									Подробнее
 								</Button>

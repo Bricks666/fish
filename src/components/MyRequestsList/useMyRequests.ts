@@ -1,20 +1,22 @@
 import * as React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import {
 	loadMyRequestsThunk,
+	Request,
 	subscribeMyChangeRequestStatusThunk,
 	subscribeNewMyRequestThunk,
 } from '@/models/requests';
+import { useTypedSelector } from '@/hooks/useTypedSelector';
+import { useTypedDispatch } from '@/hooks/useTypedDispatch';
 
 export interface UseMyRequestsResult {
-	readonly requests: unknown[];
+	readonly requests: Request[];
 	readonly isLoading: boolean;
 }
 
 export const useMyRequests = (): UseMyRequestsResult => {
-	const requests = useSelector((state) => state.requests.myRequests);
-	const isLoading = useSelector((state) => state.requests.isLoading);
-	const dispatch = useDispatch();
+	const requests = useTypedSelector((state) => state.requests.myRequests);
+	const isLoading = useTypedSelector((state) => state.requests.isLoading);
+	const dispatch = useTypedDispatch();
 
 	React.useEffect(() => {
 		if (!requests.length) {

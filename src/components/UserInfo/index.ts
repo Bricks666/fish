@@ -1,1 +1,1 @@
-export { UserInfo } from './UserInfo';
+export { UserInfo, type UserInfoProps } from './UserInfo';

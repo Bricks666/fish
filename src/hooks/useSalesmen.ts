@@ -1,15 +1,17 @@
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import {
 	loadSalesmenThunk,
 	resetSalesmenAC,
-	subscribeNewSalesmanThunk
-} from '../models/slesmen';
+	subscribeNewSalesmanThunk,
+} from '@/models/salesmen';
+import { useTypedDispatch } from './useTypedDispatch';
+import { useTypedSelector } from './useTypedSelector';
+import { Address } from '@/interfaces/web3';
 
-export const useSalesmen = (shopAddress) => {
-	const salesmen = useSelector((state) => state.salesmen.salesmen);
-	const isLoading = useSelector((state) => state.salesmen.isLoading);
-	const dispatch = useDispatch();
+export const useSalesmen = (shopAddress: Address) => {
+	const salesmen = useTypedSelector((state) => state.salesmen.salesmen);
+	const isLoading = useTypedSelector((state) => state.salesmen.isLoading);
+	const dispatch = useTypedDispatch();
 
 	useEffect(() => {
 		if (!salesmen.length) {

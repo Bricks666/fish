@@ -1,11 +1,12 @@
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { loadUserThunk } from '../models/user';
+import { useTypedDispatch } from './useTypedDispatch';
+import { useTypedSelector } from './useTypedSelector';
 
 export const useUser = () => {
-	const { address, } = useSelector((state) => state.auth);
-	const { info, isLoading, } = useSelector((state) => state.user);
-	const dispatch = useDispatch();
+	const { address } = useTypedSelector((state) => state.auth);
+	const { info, isLoading } = useTypedSelector((state) => state.user);
+	const dispatch = useTypedDispatch();
 
 	useEffect(() => {
 		if (address !== info.address && !isLoading) {
@@ -13,5 +14,5 @@ export const useUser = () => {
 		}
 	}, [address, info.address, isLoading, dispatch]);
 
-	return { info, isLoading, };
+	return { info, isLoading };
 };

@@ -1,1 +1,1 @@
-export { ProfileButtons } from './ProfileButtons';
+export { ProfileButtons, type ProfileButtonsProps } from './ProfileButtons';

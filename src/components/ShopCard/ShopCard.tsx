@@ -1,20 +1,24 @@
-import { useCallback } from 'react';
+import * as React from 'react';
 import { Card, Button } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
-import { REQUEST_TYPE, ROLES } from '../../consts';
-import { useUser } from '@/hooks';
-import { addRequestThunk } from '../../models/requests';
-import { deleteShopThunk } from '../../models/shops';
+import { REQUEST_TYPE } from '@/consts/request';
+import { ROLES } from '@/consts/user';
+import { useUser } from '@/hooks/useUser';
+import { addRequestThunk } from '@/models/requests';
+import { deleteShopThunk, Shop } from '@/models/shops';
 
-export const ShopCard = ({ name, city, address, }) => {
+export interface ShopCardProps extends Shop {}
+
+export const ShopCard: React.FC<ShopCardProps> = React.memo((props) => {
+	const { name, city, address } = props;
 	const dispatch = useDispatch();
 	const {
-		info: { role, onRequest, },
+		info: { role, onRequest },
 	} = useUser();
-	const toBeShoper = useCallback(() => {
+	const toBeShoper = React.useCallback(() => {
 		dispatch(addRequestThunk(REQUEST_TYPE.TO_SHOPER, address));
 	}, [address, dispatch]);
-	const deleteShop = useCallback(() => {
+	const deleteShop = React.useCallback(() => {
 		dispatch(deleteShopThunk(address));
 	}, [address, dispatch]);
 	return (
@@ -40,4 +44,4 @@ export const ShopCard = ({ name, city, address, }) => {
 			</Card.Footer>
 		</Card>
 	);
-};
+});

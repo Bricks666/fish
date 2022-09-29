@@ -3,15 +3,10 @@ import { Alert, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { LoginForm } from '@/components/LoginForm';
 import { MainLayout } from '@/layouts/MainLayout';
-import { api } from '@/models/address';
 import { useTypedSelector } from '@/hooks/useTypedSelector';
 
 const LoginPage: React.FC = () => {
 	const loginError = useTypedSelector((state) => state.auth.loginError);
-
-	const data = api.useTestQuery(undefined);
-
-	console.log(data);
 
 	return (
 		<MainLayout>

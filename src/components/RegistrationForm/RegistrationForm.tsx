@@ -1,17 +1,17 @@
 import * as React from 'react';
 import { Container, Form, Button, Spinner } from 'react-bootstrap';
-import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useAddresses } from '@/hooks/useAddresses';
 import { useField } from '@/hooks/useField';
 import { registrationThunk } from '@/models/auth';
+import { useTypedDispatch } from '@/hooks/useTypedDispatch';
 
 export const RegistrationForm: React.FC = () => {
 	const { addresses, isLoading } = useAddresses();
-	const account = useField(0);
+	const account = useField('0');
 	const login = useField('');
 	const name = useField('');
-	const dispatch = useDispatch();
+	const dispatch = useTypedDispatch();
 	const navigate = useNavigate();
 
 	const onSubmit = React.useCallback<React.FormEventHandler<HTMLFormElement>>(
@@ -32,12 +32,12 @@ export const RegistrationForm: React.FC = () => {
 			<Form onSubmit={onSubmit}>
 				<Form.Group>
 					{isLoading ? (
-						<Spinner variant='border' />
+						<Spinner animation='border' />
 					) : (
 						<>
 							<Form.Label>Аккаунт</Form.Label>
 							<Form.Select {...account}>
-								<option value={0}>None</option>
+								<option value='0'>None</option>
 								{addresses.map((address) => (
 									<option value={address} key={address}>
 										{address}

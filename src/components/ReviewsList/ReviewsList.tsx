@@ -1,12 +1,22 @@
+import * as React from 'react';
 import { Container, ListGroup, Spinner } from 'react-bootstrap';
-import { useReviews, useUser } from '@/hooks';
 import { ReviewCard } from '../ReviewCard';
-import { ROLES } from '../../consts';
+import { ROLES } from '@/consts';
+import { Address } from '@/interfaces/web3';
+import { useReviews } from '@/hooks/useReviews';
+import { useUser } from '@/hooks/useUser';
+import { useTypedSelector } from '@/hooks/useTypedSelector';
 
-export const ReviewsList = ({ subjectAddress, }) => {
-	const { isLoading, reviews, } = useReviews(subjectAddress);
+export interface ReviewsListProps {
+	readonly subjectAddress: Address;
+}
+
+export const ReviewsList: React.FC<ReviewsListProps> = (props) => {
+	const { subjectAddress } = props;
+	const authAddress = useTypedSelector((state) => state.auth.address);
+	const { isLoading, reviews } = useReviews(subjectAddress);
 	const {
-		info: { address, role, },
+		info: { address, role },
 	} = useUser();
 	return (
 		<Container>
@@ -20,9 +30,10 @@ export const ReviewsList = ({ subjectAddress, }) => {
 								{...review}
 								isGuest={role === ROLES.GUEST}
 								isMarked={
-									review.likes.includes(address)
-									|| review.dislikes.includes(address)
+									review.likes.includes(address) ||
+									review.dislikes.includes(address)
 								}
+								authAddress={authAddress}
 							/>
 						</ListGroup.Item>
 					))}

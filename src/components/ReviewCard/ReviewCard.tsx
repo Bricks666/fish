@@ -1,28 +1,34 @@
+import * as React from 'react';
 import { Card, Col, Row } from 'react-bootstrap';
-import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { SEARCH_PARAMS } from '../../consts';
+import { SEARCH_PARAMS } from '@/consts/route';
 import { Buttons } from './Buttons';
+import { Review } from '@/models/reviews';
+import { Address } from '@/interfaces/web3';
 
-export const ReviewCard = ({
-	id,
-	body,
-	subjectAddress,
-	mark,
-	likes,
-	dislikes,
-	isMarked,
-	isGuest,
-}) => {
-	const address = useSelector((state) => state.auth.address);
-	const mayMark = !(isMarked || isGuest) && !!address;
+export interface ReviewCardProps extends Review {
+	readonly authAddress: Address;
+	readonly isMarked: boolean;
+	readonly isGuest: boolean;
+}
+
+export const ReviewCard: React.FC<ReviewCardProps> = (props) => {
+	const {
+		id,
+		body,
+		subjectAddress,
+		mark,
+		likes,
+		dislikes,
+		authAddress,
+		isMarked,
+		isGuest,
+	} = props;
+	const mayMark = !(isMarked || isGuest) && !!authAddress;
 	return (
 		<Card>
 			<Card.Header>
-				<Card.Title>
-					Отзыв №
-					{id}
-				</Card.Title>
+				<Card.Title>Отзыв №{id}</Card.Title>
 				<Card.Text>
 					На пользователя:
 					{subjectAddress}
@@ -59,7 +65,7 @@ export const ReviewCard = ({
 			<Card.Footer>
 				<Card.Link
 					as={Link as any}
-					to={`/reviews?${SEARCH_PARAMS.SUBJECT_ADDRESS}=${subjectAddress}&${SEARCH_PARAMS.REVIEW_ID}=${id}`}
+					to={`/reviews?${SEARCH_PARAMS.subjectAddress}=${subjectAddress}&${SEARCH_PARAMS.reviewId}=${id}`}
 				>
 					Подробнее
 				</Card.Link>

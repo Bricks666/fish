@@ -6,8 +6,8 @@ import { SEARCH_PARAMS } from '@/consts';
 import { useSearchParam } from '@/hooks/useSearchParam';
 
 const ReviewPage: React.FC = () => {
-	const id = Number(useSearchParam(SEARCH_PARAMS.REVIEW_ID));
-	const subjectAddress = useSearchParam(SEARCH_PARAMS.SUBJECT_ADDRESS) || '';
+	const id = Number(useSearchParam(SEARCH_PARAMS.reviewId));
+	const subjectAddress = useSearchParam(SEARCH_PARAMS.subjectAddress) || '';
 
 	return (
 		<Container>

@@ -1,15 +1,22 @@
-import { useCallback } from 'react';
+import * as React from 'react';
 import { Button, Col, Form, Row } from 'react-bootstrap';
-import { useDispatch } from 'react-redux';
-import { useField } from '@/hooks';
-import { addReviewThunk } from '../../../models/reviews';
+import { useField } from '@/hooks/useField';
+import { addReviewThunk } from '@/models/reviews';
+import { useTypedDispatch } from '@/hooks/useTypedDispatch';
+import { Address } from '@/interfaces/web3';
 
-export const AddReviewForm = ({ subjectAddress, }) => {
+export interface AddReviewFormProps {
+	readonly subjectAddress: Address;
+}
+
+export const AddReviewForm: React.FC<AddReviewFormProps> = ({
+	subjectAddress,
+}) => {
 	const { reset: resetReview, ...review } = useField('');
 	const { reset: resetMark, ...mark } = useField(5);
-	const dispatch = useDispatch();
+	const dispatch = useTypedDispatch();
 
-	const onSubmit = useCallback(
+	const onSubmit = React.useCallback<React.FormEventHandler<HTMLFormElement>>(
 		async (evt) => {
 			evt.preventDefault();
 			await dispatch(addReviewThunk(subjectAddress, review.value, mark.value));

@@ -1,5 +1,11 @@
-export const SEARCH_PARAMS = {
-	SHOP_ADDRESS: 'sp-adr',
-	REVIEW_ID: 'rw-id',
-	SUBJECT_ADDRESS: 'sub-adr',
+export interface Params {
+	readonly shopAddress: string;
+	readonly reviewId: string;
+	readonly subjectAddress: string;
+}
+
+export const SEARCH_PARAMS:Params = {
+	shopAddress: 'sp-adr',
+	reviewId: 'rw-id',
+	subjectAddress: 'sub-adr',
 };
