@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Address } from '@/interfaces/web3';
+import { Address } from '@/packages/web3';
 import { web3 } from '../api/core';
 
 export const useBalance = (address: Address): number => {

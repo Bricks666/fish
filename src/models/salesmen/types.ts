@@ -1,4 +1,4 @@
-import { Address, Subscription } from '@/interfaces/web3';
+import { Address, SubscriptionResult } from '@/packages/web3';
 
 export interface User {
 	readonly login: string;
@@ -12,5 +12,5 @@ export interface User {
 export interface SalesmenState {
 	readonly isLoading: boolean;
 	readonly salesmen: User[];
-	readonly subscribes: Subscription[];
+	readonly subscribes: SubscriptionResult[];
 }

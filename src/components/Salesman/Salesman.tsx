@@ -3,7 +3,7 @@ import { useSalesman } from './useSalesman';
 import { UserInfo } from '../UserInfo';
 import { SEARCH_PARAMS } from '@/consts/route';
 import { useSearchParam } from '@/hooks/useSearchParam';
-import { Address } from '@/interfaces/web3';
+import { Address } from '@/packages/web3';
 
 export interface SalesmanProps {
 	readonly address: Address;

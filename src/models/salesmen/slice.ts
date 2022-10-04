@@ -1,6 +1,5 @@
 import { PayloadAction } from '@reduxjs/toolkit';
 import { AppDispatch } from '..';
-import { Address } from '@/interfaces/web3';
 import { VoidFunction } from '@/interfaces/common';
 import { SalesmenState, User } from './types';
 import { getUserApi } from '@/api/user';
@@ -8,6 +7,7 @@ import { subscribe } from '@/api/core';
 import { ROLES } from '@/consts';
 import { getSalesmenAddressesApi } from '@/api/shops';
 import { converter } from './converter';
+import { Address } from '@/packages/web3';
 
 const initialState: SalesmenState = {
 	isLoading: false,

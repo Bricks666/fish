@@ -2,10 +2,10 @@ import { PayloadAction } from '@reduxjs/toolkit';
 import { addShopApi, deleteShopApi, getShopAddressesApi, getShopApi } from '@/api/shops';
 import { subscribe } from '@/api/core';
 import { Shop, ShopsState } from './types';
-import { Address } from '@/interfaces/web3';
 import { VoidFunction } from '@/interfaces/common';
 import { converter } from './converter';
 import { AppDispatch, AppState } from '..';
+import { Address } from '@/packages/web3';
 
 const initialState: ShopsState = {
 	isLoading: false,

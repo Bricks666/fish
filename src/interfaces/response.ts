@@ -1,5 +1,5 @@
 import { RequestType, Role, Status } from '@/consts';
-import { Address } from './web3';
+import { Address } from '@/packages/web3';
 
 export interface UserResponse {
 	readonly login: string;

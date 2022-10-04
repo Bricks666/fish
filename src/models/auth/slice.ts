@@ -1,8 +1,8 @@
 import { PayloadAction } from '@reduxjs/toolkit';
 import { loginApi, registrationApi } from '@/api/auth';
 import { AuthState } from './types';
-import { Address } from '@/interfaces/web3';
 import { AppDispatch } from '..';
+import { Address } from '@/packages/web3';
 
 const initialState: AuthState = {
 	isAuth: false,

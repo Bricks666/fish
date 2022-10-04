@@ -1,5 +1,5 @@
 import { useSalesmen } from '@/hooks/useSalesmen';
-import { Address } from '@/interfaces/web3';
+import { Address } from '@/packages/web3';
 
 export const useSalesman = (shopAddress: Address, salesmanAddress: Address) => {
 	const { salesmen } = useSalesmen(shopAddress);

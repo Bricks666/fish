@@ -1,5 +1,6 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import { addressReducer } from './addresses';
+import { setupListeners } from '@reduxjs/toolkit/query';
+import { addressesApi } from './addresses';
 import { authReducer } from './auth';
 import { userReducer } from './user';
 import { requestsReducer } from './requests';
@@ -10,19 +11,24 @@ import { commentsReducer } from './comments';
 
 const rootReducer = combineReducers({
 	auth: authReducer,
-	address: addressReducer,
 	user: userReducer,
 	requests: requestsReducer,
 	shops: shopsReducer,
 	salesmen: salesmenReducer,
 	reviews: reviewsReducer,
 	comments: commentsReducer,
+	[addressesApi.reducerPath]: addressesApi.reducer,
 });
 
 export const store = configureStore({
 	reducer: rootReducer,
 	devTools: process.env.NODE_ENV !== 'production',
+	middleware(getDefaultMiddleware) {
+		return getDefaultMiddleware().concat(addressesApi.middleware);
+	},
 });
+
+setupListeners(store.dispatch);
 
 export type AppState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;

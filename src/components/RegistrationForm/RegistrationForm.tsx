@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { Container, Form, Button, Spinner } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-import { useAddresses } from '@/hooks/useAddresses';
 import { useField } from '@/hooks/useField';
 import { registrationThunk } from '@/models/auth';
 import { useTypedDispatch } from '@/hooks/useTypedDispatch';
+import { useGetAddressesQuery } from '@/models/addresses';
 
 export const RegistrationForm: React.FC = () => {
-	const { addresses, isLoading } = useAddresses();
+	const { data: addresses = [], isLoading } = useGetAddressesQuery(undefined);
 	const account = useField('0');
 	const login = useField('');
 	const name = useField('');

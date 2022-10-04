@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { useField } from '@/hooks/useField';
 import { addCommentThunk } from '@/models/comments';
-import { Address } from '@/interfaces/web3';
+import { Address } from '@/packages/web3';
 import { useTypedDispatch } from '@/hooks/useTypedDispatch';
 
 export interface AddCommentFormProps {

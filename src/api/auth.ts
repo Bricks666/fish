@@ -1,4 +1,4 @@
-import { Address } from '@/interfaces/web3';
+import { Address } from '@/packages/web3';
 import { contract, unlockAccount, web3 } from './core';
 
 export const loginApi = async (

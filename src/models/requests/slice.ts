@@ -8,11 +8,11 @@ import {
 } from '@/api/requests';
 import { subscribe } from '@/api/core';
 import { VoidFunction } from '@/interfaces/common';
-import { Address } from '@/interfaces/web3';
 import { AppDispatch, AppState } from '..';
 import { converter } from './converter';
 import { filterMyRequests } from './filter';
 import { Request, RequestsState } from './types';
+import { Address } from '@/packages/web3';
 
 const initialState: RequestsState = {
 	isLoading: false,

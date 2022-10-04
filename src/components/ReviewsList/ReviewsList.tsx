@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Container, ListGroup, Spinner } from 'react-bootstrap';
 import { ReviewCard } from '../ReviewCard';
 import { ROLES } from '@/consts';
-import { Address } from '@/interfaces/web3';
+import { Address } from '@/packages/web3';
 import { useReviews } from '@/hooks/useReviews';
 import { useUser } from '@/hooks/useUser';
 import { useTypedSelector } from '@/hooks/useTypedSelector';

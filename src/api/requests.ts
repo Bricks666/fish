@@ -1,6 +1,6 @@
 import { toHex } from 'web3-utils';
 import { RequestResponse } from '@/interfaces/response';
-import { Address } from '@/interfaces/web3';
+import { Address } from '@/packages/web3';
 import { contract } from './core';
 
 export const getRequestsApi = async (): Promise<RequestResponse[]> => {

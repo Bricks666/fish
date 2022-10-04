@@ -6,7 +6,7 @@ import {
 	subscribeChangeReviewThunk,
 	subscribeNewReviewThunk,
 } from '@/models/reviews';
-import { Address } from '@/interfaces/web3';
+import { Address } from '@/packages/web3';
 import { useTypedSelector } from './useTypedSelector';
 import { useTypedDispatch } from './useTypedDispatch';
 

@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { loadSalesmenThunk, resetSalesmenAC, subscribeNewSalesmanThunk } from '@/models/salesmen';
 import { useTypedDispatch } from './useTypedDispatch';
 import { useTypedSelector } from './useTypedSelector';
-import { Address } from '@/interfaces/web3';
+import { Address } from '@/packages/web3';
 
 export const useSalesmen = (shopAddress: Address) => {
 	const salesmen = useTypedSelector((state) => state.salesmen.salesmen);

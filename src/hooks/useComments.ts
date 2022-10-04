@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Address } from '@/interfaces/web3';
+import { Address } from '@/packages/web3';
 import {
 	Comment,
 	loadCommentsThunk,

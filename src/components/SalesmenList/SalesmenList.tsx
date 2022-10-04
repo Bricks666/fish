@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { UserInfo } from '../UserInfo';
 import { useSalesmen } from '@/hooks/useSalesmen';
 import { SEARCH_PARAMS } from '@/consts/route';
-import { Address } from '@/interfaces/web3';
+import { Address } from '@/packages/web3';
 
 export interface SalesmenListProps {
 	readonly shopAddress: Address;

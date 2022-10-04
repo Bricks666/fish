@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Container, ListGroup, Spinner } from 'react-bootstrap';
-import { Address } from '@/interfaces/web3';
+import { Address } from '@/packages/web3';
 import { CommentCard } from './CommentCard';
 import { useComments } from '@/hooks/useComments';
 

@@ -3,7 +3,7 @@ import { Button, Col, Form, Row } from 'react-bootstrap';
 import { useField } from '@/hooks/useField';
 import { addReviewThunk } from '@/models/reviews';
 import { useTypedDispatch } from '@/hooks/useTypedDispatch';
-import { Address } from '@/interfaces/web3';
+import { Address } from '@/packages/web3';
 
 export interface AddReviewFormProps {
 	readonly subjectAddress: Address;

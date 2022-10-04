@@ -5,8 +5,8 @@ import { subscribe } from '@/api/core';
 import { converter } from './converter';
 import { Comment, CommentsState } from './types';
 import { VoidFunction } from '@/interfaces/common';
-import { Address } from '@/interfaces/web3';
 import { AppDispatch, AppState } from '..';
+import { Address } from '@/packages/web3';
 
 const initialState: CommentsState = {
 	isLoading: false,

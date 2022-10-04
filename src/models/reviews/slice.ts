@@ -8,10 +8,10 @@ import {
 	addReviewApi,
 } from '@/api/reviews';
 import { Review, ReviewsState } from './types';
-import { Address } from '@/interfaces/web3';
 import { VoidFunction } from '@/interfaces/common';
 import { AppDispatch, AppState } from '..';
 import { converter } from './converter';
+import { Address } from '@/packages/web3';
 
 const initialState: ReviewsState = {
 	isLoading: false,

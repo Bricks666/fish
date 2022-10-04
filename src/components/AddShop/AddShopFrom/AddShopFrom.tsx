@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { Container, Form, Spinner, Button } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
-import { useAddresses } from '@/hooks/useAddresses';
 import { useField } from '@/hooks/useField';
 import { addShopThunk } from '@/models/shops';
+import { useGetAddressesQuery } from '@/models/addresses';
 
 export const AddShopFrom: React.FC = () => {
-	const { addresses, isLoading } = useAddresses();
+	const { data: addresses = [], isLoading } = useGetAddressesQuery(undefined);
 	const dispatch = useDispatch();
 	const { reset: resetAccount, ...account } = useField('0');
 	const { reset: resetLogin, ...login } = useField('');

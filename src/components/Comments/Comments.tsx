@@ -4,7 +4,7 @@ import { ROLES } from '@/consts';
 import { AddComment } from '../AddComment';
 import { RoleFilter } from '../RoleFilter';
 import { CommentsList } from './CommentsList';
-import { Address } from '@/interfaces/web3';
+import { Address } from '@/packages/web3';
 
 export interface CommentsProps {
 	readonly reviewId: number;

@@ -1,15 +1,15 @@
 import * as React from 'react';
 import { Button, Container, Form, Spinner } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-import { useAddresses } from '@/hooks/useAddresses';
 import { useField } from '@/hooks/useField';
 import { loginThunk } from '@/models/auth';
 import { useTypedDispatch } from '@/hooks/useTypedDispatch';
+import { useGetAddressesQuery } from '@/models/addresses';
 
 export interface LoginFormProps {}
 
 export const LoginForm: React.FC<LoginFormProps> = () => {
-	const { addresses, isLoading } = useAddresses();
+	const { data: addresses = [], isLoading } = useGetAddressesQuery(undefined);
 	const dispatch = useTypedDispatch();
 	const account = useField('0');
 	const login = useField('');

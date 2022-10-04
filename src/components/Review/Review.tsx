@@ -3,7 +3,7 @@ import { useReview } from './useReview';
 import { ReviewCard } from '../ReviewCard';
 import { useUser } from '@/hooks/useUser';
 import { ROLES } from '@/consts/user';
-import { Address } from '@/interfaces/web3';
+import { Address } from '@/packages/web3';
 
 export interface ReviewProps {
 	readonly id: number;

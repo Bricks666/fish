@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Button } from 'react-bootstrap';
 import { useTypedDispatch } from '@/hooks/useTypedDispatch';
 import { dislikeReviewThunk, likeReviewThunk } from '@/models/reviews';
-import { Address } from '@/interfaces/web3';
+import { Address } from '@/packages/web3';
 
 export interface ButtonsProps {
 	readonly subjectAddress: Address;

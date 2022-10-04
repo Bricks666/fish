@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { SEARCH_PARAMS } from '@/consts/route';
 import { Buttons } from './Buttons';
 import { Review } from '@/models/reviews';
-import { Address } from '@/interfaces/web3';
+import { Address } from '@/packages/web3';
 
 export interface ReviewCardProps extends Review {
 	readonly authAddress: Address;

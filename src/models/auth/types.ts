@@ -1,4 +1,4 @@
-import { Address } from '@/interfaces/web3';
+import { Address } from '@/packages/web3';
 
 export interface AuthState {
 	readonly isAuth: boolean;
