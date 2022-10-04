@@ -1,7 +1,7 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/query';
 import { addressesApi } from './addresses';
-import { authReducer } from './auth';
+import { authApi, authReducer } from './auth';
 import { userReducer } from './user';
 import { requestsReducer } from './requests';
 import { shopsReducer } from './shops';
@@ -18,13 +18,14 @@ const rootReducer = combineReducers({
 	reviews: reviewsReducer,
 	comments: commentsReducer,
 	[addressesApi.reducerPath]: addressesApi.reducer,
+	[authApi.reducerPath]: authApi.reducer,
 });
 
 export const store = configureStore({
 	reducer: rootReducer,
 	devTools: process.env.NODE_ENV !== 'production',
 	middleware(getDefaultMiddleware) {
-		return getDefaultMiddleware().concat(addressesApi.middleware);
+		return getDefaultMiddleware().concat(addressesApi.middleware).concat(authApi.middleware);
 	},
 });
 

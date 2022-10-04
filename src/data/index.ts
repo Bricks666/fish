@@ -722,46 +722,9 @@ export const abi: AbiItem[] = [
 		name: 'login',
 		outputs: [
 			{
-				components: [
-					{
-						internalType: 'string',
-						name: 'login',
-						type: 'string',
-					},
-					{
-						internalType: 'address',
-						name: 'Address',
-						type: 'address',
-					},
-					{
-						internalType: 'bytes32',
-						name: 'password',
-						type: 'bytes32',
-					},
-					{
-						internalType: 'string',
-						name: 'FIO',
-						type: 'string',
-					},
-					{
-						internalType: 'enum Users.ROLES',
-						name: 'role',
-						type: 'uint8',
-					},
-					{
-						internalType: 'bool',
-						name: 'onRequest',
-						type: 'bool',
-					},
-					{
-						internalType: 'address',
-						name: 'shopAddress',
-						type: 'address',
-					},
-				],
-				internalType: 'struct Users.User',
+				internalType: 'address',
 				name: '',
-				type: 'tuple',
+				type: 'address',
 			},
 		],
 		stateMutability: 'view',

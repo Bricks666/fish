@@ -5,7 +5,7 @@ import { ROLES } from '@/consts';
 import { Address } from '@/packages/web3';
 import { useReviews } from '@/hooks/useReviews';
 import { useUser } from '@/hooks/useUser';
-import { useTypedSelector } from '@/hooks/useTypedSelector';
+import { useLoginMutation } from '@/models/auth/api';
 
 export interface ReviewsListProps {
 	readonly subjectAddress: Address;
@@ -13,7 +13,7 @@ export interface ReviewsListProps {
 
 export const ReviewsList: React.FC<ReviewsListProps> = (props) => {
 	const { subjectAddress } = props;
-	const authAddress = useTypedSelector((state) => state.auth.address);
+	const [, { data: authAddress }] = useLoginMutation({ fixedCacheKey: 'login' });
 	const { isLoading, reviews } = useReviews(subjectAddress);
 	const {
 		info: { address, role },
@@ -30,7 +30,7 @@ export const ReviewsList: React.FC<ReviewsListProps> = (props) => {
 								{...review}
 								isGuest={role === ROLES.GUEST}
 								isMarked={review.likes.includes(address) || review.dislikes.includes(address)}
-								authAddress={authAddress}
+								authAddress={authAddress!}
 							/>
 						</ListGroup.Item>
 					))}

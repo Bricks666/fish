@@ -6,3 +6,9 @@ export interface AuthState {
 	readonly registrationError: string | null;
 	readonly loginError: string | null;
 }
+
+export interface LoginParams {
+	readonly address: Address;
+	readonly login: string;
+	readonly password: string;
+}

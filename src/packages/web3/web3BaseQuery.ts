@@ -32,10 +32,13 @@ const contractRequest = async <
 				from: sender!,
 				value,
 			});
+			data = true as Result;
 		}
 	} catch (e) {
 		error = e as Error;
 	}
+
+	console.log(data, error, args);
 
 	return {
 		data,

@@ -3,18 +3,18 @@ import { Alert, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { LoginForm } from '@/components/LoginForm';
 import { MainLayout } from '@/layouts/MainLayout';
-import { useTypedSelector } from '@/hooks/useTypedSelector';
+import { useLoginMutation } from '@/models/auth/api';
 
 const LoginPage: React.FC = () => {
-	const loginError = useTypedSelector((state) => state.auth.loginError);
+	const [, { isError }] = useLoginMutation({ fixedCacheKey: 'login' });
 
 	return (
 		<MainLayout>
 			<h2>Вход</h2>
-			{loginError && (
+			{isError && (
 				<Alert variant='danger'>
 					<Alert.Heading>Ошибка входа</Alert.Heading>
-					{loginError}
+					Ошибка входа
 				</Alert>
 			)}
 			<LoginForm />

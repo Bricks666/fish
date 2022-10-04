@@ -1,12 +1,15 @@
 import * as React from 'react';
 import { Navigate } from 'react-router-dom';
-import { useTypedSelector } from '@/hooks/useTypedSelector';
+import { useLoginMutation } from '@/models/auth/api';
 
 export const AuthRoute: React.FC<React.PropsWithChildren> = (props) => {
 	const { children } = props;
-	const isAuth = useTypedSelector((state) => state.auth.isAuth);
+	const [, { data }] = useLoginMutation({
+		fixedCacheKey: 'login',
+	});
+	console.log(data);
 
-	if (isAuth) {
+	if (data) {
 		return children as React.ReactElement;
 	}
 

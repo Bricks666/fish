@@ -1,10 +1,11 @@
 import { useEffect } from 'react';
-import { loadUserThunk } from '../models/user';
+import { useLoginMutation } from '@/models/auth/api';
+import { loadUserThunk } from '@/models/user';
 import { useTypedDispatch } from './useTypedDispatch';
 import { useTypedSelector } from './useTypedSelector';
 
 export const useUser = () => {
-	const { address } = useTypedSelector((state) => state.auth);
+	const [, { data: address }] = useLoginMutation({ fixedCacheKey: 'login' });
 	const { info, isLoading } = useTypedSelector((state) => state.user);
 	const dispatch = useTypedDispatch();
 

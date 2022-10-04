@@ -45,14 +45,16 @@ contract Users is Utils {
     constructor() {
         createUser(
             "ivan",
-            0xc97E2f334315eb44ea6a14A51C4Ca83b74888FF6,
+            0x7bCc08b169dCd1a3f07d9e0313D9F315C1c765Eb,
+            getByteString("000000"),
             "Ivanov Ivan Ivanovich",
             ROLES.ADMIN,
             address(0)
         );
         createUser(
             "vasya",
-            0xF1fb2b5C30a5d543fCef834Cc0AF03FbDB329Ac3,
+            0xCC100D75da2775392dedA25DAc8Bcf5569717f34,
+            getByteString("000000"),
             "Sinichkina Vasilisa Sergeevna",
             ROLES.SHOPER,
             address(0x5f1C8c8b1dA29424eFa85e059beC093Ee248f9C5)
@@ -60,6 +62,7 @@ contract Users is Utils {
         createUser(
             "petr",
             0xAf23ad742D7C52c2a0768eF61757B2e41F94D947,
+            getByteString("000000"),
             "Petrov Petr Petrovich",
             ROLES.USER,
             address(0)
@@ -67,6 +70,7 @@ contract Users is Utils {
         createUser(
             "bank",
             0x1ff7E5a292b7ad77d373b6a863b0cD422Fc0B383,
+            getByteString("000000"),
             "Ivanov Ivan Ivanovich",
             ROLES.BANK,
             address(0)
@@ -74,6 +78,7 @@ contract Users is Utils {
         createUser(
             "funny crab",
             0xf35BebbCe8A3b24e750A2A93ffc13964305B3dF3,
+            getByteString("000000"),
             "Ivanov Ivan Ivanovich",
             ROLES.PROVIDER,
             address(0)
@@ -88,14 +93,14 @@ contract Users is Utils {
         external
         view
         isReg(msg.sender)
-        returns (User memory)
+        returns (address)
     {
         require(
             getByteString(users[msg.sender].login) == getByteString(login),
             "Check login"
         );
         require(users[msg.sender].password == password, "You wrong password");
-        return users[msg.sender];
+        return msg.sender;
     }
 
     function registration(string memory login, string memory FIO) external {
@@ -105,7 +110,7 @@ contract Users is Utils {
         );
         require(getByteString(login) != getByteString(""), "Check login");
         require(getByteString(FIO) != getByteString(""), "Check FIO");
-        createUser(login, msg.sender, FIO, ROLES.USER, address(0));
+        createUser(login, msg.sender, getByteString("000000"), FIO, ROLES.USER, address(0));
     }
 
     function changeRole(address user, ROLES newRole) internal {
@@ -121,6 +126,7 @@ contract Users is Utils {
     function createUser(
         string memory login,
         address userAddress,
+        bytes32 password,
         string memory fio,
         ROLES role,
         address shopAddress
@@ -129,7 +135,7 @@ contract Users is Utils {
         users[userAddress] = User(
             login,
             userAddress,
-            0x7880aec93413f117ef14bd4e6d130875ab2c7d7d55a064fac3c2f7bd51516380,
+            password,
             fio,
             role,
             false,
@@ -274,7 +280,7 @@ contract Shops is Users {
         string memory shopName,
         string memory city
     ) private {
-        createUser(login, shopAddress, shopName, ROLES.SHOP, address(0));
+        createUser(login, shopAddress, getByteString("000000"), shopName, ROLES.SHOP, address(0));
         shopsAddresses.push(shopAddress);
         shops[shopAddress] = Shop(
             shopsAddresses.length,
