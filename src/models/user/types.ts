@@ -1,8 +1,21 @@
-import { SubscriptionResult } from '@/packages/web3';
-import { User } from '../salesmen';
+import { Role } from '@/consts';
+import { Address } from '@/packages/web3';
 
-export interface UserState {
-	readonly isLoading: boolean;
-	readonly info: User;
-	readonly unsubscribes: SubscriptionResult[];
+export interface User {
+	readonly login: string;
+	readonly address: Address;
+	readonly name: string;
+	readonly role: number;
+	readonly onRequest: boolean;
+	readonly shopAddress?: Address | null;
+}
+
+export interface UserResponse {
+	readonly login: string;
+	readonly Address: Address;
+	readonly password: any;
+	readonly FIO: string;
+	readonly role: Role;
+	readonly onRequest: boolean;
+	readonly shopAddress?: Address;
 }

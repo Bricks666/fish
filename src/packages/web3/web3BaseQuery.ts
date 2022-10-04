@@ -3,7 +3,7 @@ import { EmptyObject } from '@reduxjs/toolkit';
 import { BaseQueryFn } from '@reduxjs/toolkit/dist/query';
 import { BaseQueryApi, QueryReturnValue } from '@reduxjs/toolkit/dist/query/baseQueryTypes';
 import { Eth } from 'web3-eth';
-import { Contract, ContractSendMethod } from 'web3-eth-contract';
+import { CallOptions, Contract, ContractSendMethod, SendOptions } from 'web3-eth-contract';
 import { Address } from './types';
 
 const contractRequest = async <
@@ -24,18 +24,24 @@ const contractRequest = async <
 	let error: Error | undefined;
 	try {
 		if (type === 'query') {
-			data = await method.call({
-				from: sender,
-			});
+			const callOptions: CallOptions = {};
+			if (sender) {
+				callOptions.from = sender;
+			}
+			data = await method.call(callOptions);
 		} else {
-			await method.send({
+			const sendOptions: SendOptions = {
 				from: sender!,
-				value,
-			});
+			};
+			if (value) {
+				sendOptions.value = value;
+			}
+			await method.send(sendOptions);
 			data = true as Result;
 		}
 	} catch (e) {
 		error = e as Error;
+		console.log(error);
 	}
 
 	console.log(data, error, args);

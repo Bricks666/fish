@@ -2,7 +2,7 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/query';
 import { addressesApi } from './addresses';
 import { authApi, authReducer } from './auth';
-import { userReducer } from './user';
+import { userApi } from './user';
 import { requestsReducer } from './requests';
 import { shopsReducer } from './shops';
 import { salesmenReducer } from './salesmen';
@@ -11,7 +11,6 @@ import { commentsReducer } from './comments';
 
 const rootReducer = combineReducers({
 	auth: authReducer,
-	user: userReducer,
 	requests: requestsReducer,
 	shops: shopsReducer,
 	salesmen: salesmenReducer,
@@ -19,13 +18,17 @@ const rootReducer = combineReducers({
 	comments: commentsReducer,
 	[addressesApi.reducerPath]: addressesApi.reducer,
 	[authApi.reducerPath]: authApi.reducer,
+	[userApi.reducerPath]: userApi.reducer,
 });
 
 export const store = configureStore({
 	reducer: rootReducer,
 	devTools: process.env.NODE_ENV !== 'production',
 	middleware(getDefaultMiddleware) {
-		return getDefaultMiddleware().concat(addressesApi.middleware).concat(authApi.middleware);
+		return getDefaultMiddleware()
+			.concat(addressesApi.middleware)
+			.concat(authApi.middleware)
+			.concat(userApi.middleware);
 	},
 });
 

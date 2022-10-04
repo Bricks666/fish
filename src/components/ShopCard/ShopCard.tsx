@@ -12,15 +12,20 @@ export interface ShopCardProps extends Shop {}
 export const ShopCard: React.FC<ShopCardProps> = React.memo((props) => {
 	const { name, city, address } = props;
 	const dispatch = useDispatch();
-	const {
-		info: { role, onRequest },
-	} = useUser();
+	const { info } = useUser();
 	const toBeShoper = React.useCallback(() => {
 		dispatch(addRequestThunk(REQUEST_TYPE.TO_SHOPER, address));
 	}, [address, dispatch]);
 	const deleteShop = React.useCallback(() => {
 		dispatch(deleteShopThunk(address));
 	}, [address, dispatch]);
+
+	if (!info) {
+		return null;
+	}
+
+	const { role, onRequest } = info;
+
 	return (
 		<Card>
 			<Card.Header>
