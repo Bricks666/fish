@@ -26,8 +26,7 @@ export const SalesmenList: React.FC<SalesmenListProps> = (props) => {
 							<UserInfo {...salesman}>
 								<Button
 									as={Link as any}
-									to={`/salesmen?${SEARCH_PARAMS.shopAddress}=${shopAddress}&${SEARCH_PARAMS.subjectAddress}=${salesman.address}`}
-								>
+									to={`/salesmen?${SEARCH_PARAMS.shopAddress}=${shopAddress}&${SEARCH_PARAMS.subjectAddress}=${salesman.address}`}>
 									Подробнее
 								</Button>
 							</UserInfo>

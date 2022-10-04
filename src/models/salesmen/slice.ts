@@ -42,9 +42,7 @@ export const salesmenReducer = (
 		case DELETE_SALESMAN: {
 			return {
 				...state,
-				salesmen: state.salesmen.filter(
-					(salesman) => salesman.address !== payload.salesmanAddress
-				),
+				salesmen: state.salesmen.filter((salesman) => salesman.address !== payload.salesmanAddress),
 			};
 		}
 		case TOGGLE_LOADING: {

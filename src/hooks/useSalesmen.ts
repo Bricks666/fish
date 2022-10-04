@@ -1,9 +1,5 @@
 import { useEffect } from 'react';
-import {
-	loadSalesmenThunk,
-	resetSalesmenAC,
-	subscribeNewSalesmanThunk,
-} from '@/models/salesmen';
+import { loadSalesmenThunk, resetSalesmenAC, subscribeNewSalesmanThunk } from '@/models/salesmen';
 import { useTypedDispatch } from './useTypedDispatch';
 import { useTypedSelector } from './useTypedSelector';
 import { Address } from '@/interfaces/web3';

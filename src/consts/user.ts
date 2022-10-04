@@ -1,11 +1,4 @@
-export type Role =
-	| 'GUEST'
-	| 'USER'
-	| 'SHOPER'
-	| 'ADMIN'
-	| 'SHOP'
-	| 'BANK'
-	| 'PROVIDER';
+export type Role = 'GUEST' | 'USER' | 'SHOPER' | 'ADMIN' | 'SHOP' | 'BANK' | 'PROVIDER';
 
 export const ROLES: Record<Role, number> = {
 	GUEST: -1,

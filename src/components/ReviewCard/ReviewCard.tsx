@@ -13,17 +13,7 @@ export interface ReviewCardProps extends Review {
 }
 
 export const ReviewCard: React.FC<ReviewCardProps> = (props) => {
-	const {
-		id,
-		body,
-		subjectAddress,
-		mark,
-		likes,
-		dislikes,
-		authAddress,
-		isMarked,
-		isGuest,
-	} = props;
+	const { id, body, subjectAddress, mark, likes, dislikes, authAddress, isMarked, isGuest } = props;
 	const mayMark = !(isMarked || isGuest) && !!authAddress;
 	return (
 		<Card>
@@ -65,8 +55,7 @@ export const ReviewCard: React.FC<ReviewCardProps> = (props) => {
 			<Card.Footer>
 				<Card.Link
 					as={Link as any}
-					to={`/reviews?${SEARCH_PARAMS.subjectAddress}=${subjectAddress}&${SEARCH_PARAMS.reviewId}=${id}`}
-				>
+					to={`/reviews?${SEARCH_PARAMS.subjectAddress}=${subjectAddress}&${SEARCH_PARAMS.reviewId}=${id}`}>
 					Подробнее
 				</Card.Link>
 				{mayMark && <Buttons subjectAddress={subjectAddress} reviewId={id} />}

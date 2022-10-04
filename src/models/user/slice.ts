@@ -124,8 +124,7 @@ export const subscribeChangeInfoThunk = () => {
 
 		const unsubscribe = subscribe({
 			event: 'changeRoleEvent',
-			callback: ({ newRole }: { newRole: number }) =>
-				dispatch(changeRoleAC(newRole)),
+			callback: ({ newRole }: { newRole: number }) => dispatch(changeRoleAC(newRole)),
 			filter: { Address: address },
 		});
 

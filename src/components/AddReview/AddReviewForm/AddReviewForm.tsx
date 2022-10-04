@@ -9,9 +9,7 @@ export interface AddReviewFormProps {
 	readonly subjectAddress: Address;
 }
 
-export const AddReviewForm: React.FC<AddReviewFormProps> = ({
-	subjectAddress,
-}) => {
+export const AddReviewForm: React.FC<AddReviewFormProps> = ({ subjectAddress }) => {
 	const { reset: resetReview, ...review } = useField('');
 	const { reset: resetMark, ...mark } = useField(5);
 	const dispatch = useTypedDispatch();

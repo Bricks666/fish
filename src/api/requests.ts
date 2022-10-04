@@ -18,16 +18,10 @@ export const addRequestApi = async (
 ): Promise<void> => {
 	await contract.methods.addRequest(type, shopAddress).send({ from: address });
 };
-export const acceptRequestApi = async (
-	address: Address,
-	requestId: number
-): Promise<void> => {
+export const acceptRequestApi = async (address: Address, requestId: number): Promise<void> => {
 	await contract.methods.acceptRequest(requestId).send({ from: address });
 };
 
-export const cancelRequestApi = async (
-	address: Address,
-	requestId: number
-): Promise<void> => {
+export const cancelRequestApi = async (address: Address, requestId: number): Promise<void> => {
 	await contract.methods.cancelRequest(requestId).send({ from: address });
 };

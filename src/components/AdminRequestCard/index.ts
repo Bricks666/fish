@@ -1,4 +1,1 @@
-export {
-	AdminRequestCard,
-	type AdminRequestCardProps,
-} from './AdminRequestCard';
+export { AdminRequestCard, type AdminRequestCardProps } from './AdminRequestCard';

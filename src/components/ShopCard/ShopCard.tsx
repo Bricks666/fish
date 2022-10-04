@@ -33,9 +33,7 @@ export const ShopCard: React.FC<ShopCardProps> = React.memo((props) => {
 				</Card.Text>
 			</Card.Body>
 			<Card.Footer>
-				{role === ROLES.USER && !onRequest && (
-					<Button onClick={toBeShoper}>Стать продавцом</Button>
-				)}
+				{role === ROLES.USER && !onRequest && <Button onClick={toBeShoper}>Стать продавцом</Button>}
 				{role === ROLES.ADMIN && (
 					<Button onClick={deleteShop} variant='danger'>
 						Удалить

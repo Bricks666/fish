@@ -13,9 +13,7 @@ export const getCommentApi = async (
 	reviewId: number,
 	commentId: number
 ): Promise<CommentResponse> => {
-	return contract.methods
-		.getComment(subjectAddress, reviewId, commentId)
-		.call();
+	return contract.methods.getComment(subjectAddress, reviewId, commentId).call();
 };
 
 export const addCommentApi = async (
@@ -24,7 +22,5 @@ export const addCommentApi = async (
 	reviewId: number,
 	text: string
 ): Promise<void> => {
-	await contract.methods
-		.addComment(subjectAddress, reviewId, text)
-		.send({ from: sender });
+	await contract.methods.addComment(subjectAddress, reviewId, text).send({ from: sender });
 };

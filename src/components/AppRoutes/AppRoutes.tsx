@@ -6,36 +6,33 @@ import { AuthRoute } from '../AuthRoute';
 
 export interface AppRoutesProps {}
 
-export const AppRoutes: React.FC<AppRoutesProps> = React.memo(
-	function AppRoutes() {
-		return (
-			<React.Suspense
-				fallback={(
-					<Container>
-						<Spinner animation='border' />
-					</Container>
-				)}
-			>
-				<Routes>
-					{routes.map(({ Component, path, isOnlyAuth }) => {
-						return (
-							<Route
-								path={path}
-								element={
-									isOnlyAuth ? (
-										<AuthRoute>
-											<Component />
-										</AuthRoute>
-									) : (
+export const AppRoutes: React.FC<AppRoutesProps> = React.memo(function AppRoutes() {
+	return (
+		<React.Suspense
+			fallback={
+				<Container>
+					<Spinner animation='border' />
+				</Container>
+			}>
+			<Routes>
+				{routes.map(({ Component, path, isOnlyAuth }) => {
+					return (
+						<Route
+							path={path}
+							element={
+								isOnlyAuth ? (
+									<AuthRoute>
 										<Component />
-									)
-								}
-								key={path}
-							/>
-						);
-					})}
-				</Routes>
-			</React.Suspense>
-		);
-	}
-);
+									</AuthRoute>
+								) : (
+									<Component />
+								)
+							}
+							key={path}
+						/>
+					);
+				})}
+			</Routes>
+		</React.Suspense>
+	);
+});

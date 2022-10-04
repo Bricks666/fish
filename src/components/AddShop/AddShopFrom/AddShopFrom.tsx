@@ -16,9 +16,7 @@ export const AddShopFrom: React.FC = () => {
 	const onSubmit = React.useCallback<React.FormEventHandler<HTMLFormElement>>(
 		async (evt) => {
 			evt.preventDefault();
-			dispatch(
-				addShopThunk(account.value, login.value, name.value, city.value)
-			);
+			dispatch(addShopThunk(account.value, login.value, name.value, city.value));
 			resetAccount();
 			resetLogin();
 			resetName();

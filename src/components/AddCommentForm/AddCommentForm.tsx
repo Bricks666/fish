@@ -10,10 +10,7 @@ export interface AddCommentFormProps {
 	readonly reviewId: number;
 }
 
-export const AddCommentForm: React.FC<AddCommentFormProps> = ({
-	subjectAddress,
-	reviewId,
-}) => {
+export const AddCommentForm: React.FC<AddCommentFormProps> = ({ subjectAddress, reviewId }) => {
 	const { reset: resetComment, ...comment } = useField('');
 	const dispatch = useTypedDispatch();
 

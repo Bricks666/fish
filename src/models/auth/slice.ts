@@ -82,11 +82,7 @@ export const logoutAC = () => {
 	};
 };
 
-export const loginThunk = (
-	address: Address,
-	login: string,
-	password: string
-) => {
+export const loginThunk = (address: Address, login: string, password: string) => {
 	return async (dispatch: AppDispatch) => {
 		try {
 			await loginApi(address, login, password);
@@ -95,20 +91,12 @@ export const loginThunk = (
 			return true;
 		} catch (e) {
 			console.log(e);
-			dispatch(
-				setLoginErrorAC(
-					'Пользователь не зарегистрирован/Невеный логин или паоль'
-				)
-			);
+			dispatch(setLoginErrorAC('Пользователь не зарегистрирован/Невеный логин или паоль'));
 		}
 	};
 };
 
-export const registrationThunk = (
-	address: Address,
-	login: string,
-	name: string
-) => {
+export const registrationThunk = (address: Address, login: string, name: string) => {
 	return async (dispatch: AppDispatch) => {
 		try {
 			await registrationApi(address, login, name);

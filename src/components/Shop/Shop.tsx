@@ -32,14 +32,8 @@ export const Shop: React.FC = () => {
 			<ShopCard {...shop} />
 			<Navigation navigation={navigation} />
 			<Routes>
-				<Route
-					path='salesmen'
-					element={<SalesmenList shopAddress={shop.address} />}
-				/>
-				<Route
-					path='reviews'
-					element={<Reviews subjectAddress={shop.address} />}
-				/>
+				<Route path='salesmen' element={<SalesmenList shopAddress={shop.address} />} />
+				<Route path='reviews' element={<Reviews subjectAddress={shop.address} />} />
 				<Route path='*' element={<Navigate to='salesmen' replace />} />
 			</Routes>
 		</Container>

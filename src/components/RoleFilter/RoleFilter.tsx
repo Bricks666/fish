@@ -6,9 +6,7 @@ export interface RoleFilterProps {
 	readonly invert?: boolean;
 }
 
-export const RoleFilter: React.FC<React.PropsWithChildren<RoleFilterProps>> = (
-	props
-) => {
+export const RoleFilter: React.FC<React.PropsWithChildren<RoleFilterProps>> = (props) => {
 	const { children, roles, invert } = props;
 	const {
 		info: { role },

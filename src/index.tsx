@@ -7,9 +7,7 @@ import { store } from './models';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const root = ReactDOM.createRoot(
-	document.getElementById('root') as HTMLElement
-);
+const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
 	<BrowserRouter basename={process.env.PUBLIC_URL}>
 		<Provider store={store}>

@@ -136,11 +136,7 @@ export const loadReviewsThunk = (subjectAddress: Address) => {
 	};
 };
 
-export const addReviewThunk = (
-	subjectAddress: Address,
-	text: string,
-	mark: number
-) => {
+export const addReviewThunk = (subjectAddress: Address, text: string, mark: number) => {
 	return async (_: AppDispatch, getState: () => AppState) => {
 		const { address } = getState().auth;
 		await addReviewApi(address, subjectAddress, text, mark);
@@ -154,10 +150,7 @@ export const likeReviewThunk = (subjectAddress: Address, reviewId: number) => {
 	};
 };
 
-export const dislikeReviewThunk = (
-	subjectAddress: Address,
-	reviewId: number
-) => {
+export const dislikeReviewThunk = (subjectAddress: Address, reviewId: number) => {
 	return async (_: AppDispatch, getState: () => AppState) => {
 		const { address } = getState().auth;
 		await dislikeReviewApi(address, subjectAddress, reviewId);

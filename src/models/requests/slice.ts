@@ -199,9 +199,7 @@ export const loadMyRequestsThunk = () => {
 		try {
 			dispatch(toggleLoadingAC(true));
 			const response = await getRequestsApi();
-			dispatch(
-				setMyRequestsAC(filterMyRequests(response, address).map(converter))
-			);
+			dispatch(setMyRequestsAC(filterMyRequests(response, address).map(converter)));
 			dispatch(toggleLoadingAC(false));
 		} catch (e) {
 			console.log(e);

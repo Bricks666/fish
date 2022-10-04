@@ -29,10 +29,7 @@ export const ReviewsList: React.FC<ReviewsListProps> = (props) => {
 							<ReviewCard
 								{...review}
 								isGuest={role === ROLES.GUEST}
-								isMarked={
-									review.likes.includes(address) ||
-									review.dislikes.includes(address)
-								}
+								isMarked={review.likes.includes(address) || review.dislikes.includes(address)}
 								authAddress={authAddress}
 							/>
 						</ListGroup.Item>

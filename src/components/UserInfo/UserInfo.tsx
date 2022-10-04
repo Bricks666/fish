@@ -6,13 +6,10 @@ import { User } from '@/models/salesmen';
 
 export interface UserInfoProps extends User {}
 
-export const UserInfo: React.FC<React.PropsWithChildren<UserInfoProps>> = (
-	props
-) => {
+export const UserInfo: React.FC<React.PropsWithChildren<UserInfoProps>> = (props) => {
 	const { login, address, name, role, shopAddress, children } = props;
 
-	const showShop: boolean =
-		!!shopAddress && Web3.utils.hexToNumberString(shopAddress) !== '0';
+	const showShop: boolean = !!shopAddress && Web3.utils.hexToNumberString(shopAddress) !== '0';
 	return (
 		<Container>
 			<ListGroup as='dl'>

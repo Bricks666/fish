@@ -101,10 +101,7 @@ export const resetCommentsAC = () => {
 	};
 };
 
-export const loadCommentsThunk = (
-	subjectAddress: Address,
-	reviewId: number
-) => {
+export const loadCommentsThunk = (subjectAddress: Address, reviewId: number) => {
 	return async (dispatch: AppDispatch) => {
 		dispatch(toggleLoadingAC(true));
 		const comments = await getCommentsApi(subjectAddress, reviewId);
@@ -113,30 +110,19 @@ export const loadCommentsThunk = (
 	};
 };
 
-export const addCommentThunk = (
-	subjectAddress: Address,
-	reviewId: number,
-	text: string
-) => {
+export const addCommentThunk = (subjectAddress: Address, reviewId: number, text: string) => {
 	return async (_: AppDispatch, getState: () => AppState) => {
 		const { address } = getState().auth;
 		await addCommentApi(address, subjectAddress, reviewId, text);
 	};
 };
 
-export const subscribeNewCommentThunk = (
-	subjectAddress: Address,
-	reviewId: number
-) => {
+export const subscribeNewCommentThunk = (subjectAddress: Address, reviewId: number) => {
 	return async (dispatch: AppDispatch) => {
 		const subscription = subscribe({
 			event: 'newComment',
 			callback: async ({ idComment }: { idComment: number }) => {
-				const comment = await getCommentApi(
-					subjectAddress,
-					reviewId,
-					idComment
-				);
+				const comment = await getCommentApi(subjectAddress, reviewId, idComment);
 				dispatch(addCommentAC(converter(comment)));
 			},
 			filter: { subjectAddress, reviewId },

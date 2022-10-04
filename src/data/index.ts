@@ -1,6 +1,5 @@
 import { AbiItem } from 'web3-utils';
 
-export const address = '0xb603A3451298fC45bfe523223E02674bBcb6b9Af';
 export const abi: AbiItem[] = [
 	{
 		inputs: [],

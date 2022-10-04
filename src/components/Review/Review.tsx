@@ -20,8 +20,7 @@ export const Review: React.FC<ReviewProps> = (props) => {
 	if (!review) {
 		return null;
 	}
-	const isMarked =
-		review.dislikes.includes(address) || review.likes.includes(address);
+	const isMarked = review.dislikes.includes(address) || review.likes.includes(address);
 	return (
 		<ReviewCard
 			{...review}

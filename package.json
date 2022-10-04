@@ -25,8 +25,10 @@
 		"eject": "react-scripts eject",
 		"lint": "eslint --ext .tsx,.ts src",
 		"lint:fix": "eslint --ext .tsx,.ts,.js,.jsx src --fix",
+		"prettier": "prettier --write --config ./.prettierrc src",
 		"gen:component": "generate-react component",
-		"gen:page": "generate-react component --type=page"
+		"gen:page": "generate-react component --type=page",
+		"prepare": "husky install"
 	},
 	"eslintConfig": {
 		"extends": [
@@ -59,11 +61,14 @@
 		"crypto-browserify": "^3.12.0",
 		"eslint": "^8.24.0",
 		"eslint-config-airbnb": "^19.0.4",
+		"eslint-config-prettier": "^8.5.0",
 		"eslint-plugin-import": "^2.26.0",
 		"eslint-plugin-jsx-a11y": "^6.6.1",
 		"generate-react-cli": "^7.3.0",
 		"https-browserify": "^1.0.0",
+		"husky": "^8.0.1",
 		"os-browserify": "^0.3.0",
+		"prettier": "^2.7.1",
 		"process": "^0.11.10",
 		"react-app-rewired": "^2.2.1",
 		"stream-browserify": "^3.0.0",

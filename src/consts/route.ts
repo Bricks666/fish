@@ -4,7 +4,7 @@ export interface Params {
 	readonly subjectAddress: string;
 }
 
-export const SEARCH_PARAMS:Params = {
+export const SEARCH_PARAMS: Params = {
 	shopAddress: 'sp-adr',
 	reviewId: 'rw-id',
 	subjectAddress: 'sub-adr',

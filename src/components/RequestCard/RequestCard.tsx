@@ -1,28 +1,13 @@
 import * as React from 'react';
 import { Card } from 'react-bootstrap';
 import { Request } from '@/models/requests';
-import {
-	REQUEST_TYPE,
-	REQUEST_TYPE_NAME,
-	STATUSES_NAME,
-} from '@/consts/request';
+import { REQUEST_TYPE, REQUEST_TYPE_NAME, STATUSES_NAME } from '@/consts/request';
 import { ROLES_NAME } from '@/consts';
 
 export interface RequestCardProps extends Request {}
 
-export const RequestCard: React.FC<
-	React.PropsWithChildren<RequestCardProps>
-> = (props) => {
-	const {
-		id,
-		type,
-		sender,
-		currentRole,
-		newRole,
-		status,
-		shopAddress,
-		children,
-	} = props;
+export const RequestCard: React.FC<React.PropsWithChildren<RequestCardProps>> = (props) => {
+	const { id, type, sender, currentRole, newRole, status, shopAddress, children } = props;
 	return (
 		<Card>
 			<Card.Header>
@@ -49,9 +34,7 @@ export const RequestCard: React.FC<
 					Текущий статус:
 					{STATUSES_NAME[status]}
 				</Card.Text>
-				{type === REQUEST_TYPE.TO_SHOPER && (
-					<Card.Text>{shopAddress}</Card.Text>
-				)}
+				{type === REQUEST_TYPE.TO_SHOPER && <Card.Text>{shopAddress}</Card.Text>}
 			</Card.Body>
 			{children}
 		</Card>

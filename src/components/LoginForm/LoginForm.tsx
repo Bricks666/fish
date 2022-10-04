@@ -19,9 +19,7 @@ export const LoginForm: React.FC<LoginFormProps> = () => {
 	const onSubmit = React.useCallback<React.FormEventHandler<HTMLFormElement>>(
 		async (evt) => {
 			evt.preventDefault();
-			const isLogin = await dispatch(
-				loginThunk(account.value, login.value, password.value)
-			);
+			const isLogin = await dispatch(loginThunk(account.value, login.value, password.value));
 			if (isLogin) {
 				navigate('/profile', { replace: true });
 			}

@@ -1,10 +1,5 @@
 import { PayloadAction } from '@reduxjs/toolkit';
-import {
-	addShopApi,
-	deleteShopApi,
-	getShopAddressesApi,
-	getShopApi,
-} from '@/api/shops';
+import { addShopApi, deleteShopApi, getShopAddressesApi, getShopApi } from '@/api/shops';
 import { subscribe } from '@/api/core';
 import { Shop, ShopsState } from './types';
 import { Address } from '@/interfaces/web3';
@@ -46,9 +41,7 @@ export const shopsReducer = (
 		case DELETE_SHOP: {
 			return {
 				...state,
-				shops: state.shops.filter(
-					(shop) => shop.address !== payload.shopAddress
-				),
+				shops: state.shops.filter((shop) => shop.address !== payload.shopAddress),
 			};
 		}
 		case TOGGLE_LOADING: {
@@ -149,12 +142,7 @@ export const deleteShopThunk = (shopAddress: Address) => {
 		await deleteShopApi(address, shopAddress);
 	};
 };
-export const addShopThunk = (
-	shopAddress: Address,
-	login: string,
-	name: string,
-	city: string
-) => {
+export const addShopThunk = (shopAddress: Address, login: string, name: string, city: string) => {
 	return async (_: AppDispatch, getState: () => AppState) => {
 		const { address } = getState().auth;
 		await addShopApi(address, shopAddress, login, name, city);
@@ -177,8 +165,7 @@ export const subscribeDeleteShopThunk = () => {
 	return async (dispatch: AppDispatch) => {
 		const unsubscribe = subscribe({
 			event: 'delShop',
-			callback: ({ Address }: { Address: Address }) =>
-				dispatch(deleteShopAC(Address)),
+			callback: ({ Address }: { Address: Address }) => dispatch(deleteShopAC(Address)),
 		});
 		dispatch(setUnsubscribesAC(unsubscribe));
 	};
