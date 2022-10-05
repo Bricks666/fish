@@ -1,5 +1,4 @@
-import { CommentResponse } from '@/interfaces/response';
-import { Comment } from './types';
+import { Comment, CommentResponse } from './types';
 
 export const converter = (comment: CommentResponse): Comment => {
 	return {

@@ -3,8 +3,8 @@ import { Container, ListGroup, Spinner } from 'react-bootstrap';
 import { ReviewCard } from '../ReviewCard';
 import { ROLES } from '@/consts';
 import { Address } from '@/packages/web3';
-import { useReviews } from '@/hooks/useReviews';
 import { useUser } from '@/hooks/useUser';
+import { useGetReviewsQuery } from '@/models/reviews';
 
 export interface ReviewsListProps {
 	readonly subjectAddress: Address;
@@ -12,7 +12,7 @@ export interface ReviewsListProps {
 
 export const ReviewsList: React.FC<ReviewsListProps> = (props) => {
 	const { subjectAddress } = props;
-	const { isLoading, reviews } = useReviews(subjectAddress);
+	const { data: reviews = [], isLoading } = useGetReviewsQuery({ subjectAddress });
 	const { info } = useUser();
 
 	if (!info) {

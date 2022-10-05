@@ -1,4 +1,4 @@
-import { ReviewResponse } from '@/interfaces/response';
+import { ReviewResponse } from '@/models/reviews';
 import { Address } from '@/packages/web3';
 import { contract } from './core';
 

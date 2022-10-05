@@ -1,4 +1,4 @@
-import { CommentResponse } from '@/interfaces/response';
+import { CommentResponse } from '@/models/comments';
 import { Address } from '@/packages/web3';
 import { contract } from './core';
 

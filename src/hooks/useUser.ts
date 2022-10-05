@@ -1,8 +1,8 @@
-import { useLoginMutation } from '@/models/auth/api';
 import { useGetUserQuery } from '@/models/user';
+import { useLogin } from './useLogin';
 
 export const useUser = () => {
-	const [, { data: address = '' }] = useLoginMutation({ fixedCacheKey: 'login' });
+	const [, { data: address = '' }] = useLogin();
 	const { data: info, isLoading } = useGetUserQuery(address);
 
 	return { info, isLoading };

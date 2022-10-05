@@ -1,4 +1,3 @@
-import { RequestType, Role, Status } from '@/consts';
 import { Address } from '@/packages/web3';
 
 export interface UserResponse {
@@ -6,7 +5,7 @@ export interface UserResponse {
 	readonly Address: Address;
 	readonly password: any;
 	readonly FIO: string;
-	readonly role: Role;
+	readonly role: number;
 	readonly onRequest: boolean;
 	readonly shopAddress?: Address;
 }
@@ -17,30 +16,4 @@ export interface ShopResponse {
 	readonly Name: string;
 	readonly city: string;
 	readonly shopers: Address[];
-}
-
-export interface RequestResponse {
-	readonly id: string;
-	readonly requestType: RequestType;
-	readonly senderAddress: Address;
-	readonly currentRole: Role;
-	readonly newRole: Role;
-	readonly status: Status;
-	readonly shopAddress?: Address;
-}
-
-export interface ReviewResponse {
-	readonly id: string;
-	readonly text: string;
-	readonly subjectAddress: Address;
-	readonly mark: string;
-	readonly likes: Address[];
-	readonly dislikes: Address[];
-}
-
-export interface CommentResponse {
-	readonly id: string;
-	readonly reviewId: string;
-	readonly text: string;
-	readonly subjectAddress: Address;
 }

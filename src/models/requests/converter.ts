@@ -1,5 +1,4 @@
-import { RequestResponse } from '@/interfaces/response';
-import { Request } from './types';
+import { Request, RequestResponse } from './types';
 
 export const converter = (request: RequestResponse): Request => {
 	return {

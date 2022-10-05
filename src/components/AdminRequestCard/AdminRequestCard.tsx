@@ -1,24 +1,32 @@
 import * as React from 'react';
 import { Card, Button } from 'react-bootstrap';
 import { STATUSES } from '@/consts';
-import { acceptRequestThunk, cancelRequestThunk } from '@/models/requests';
 import { RequestCard, RequestCardProps } from '../RequestCard';
-import { useTypedDispatch } from '@/hooks/useTypedDispatch';
+import { useLogin } from '@/hooks/useLogin';
+import { useAcceptRequestMutation, useCancelRequestMutation } from '@/models/requests';
 
 export interface AdminRequestCardProps extends RequestCardProps {}
 
 export const AdminRequestCard: React.FC<AdminRequestCardProps> = (props) => {
 	const { status, id } = props;
+	const [, { data: sender = '' }] = useLogin();
+	const [acceptRequest] = useAcceptRequestMutation();
+	const [cancelRequest] = useCancelRequestMutation();
 	const isFinish = status !== STATUSES.WAITING;
-	const dispatch = useTypedDispatch();
 
 	const onAccept = React.useCallback(() => {
-		dispatch(acceptRequestThunk(id));
-	}, [id, dispatch]);
+		acceptRequest({
+			sender,
+			requestId: id,
+		});
+	}, [id]);
 
 	const onCancel = React.useCallback(() => {
-		dispatch(cancelRequestThunk(id));
-	}, [id, dispatch]);
+		cancelRequest({
+			sender,
+			requestId: id,
+		});
+	}, [id]);
 	return (
 		<RequestCard {...props}>
 			{!isFinish && (

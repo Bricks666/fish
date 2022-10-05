@@ -1,5 +1,5 @@
-import { RequestResponse } from '@/interfaces/response';
 import { Address } from '@/packages/web3';
+import { RequestResponse } from './types';
 
 export const filterMyRequests = (
 	requests: RequestResponse[],

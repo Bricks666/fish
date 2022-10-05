@@ -1,4 +1,4 @@
-import { Address, SubscriptionResult } from '@/packages/web3';
+import { Address } from '@/packages/web3';
 
 export interface Comment {
 	readonly id: number;
@@ -7,8 +7,21 @@ export interface Comment {
 	readonly author: Address;
 }
 
-export interface CommentsState {
-	readonly isLoading: boolean;
-	readonly list: Comment[];
-	readonly subscribes: SubscriptionResult[];
+export interface GetCommentsParams {
+	readonly subjectAddress: Address;
+	readonly reviewId: number;
+}
+
+export interface AddCommentParams {
+	readonly sender: Address;
+	readonly subjectAddress: Address;
+	readonly reviewId: number;
+	readonly text: string;
+}
+
+export interface CommentResponse {
+	readonly id: string;
+	readonly reviewId: string;
+	readonly text: string;
+	readonly subjectAddress: Address;
 }

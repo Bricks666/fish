@@ -4,6 +4,7 @@ import { BaseQueryFn } from '@reduxjs/toolkit/dist/query';
 import { BaseQueryApi, QueryReturnValue } from '@reduxjs/toolkit/dist/query/baseQueryTypes';
 import { Eth } from 'web3-eth';
 import { CallOptions, Contract, ContractSendMethod, SendOptions } from 'web3-eth-contract';
+import { isAddress } from 'web3-utils';
 import { Address } from './types';
 
 const contractRequest = async <
@@ -30,8 +31,11 @@ const contractRequest = async <
 			}
 			data = await method.call(callOptions);
 		} else {
+			if (!sender || !isAddress(sender)) {
+				throw new Error('Invalid sender address');
+			}
 			const sendOptions: SendOptions = {
-				from: sender!,
+				from: sender,
 			};
 			if (value) {
 				sendOptions.value = value;
@@ -41,10 +45,7 @@ const contractRequest = async <
 		}
 	} catch (e) {
 		error = e as Error;
-		console.log(error);
 	}
-
-	console.log(data, error, args);
 
 	return {
 		data,

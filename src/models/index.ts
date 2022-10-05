@@ -1,21 +1,21 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import { setupListeners } from '@reduxjs/toolkit/query';
+import { setupListeners } from '@reduxjs/toolkit/query/react';
 import { addressesApi } from './addresses';
 import { authApi, authReducer } from './auth';
 import { userApi } from './user';
-import { requestsReducer } from './requests';
+import { requestsApi } from './requests';
 import { shopsReducer } from './shops';
 import { salesmenReducer } from './salesmen';
-import { reviewsReducer } from './reviews';
-import { commentsReducer } from './comments';
+import { reviewsApi } from './reviews';
+import { commentsApi } from './comments';
 
 const rootReducer = combineReducers({
 	auth: authReducer,
-	requests: requestsReducer,
 	shops: shopsReducer,
 	salesmen: salesmenReducer,
-	reviews: reviewsReducer,
-	comments: commentsReducer,
+	[reviewsApi.reducerPath]: reviewsApi.reducer,
+	[requestsApi.reducerPath]: requestsApi.reducer,
+	[commentsApi.reducerPath]: commentsApi.reducer,
 	[addressesApi.reducerPath]: addressesApi.reducer,
 	[authApi.reducerPath]: authApi.reducer,
 	[userApi.reducerPath]: userApi.reducer,
@@ -28,7 +28,10 @@ export const store = configureStore({
 		return getDefaultMiddleware()
 			.concat(addressesApi.middleware)
 			.concat(authApi.middleware)
-			.concat(userApi.middleware);
+			.concat(userApi.middleware)
+			.concat(commentsApi.middleware)
+			.concat(requestsApi.middleware)
+			.concat(reviewsApi.middleware);
 	},
 });
 

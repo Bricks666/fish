@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Container, ListGroup, Spinner } from 'react-bootstrap';
 import { Address } from '@/packages/web3';
 import { CommentCard } from './CommentCard';
-import { useComments } from '@/hooks/useComments';
+import { useGetCommentsQuery } from '@/models/comments';
 
 export interface CommentsListProps {
 	readonly subjectAddress: Address;
@@ -11,7 +11,7 @@ export interface CommentsListProps {
 
 export const CommentsList: React.FC<CommentsListProps> = (props) => {
 	const { subjectAddress, reviewId } = props;
-	const { comments, isLoading } = useComments(subjectAddress, reviewId);
+	const { data: comments = [], isLoading } = useGetCommentsQuery({ subjectAddress, reviewId });
 
 	return (
 		<Container>

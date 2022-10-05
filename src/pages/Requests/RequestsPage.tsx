@@ -2,18 +2,9 @@ import * as React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { MyRequestsList } from '@/components/MyRequestsList';
 import { RequestsList } from '@/components/RequestsList';
-import { resetRequestsAC } from '@/models/requests';
 import { MainLayout } from '@/layouts/MainLayout';
-import { useTypedDispatch } from '@/hooks/useTypedDispatch';
 
 const RequestsPage: React.FC = () => {
-	const dispatch = useTypedDispatch();
-	React.useEffect(() => {
-		return () => {
-			dispatch(resetRequestsAC());
-		};
-	}, [dispatch]);
-
 	return (
 		<MainLayout>
 			<h2>Запросы</h2>

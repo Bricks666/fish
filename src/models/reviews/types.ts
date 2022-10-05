@@ -1,4 +1,4 @@
-import { Address, SubscriptionResult } from '@/packages/web3';
+import { Address } from '@/packages/web3';
 
 export interface Review {
 	readonly id: number;
@@ -9,9 +9,32 @@ export interface Review {
 	readonly dislikes: Address[];
 }
 
-export interface ReviewsState {
-	readonly isLoading: boolean;
+export interface ReviewResponse {
+	readonly id: string;
+	readonly text: string;
 	readonly subjectAddress: Address;
-	readonly list: Review[];
-	readonly subscribes: SubscriptionResult[];
+	readonly mark: string;
+	readonly likes: Address[];
+	readonly dislikes: Address[];
+}
+
+export interface GetReviewsParams {
+	readonly subjectAddress: Address;
+}
+
+export interface GetReviewParams extends GetReviewsParams {
+	readonly reviewId: number;
+}
+
+export interface AddReviewParams {
+	readonly sender: Address;
+	readonly subjectAddress: Address;
+	readonly text: string;
+	readonly mark: number;
+}
+
+export interface ChangeReviewStatusParams {
+	readonly sender: Address;
+	readonly subjectAddress: Address;
+	readonly reviewId: number;
 }

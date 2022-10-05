@@ -4,18 +4,25 @@ import { useDispatch } from 'react-redux';
 import { REQUEST_TYPE } from '@/consts/request';
 import { ROLES } from '@/consts/user';
 import { useUser } from '@/hooks/useUser';
-import { addRequestThunk } from '@/models/requests';
 import { deleteShopThunk, Shop } from '@/models/shops';
+import { useAddRequestMutation } from '@/models/requests';
+import { useLogin } from '@/hooks/useLogin';
 
 export interface ShopCardProps extends Shop {}
 
 export const ShopCard: React.FC<ShopCardProps> = React.memo((props) => {
 	const { name, city, address } = props;
+	const [, { data: sender = '' }] = useLogin();
+	const [addRequest] = useAddRequestMutation();
 	const dispatch = useDispatch();
 	const { info } = useUser();
 	const toBeShoper = React.useCallback(() => {
-		dispatch(addRequestThunk(REQUEST_TYPE.TO_SHOPER, address));
-	}, [address, dispatch]);
+		addRequest({
+			sender,
+			type: REQUEST_TYPE.TO_SHOPER,
+			shopAddress: address,
+		});
+	}, [address, addRequest, sender]);
 	const deleteShop = React.useCallback(() => {
 		dispatch(deleteShopThunk(address));
 	}, [address, dispatch]);

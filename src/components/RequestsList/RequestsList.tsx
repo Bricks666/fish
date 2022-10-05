@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { Container, ListGroup, Spinner } from 'react-bootstrap';
 import { AdminRequestCard } from '../AdminRequestCard';
-import { useRequests } from './useRequests';
+import { useGetAllRequestsQuery } from '@/models/requests';
 
 export const RequestsList: React.FC = () => {
-	const { requests, isLoading } = useRequests();
+	const { data: requests = [], isLoading } = useGetAllRequestsQuery(undefined);
 
 	return (
 		<Container>
