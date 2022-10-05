@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Button } from 'react-bootstrap';
-import { useTypedDispatch } from '@/hooks/useTypedDispatch';
-import { dislikeReviewThunk, likeReviewThunk } from '@/models/reviews';
+import { useDislikeReviewMutation, useLikeReviewMutation } from '@/models/reviews';
 import { Address } from '@/packages/web3';
+import { useLogin } from '@/hooks/useLogin';
 
 export interface ButtonsProps {
 	readonly subjectAddress: Address;
@@ -11,15 +11,25 @@ export interface ButtonsProps {
 
 export const Buttons: React.FC<ButtonsProps> = React.memo((props) => {
 	const { subjectAddress, reviewId } = props;
-	const dispatch = useTypedDispatch();
+	const [, { data: sender = '' }] = useLogin();
+	const [likeReview] = useLikeReviewMutation();
+	const [dislikeReview] = useDislikeReviewMutation();
 
 	const onLike = React.useCallback(() => {
-		dispatch(likeReviewThunk(subjectAddress, reviewId));
-	}, [subjectAddress, reviewId, dispatch]);
+		likeReview({
+			reviewId,
+			sender,
+			subjectAddress,
+		});
+	}, [subjectAddress, reviewId, sender, likeReview]);
 
 	const onDislike = React.useCallback(() => {
-		dispatch(dislikeReviewThunk(subjectAddress, reviewId));
-	}, [subjectAddress, reviewId, dispatch]);
+		dislikeReview({
+			reviewId,
+			sender,
+			subjectAddress,
+		});
+	}, [subjectAddress, reviewId, sender, dislikeReview]);
 
 	return (
 		<>

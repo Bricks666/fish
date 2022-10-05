@@ -38,6 +38,7 @@ export const NavigationItem: React.FC<NavigationItemProps> = React.memo(function
 			)}
 		</Nav.Item>
 	);
+	console.log(props);
 
 	return roles ? (
 		<RoleFilter roles={roles} invert={invert}>

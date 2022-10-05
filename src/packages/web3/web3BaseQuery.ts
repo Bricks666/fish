@@ -26,7 +26,7 @@ const contractRequest = async <
 	try {
 		if (type === 'query') {
 			const callOptions: CallOptions = {};
-			if (sender) {
+			if (sender && !isAddress(sender)) {
 				callOptions.from = sender;
 			}
 			data = await method.call(callOptions);

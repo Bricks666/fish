@@ -2,17 +2,16 @@ import * as React from 'react';
 import { Button, Container, ListGroup, Spinner } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { UserInfo } from '../UserInfo';
-import { useSalesmen } from '@/hooks/useSalesmen';
 import { SEARCH_PARAMS } from '@/consts/route';
-import { Address } from '@/packages/web3';
+import { useGetSalesmenQuery } from '@/models/users';
 
 export interface SalesmenListProps {
-	readonly shopAddress: Address;
+	readonly shopId: number;
 }
 
 export const SalesmenList: React.FC<SalesmenListProps> = (props) => {
-	const { shopAddress } = props;
-	const { isLoading, salesmen } = useSalesmen(shopAddress);
+	const { shopId } = props;
+	const { isLoading, data: salesmen = [] } = useGetSalesmenQuery(shopId);
 
 	return (
 		<Container>
@@ -26,7 +25,7 @@ export const SalesmenList: React.FC<SalesmenListProps> = (props) => {
 							<UserInfo {...salesman}>
 								<Button
 									as={Link as any}
-									to={`/salesmen?${SEARCH_PARAMS.shopAddress}=${shopAddress}&${SEARCH_PARAMS.subjectAddress}=${salesman.address}`}>
+									to={`/salesmen?${SEARCH_PARAMS.shopAddress}=${shopId}&${SEARCH_PARAMS.subjectAddress}=${salesman.address}`}>
 									Подробнее
 								</Button>
 							</UserInfo>

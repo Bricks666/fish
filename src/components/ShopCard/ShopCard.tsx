@@ -32,6 +32,7 @@ export const ShopCard: React.FC<ShopCardProps> = React.memo((props) => {
 	}
 
 	const { role, onRequest } = info;
+	console.log(info);
 
 	return (
 		<Card>

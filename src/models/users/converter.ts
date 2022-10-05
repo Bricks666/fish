@@ -1,6 +1,7 @@
 import { UserResponse } from '@/interfaces/response';
+import { User } from './types';
 
-export const converter = (user: UserResponse): any => {
+export const converter = (user: UserResponse): User => {
 	return {
 		login: user.login,
 		address: user.Address,

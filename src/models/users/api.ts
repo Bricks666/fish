@@ -5,10 +5,21 @@ import { Address } from '@/packages/web3';
 import { converter } from './converter';
 import { UserResponse } from './types';
 
-export const userApi = createApi({
+export const usersApi = createApi({
 	reducerPath: 'api/user',
 	baseQuery: web3BaseQuery(),
 	endpoints: (builder) => ({
+		getSalesmen: builder.query<User[], number>({
+			query: (id) => ({
+				methodName: 'getSalesmen',
+				methodArgs: [id],
+			}),
+
+			transformResponse: (baseQueryReturnValue: UserResponse[]): User[] => {
+				return baseQueryReturnValue.map(converter);
+			},
+		}),
+
 		getUser: builder.query<User, Address>({
 			query: (address) => ({
 				methodName: 'users',
@@ -32,4 +43,4 @@ export const userApi = createApi({
 	}),
 });
 
-export const { useGetUserQuery, useGetBalanceQuery } = userApi;
+export const { useGetUserQuery, useGetBalanceQuery, useGetSalesmenQuery } = usersApi;

@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { Container } from 'react-bootstrap';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { AddShop } from '@/components/AddShop';
 import { Shop } from '@/components/Shop';
 import { ShopsList } from '@/components/ShopsList';
 import { resetShopsAC } from '@/models/shops';
 import { useTypedDispatch } from '@/hooks/useTypedDispatch';
+import { MainLayout } from '@/layouts/MainLayout';
 
 const ShopsPage: React.FC = () => {
 	const dispatch = useTypedDispatch();
@@ -17,14 +17,14 @@ const ShopsPage: React.FC = () => {
 	}, [dispatch]);
 
 	return (
-		<Container>
+		<MainLayout>
 			<Routes>
 				<Route path='/all' element={<ShopsList />} />
 				<Route path='/add' element={<AddShop />} />
 				<Route path=':id/*' element={<Shop />} />
 				<Route path='*' element={<Navigate to='/' replace />} />
 			</Routes>
-		</Container>
+		</MainLayout>
 	);
 };
 

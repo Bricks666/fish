@@ -1,5 +1,4 @@
-import { ReviewResponse } from '@/interfaces/response';
-import { Review } from './types';
+import { Review, ReviewResponse } from './types';
 
 export const converter = (review: ReviewResponse): Review => {
 	return {

@@ -1,27 +1,28 @@
 import * as React from 'react';
 import { Button, Col, Form, Row } from 'react-bootstrap';
 import { useField } from '@/hooks/useField';
-import { addReviewThunk } from '@/models/reviews';
-import { useTypedDispatch } from '@/hooks/useTypedDispatch';
 import { Address } from '@/packages/web3';
+import { useAddReviewMutation } from '@/models/reviews';
+import { useLogin } from '@/hooks/useLogin';
 
 export interface AddReviewFormProps {
 	readonly subjectAddress: Address;
 }
 
 export const AddReviewForm: React.FC<AddReviewFormProps> = ({ subjectAddress }) => {
-	const { reset: resetReview, ...review } = useField('');
-	const { reset: resetMark, ...mark } = useField(5);
-	const dispatch = useTypedDispatch();
+	const text = useField('');
+	const mark = useField(5);
+	const [, { data: sender = '' }] = useLogin();
+	const [addReview] = useAddReviewMutation();
 
 	const onSubmit = React.useCallback<React.FormEventHandler<HTMLFormElement>>(
 		async (evt) => {
 			evt.preventDefault();
-			await dispatch(addReviewThunk(subjectAddress, review.value, mark.value));
-			resetMark();
-			resetReview();
+			await addReview({ sender, subjectAddress, text: text.value, mark: mark.value });
+			mark.reset();
+			text.reset();
 		},
-		[dispatch, subjectAddress, review.value, mark.value, resetReview, resetMark]
+		[subjectAddress, text.value, mark.value]
 	);
 	return (
 		<Form onSubmit={onSubmit}>
@@ -29,13 +30,20 @@ export const AddReviewForm: React.FC<AddReviewFormProps> = ({ subjectAddress }) 
 				<Col>
 					<Form.Group>
 						<Form.Label>Отзыв</Form.Label>
-						<Form.Control {...review} />
+						<Form.Control value={text.value} onChange={text.onChange} />
 					</Form.Group>
 				</Col>
 				<Col xs={3}>
 					<Form.Group>
 						<Form.Label>Оценка</Form.Label>
-						<Form.Control {...mark} type='number' min={0} max={10} step={1} />
+						<Form.Control
+							value={mark.value}
+							onChange={mark.onChange}
+							type='number'
+							min={0}
+							max={10}
+							step={1}
+						/>
 					</Form.Group>
 				</Col>
 			</Row>

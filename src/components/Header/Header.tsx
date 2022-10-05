@@ -1,12 +1,11 @@
+/* eslint-disable no-extra-boolean-cast */
 import * as React from 'react';
 import { Button, Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { ROLES } from '@/consts/user';
-import { logoutAC } from '@/models/auth';
 import { Navigation } from '../Navigation';
-import { useTypedSelector } from '@/hooks/useTypedSelector';
-import { useTypedDispatch } from '@/hooks/useTypedDispatch';
 import { NavigationItemDesc } from '../NavigationItem';
+import { useLogin } from '@/hooks/useLogin';
 
 const navigation: NavigationItemDesc[] = [
 	{
@@ -47,18 +46,13 @@ const navigation: NavigationItemDesc[] = [
 ];
 
 export const Header = () => {
-	const dispatch = useTypedDispatch();
-	const isAuth = useTypedSelector((state) => state.auth.isAuth);
-
-	const onLogout = React.useCallback(() => {
-		dispatch(logoutAC());
-	}, [dispatch]);
+	const [, { data: address }] = useLogin();
 	return (
 		<Navbar>
 			<Navbar.Text>Продавай и покупай</Navbar.Text>
 			<Navigation navigation={navigation} />
-			{isAuth ? (
-				<Button onClick={onLogout}>Выйти</Button>
+			{!!address ? (
+				<Button>Выйти</Button>
 			) : (
 				<Button variant='link' as={Link as any} to='/login'>
 					Войти

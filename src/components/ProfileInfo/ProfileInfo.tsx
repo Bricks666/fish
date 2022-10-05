@@ -3,7 +3,7 @@ import { ListGroup, Spinner } from 'react-bootstrap';
 import { ProfileButtons } from '../ProfileButtons';
 import { UserInfo } from '../UserInfo';
 import { convert } from '@/utils/converts';
-import { useGetBalanceQuery } from '@/models/user';
+import { useGetBalanceQuery } from '@/models/users';
 import { useUser } from '@/hooks/useUser';
 
 export const ProfileInfo: React.FC = () => {
