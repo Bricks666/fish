@@ -184,23 +184,24 @@ contract Shops is Users {
 		createShop(shopAddress, login, shopName, city);
 	}
 
-	function deleteShop(address shopAddress) public isReg(msg.sender) {
+	function deleteShop(uint shopId) public isReg(msg.sender) {
 		require(users[msg.sender].role == ROLES.ADMIN, 'You are not an admin');
 
-		uint256 shopIndex = shopIndexes[shopAddress];
-		require(shops[shopIndex].Address != address(0), 'Shop is deleted');
+		require(shops[shopId].Address != address(0), 'Shop is deleted');
 
-		User[] memory shopSalesmen = salesmen[shopIndex];
+		User[] memory shopSalesmen = salesmen[shopId];
 
 		for (uint256 i = 0; i < shopSalesmen.length; i++) {
-			deleteSalesman(shopIndex, i);
+			deleteSalesman(shopId, i);
 		}
+
+    address shopAddress = shops[shopId].Address;
 
 		delete users[shopAddress];
 		delete shopIndexes[shopAddress];
-		delete shops[shopIndex];
+		delete shops[shopId];
 
-		emit delShop(shopIndex);
+		emit delShop(shopId);
 	}
 
 	function createShop(

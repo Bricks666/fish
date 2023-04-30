@@ -1,80 +1,34 @@
 {
-	"name": "fish",
-	"version": "0.1.0",
-	"private": true,
-	"dependencies": {
-		"@reduxjs/toolkit": "^1.8.5",
-		"@types/react-router-dom": "^5.3.3",
-		"bootstrap": "^5.2.1",
-		"react": "^18.2.0",
-		"react-bootstrap": "^2.5.0",
-		"react-dom": "^18.2.0",
-		"react-redux": "^7.2.9",
-		"react-router-dom": "^6.4.1",
-		"react-scripts": "^5.0.1",
-		"web3": "^1.8.0",
-		"web3-eth": "^1.8.0",
-		"web3-eth-contract": "^1.8.0",
-		"web3-eth-personal": "^1.8.0",
-		"web3-utils": "^1.8.0"
-	},
-	"scripts": {
-		"start": "react-app-rewired start",
-		"build": "react-app-rewired build",
-		"test": "react-scripts test",
-		"eject": "react-scripts eject",
-		"lint": "eslint --ext .tsx,.ts src",
-		"lint:fix": "eslint --ext .tsx,.ts,.js,.jsx src --fix",
-		"prettier": "prettier --write --config ./.prettierrc src",
-		"gen:component": "generate-react component",
-		"gen:page": "generate-react component --type=page",
-		"prepare": "husky install"
-	},
-	"eslintConfig": {
-		"extends": [
-			"react-app",
-			"react-app/jest"
-		]
-	},
-	"browserslist": {
-		"production": [
-			">0.2%",
-			"not dead",
-			"not op_mini all"
-		],
-		"development": [
-			"last 1 chrome version",
-			"last 1 firefox version",
-			"last 1 safari version"
-		]
-	},
-	"devDependencies": {
-		"@redux-devtools/extension": "^3.2.2",
-		"@types/node": "^18.7.22",
-		"@types/react": "^18.0.21",
-		"@types/react-dom": "^18.0.6",
-		"@types/web3": "^1.2.2",
-		"@typescript-eslint/eslint-plugin": "^5.38.0",
-		"@typescript-eslint/parser": "^5.38.0",
-		"assert": "^2.0.0",
-		"buffer": "^6.0.3",
-		"crypto-browserify": "^3.12.0",
-		"eslint": "^8.24.0",
-		"eslint-config-airbnb": "^19.0.4",
-		"eslint-config-prettier": "^8.5.0",
-		"eslint-plugin-import": "^2.26.0",
-		"eslint-plugin-jsx-a11y": "^6.6.1",
-		"generate-react-cli": "^7.3.0",
-		"https-browserify": "^1.0.0",
-		"husky": "^8.0.1",
-		"os-browserify": "^0.3.0",
-		"prettier": "^2.7.1",
-		"process": "^0.11.10",
-		"react-app-rewired": "^2.2.1",
-		"stream-browserify": "^3.0.0",
-		"stream-http": "^3.2.0",
-		"tsconfig-paths-webpack-plugin": "^4.0.0",
-		"typescript": "^4.8.3",
-		"url": "^0.11.0"
-	}
+  "name": "fish",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "run-p type-check build-only",
+    "preview": "vite preview",
+    "build-only": "vite build",
+    "type-check": "vue-tsc --noEmit",
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
+    "format": "prettier --write src/"
+  },
+  "dependencies": {
+    "pinia": "^2.0.32",
+    "vue": "^3.2.47",
+    "vue-router": "^4.1.6"
+  },
+  "devDependencies": {
+    "@rushstack/eslint-patch": "^1.2.0",
+    "@types/node": "^18.14.2",
+    "@vitejs/plugin-vue": "^4.0.0",
+    "@vue/eslint-config-prettier": "^7.1.0",
+    "@vue/eslint-config-typescript": "^11.0.2",
+    "@vue/tsconfig": "^0.1.3",
+    "eslint": "^8.34.0",
+    "eslint-plugin-vue": "^9.9.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.8.4",
+    "typescript": "~4.8.4",
+    "vite": "^4.1.4",
+    "vue-tsc": "^1.2.0"
+  }
 }
