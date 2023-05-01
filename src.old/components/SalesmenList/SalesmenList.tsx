@@ -10,8 +10,8 @@ export interface SalesmenListProps {
 }
 
 export const SalesmenList: React.FC<SalesmenListProps> = (props) => {
-	const { shopId } = props;
-	const { isLoading, data: salesmen = [] } = useGetSalesmenQuery({ shopId });
+	const { shopId, } = props;
+	const { isLoading, data: salesmen = [], } = useGetSalesmenQuery({ shopId, });
 
 	return (
 		<Container>

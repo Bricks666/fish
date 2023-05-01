@@ -16,12 +16,12 @@ const navigation: NavigationItemDesc[] = [
 	{
 		label: 'Отзывы',
 		path: 'reviews',
-	},
+	}
 ];
 
 export const Shop: React.FC = () => {
-	const { shopId } = useParams();
-	const { data: shop } = useGetShopQuery({ shopId: Number(shopId) });
+	const { shopId, } = useParams();
+	const { data: shop, } = useGetShopQuery({ shopId: Number(shopId), });
 
 	if (!shop) {
 		return null;

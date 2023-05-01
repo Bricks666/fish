@@ -6,7 +6,7 @@ import { MainLayout } from '@/layouts/MainLayout';
 import { useLoginMutation } from '@/models/auth/api';
 
 const LoginPage: React.FC = () => {
-	const [, { isError }] = useLoginMutation({ fixedCacheKey: 'login' });
+	const [, { isError, }] = useLoginMutation({ fixedCacheKey: 'login', });
 
 	return (
 		<MainLayout>

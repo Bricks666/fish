@@ -8,8 +8,8 @@ import { useLoginMutation } from '@/models/auth/api';
 export interface LoginFormProps {}
 
 export const LoginForm: React.FC<LoginFormProps> = () => {
-	const { data: addresses = [], isLoading } = useGetAddressesQuery(undefined);
-	const [trigger] = useLoginMutation({ fixedCacheKey: 'login' });
+	const { data: addresses = [], isLoading, } = useGetAddressesQuery(undefined);
+	const [trigger] = useLoginMutation({ fixedCacheKey: 'login', });
 	const account = useField('0');
 	const login = useField('');
 	const password = useField('');
@@ -24,7 +24,7 @@ export const LoginForm: React.FC<LoginFormProps> = () => {
 				password: password.value,
 			});
 			if (isLogin) {
-				navigate('/profile', { replace: true });
+				navigate('/profile', { replace: true, });
 			}
 		},
 		[account.value, password.value, login.value, navigate]

@@ -4,7 +4,7 @@ import { AdminRequestCard } from '../AdminRequestCard';
 import { useGetAllRequestsQuery } from '@/models/requests';
 
 export const RequestsList: React.FC = () => {
-	const { data: requests = [], isLoading } = useGetAllRequestsQuery(undefined);
+	const { data: requests = [], isLoading, } = useGetAllRequestsQuery(undefined);
 
 	return (
 		<Container>

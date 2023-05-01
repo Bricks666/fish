@@ -6,7 +6,6 @@ import { ShopsList } from '@/components/ShopsList';
 import { MainLayout } from '@/layouts/MainLayout';
 
 const ShopsPage: React.FC = () => {
-
 	return (
 		<MainLayout>
 			<Routes>

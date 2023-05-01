@@ -32,7 +32,7 @@ export const requestsApi = createApi({
 		}),
 
 		addRequest: builder.mutation<void, AddRequestParams>({
-			query: ({ sender, type, shopAddress = toHex(0) }) => ({
+			query: ({ sender, type, shopAddress = toHex(0), }) => ({
 				methodName: 'addRequest',
 				methodArgs: [type, shopAddress],
 				sender,
@@ -40,7 +40,7 @@ export const requestsApi = createApi({
 			invalidatesTags: ['Requests'],
 		}),
 		acceptRequest: builder.mutation<void, ChangeRequestStatusParams>({
-			query: ({ requestId, sender }) => ({
+			query: ({ requestId, sender, }) => ({
 				methodName: 'acceptRequest',
 				methodArgs: [requestId],
 				sender,
@@ -48,7 +48,7 @@ export const requestsApi = createApi({
 			invalidatesTags: ['Requests'],
 		}),
 		cancelRequest: builder.mutation<void, ChangeRequestStatusParams>({
-			query: ({ requestId, sender }) => ({
+			query: ({ requestId, sender, }) => ({
 				methodName: 'cancelRequest',
 				methodArgs: [requestId],
 				sender,

@@ -1,16 +1,18 @@
 {
-  "extends": "@vue/tsconfig/tsconfig.web.json",
-  "include": ["env.d.ts", "src/**/*", "src/**/*.vue"],
-  "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["src/*"]
-    }
-  },
+	"extends": "@vue/tsconfig/tsconfig.dom.json",
+	"include": ["env.d.ts", "src/**/*", "src/**/*.vue"],
+	"compilerOptions": {
+		"module": "ESNext",
+    "moduleResolution": "bundler",
+		"baseUrl": ".",
+		"paths": {
+			"@/*": ["src/*"]
+		}
+	},
 
-  "references": [
-    {
-      "path": "./tsconfig.node.json"
-    }
-  ]
+	"references": [
+		{
+			"path": "./tsconfig.node.json"
+		}
+	]
 }

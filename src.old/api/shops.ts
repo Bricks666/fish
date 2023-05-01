@@ -16,11 +16,11 @@ export const addShopApi = async (
 	name: string,
 	city: string
 ): Promise<void> => {
-	await contract.methods.addShop(shopAddress, login, name, city).send({ from: address });
+	await contract.methods.addShop(shopAddress, login, name, city).send({ from: address, });
 };
 
 export const deleteShopApi = async (address: Address, shopAddress: Address): Promise<void> => {
-	await contract.methods.deleteShop(shopAddress).send({ from: address });
+	await contract.methods.deleteShop(shopAddress).send({ from: address, });
 };
 
 export const getSalesmenAddressesApi = async (address: Address): Promise<string[]> => {

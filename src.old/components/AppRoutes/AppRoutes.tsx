@@ -15,7 +15,7 @@ export const AppRoutes: React.FC<AppRoutesProps> = React.memo(function AppRoutes
 				</Container>
 			}>
 			<Routes>
-				{routes.map(({ Component, path, isOnlyAuth }) => {
+				{routes.map(({ Component, path, isOnlyAuth, }) => {
 					return (
 						<Route
 							path={path}

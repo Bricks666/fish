@@ -9,7 +9,7 @@ export const authApi = createApi({
 	baseQuery: web3BaseQuery(),
 	endpoints: (builder) => ({
 		login: builder.mutation<Address, LoginParams>({
-			query: ({ address, login, password }) => ({
+			query: ({ address, login, password, }) => ({
 				methodName: 'login',
 				methodArgs: [login, keccak256(password)],
 				sender: address,
@@ -21,4 +21,4 @@ export const authApi = createApi({
 	}),
 });
 
-export const { useLoginMutation } = authApi;
+export const { useLoginMutation, } = authApi;

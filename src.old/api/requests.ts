@@ -16,12 +16,12 @@ export const addRequestApi = async (
 	type: number,
 	shopAddress = toHex(0)
 ): Promise<void> => {
-	await contract.methods.addRequest(type, shopAddress).send({ from: address });
+	await contract.methods.addRequest(type, shopAddress).send({ from: address, });
 };
 export const acceptRequestApi = async (address: Address, requestId: number): Promise<void> => {
-	await contract.methods.acceptRequest(requestId).send({ from: address });
+	await contract.methods.acceptRequest(requestId).send({ from: address, });
 };
 
 export const cancelRequestApi = async (address: Address, requestId: number): Promise<void> => {
-	await contract.methods.cancelRequest(requestId).send({ from: address });
+	await contract.methods.cancelRequest(requestId).send({ from: address, });
 };

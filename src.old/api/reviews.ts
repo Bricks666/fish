@@ -18,7 +18,7 @@ export const addReviewApi = async (
 	text: string,
 	mark: number
 ): Promise<void> => {
-	await contract.methods.addReview(subjectAddress, text, mark).send({ from: address });
+	await contract.methods.addReview(subjectAddress, text, mark).send({ from: address, });
 };
 
 export const likeReviewApi = async (
@@ -26,7 +26,7 @@ export const likeReviewApi = async (
 	subjectAddress: Address,
 	reviewId: number
 ): Promise<void> => {
-	await contract.methods.likeReview(subjectAddress, reviewId).send({ from: address });
+	await contract.methods.likeReview(subjectAddress, reviewId).send({ from: address, });
 };
 
 export const dislikeReviewApi = async (
@@ -34,5 +34,5 @@ export const dislikeReviewApi = async (
 	subjectAddress: Address,
 	reviewId: number
 ): Promise<void> => {
-	await contract.methods.dislikeReview(subjectAddress, reviewId).send({ from: address });
+	await contract.methods.dislikeReview(subjectAddress, reviewId).send({ from: address, });
 };

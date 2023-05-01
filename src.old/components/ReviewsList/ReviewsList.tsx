@@ -11,15 +11,15 @@ export interface ReviewsListProps {
 }
 
 export const ReviewsList: React.FC<ReviewsListProps> = (props) => {
-	const { subjectAddress } = props;
-	const { data: reviews = [], isLoading } = useGetReviewsQuery({ subjectAddress });
-	const { info } = useUser();
+	const { subjectAddress, } = props;
+	const { data: reviews = [], isLoading, } = useGetReviewsQuery({ subjectAddress, });
+	const { info, } = useUser();
 
 	if (!info) {
 		return null;
 	}
 
-	const { role, address } = info;
+	const { role, address, } = info;
 	return (
 		<Container>
 			{isLoading ? (

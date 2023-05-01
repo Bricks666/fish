@@ -5,7 +5,7 @@ import { Comment } from '@/models/comments';
 export interface CommentCardProps extends Comment {}
 
 export const CommentCard: React.FC<CommentCardProps> = (props) => {
-	const { id, body } = props;
+	const { id, body, } = props;
 	return (
 		<Card>
 			<Card.Header>

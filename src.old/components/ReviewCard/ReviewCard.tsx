@@ -13,7 +13,7 @@ export interface ReviewCardProps extends Review {
 }
 
 export const ReviewCard: React.FC<ReviewCardProps> = (props) => {
-	const { id, body, subjectAddress, mark, likes, dislikes, authAddress, isMarked, isGuest } = props;
+	const { id, body, subjectAddress, mark, likes, dislikes, authAddress, isMarked, isGuest, } = props;
 	const mayMark = !(isMarked || isGuest) && !!authAddress;
 	return (
 		<Card>

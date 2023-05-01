@@ -10,8 +10,8 @@ export interface ButtonsProps {
 }
 
 export const Buttons: React.FC<ButtonsProps> = React.memo((props) => {
-	const { subjectAddress, reviewId } = props;
-	const [, { data: sender = '' }] = useLogin();
+	const { subjectAddress, reviewId, } = props;
+	const [, { data: sender = '', }] = useLogin();
 	const [likeReview] = useLikeReviewMutation();
 	const [dislikeReview] = useDislikeReviewMutation();
 

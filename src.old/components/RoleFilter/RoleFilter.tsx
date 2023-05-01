@@ -7,8 +7,8 @@ export interface RoleFilterProps {
 }
 
 export const RoleFilter: React.FC<React.PropsWithChildren<RoleFilterProps>> = (props) => {
-	const { children, roles, invert } = props;
-	const { info } = useUser();
+	const { children, roles, invert, } = props;
+	const { info, } = useUser();
 
 	if ((invert && roles.includes(info.role)) || (!invert && !roles.includes(info.role))) {
 		return null;

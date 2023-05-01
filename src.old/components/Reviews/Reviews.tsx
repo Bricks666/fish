@@ -11,7 +11,7 @@ export interface ReviewsProps {
 }
 
 export const Reviews: React.FC<ReviewsProps> = React.memo((props) => {
-	const { subjectAddress } = props;
+	const { subjectAddress, } = props;
 	return (
 		<Container>
 			<h3>Отзывы</h3>

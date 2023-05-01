@@ -5,18 +5,18 @@
 	},
 	"extends": [
 		"eslint:recommended",
-    "plugin:vue/vue3-essential",
+		"plugin:vue/vue3-recommended",
 		"plugin:@typescript-eslint/recommended",
 		"plugin:import/recommended",
 		"plugin:import/warnings",
 		"plugin:import/typescript",
-        "@vue/eslint-config-typescript",
-    "@vue/eslint-config-prettier/skip-formatting",
-		"airbnb",
-		"prettier"
+		"prettier",
+		"airbnb-base",
+		"@feature-sliced"
 	],
-	"parser": "@typescript-eslint/parser",
+	"parser": "vue-eslint-parser",
 	"parserOptions": {
+		"parser": "@typescript-eslint/parser",
 		"ecmaVersion": "latest",
 		"sourceType": "module"
 	},
@@ -52,8 +52,8 @@
 		],
 		"no-restricted-exports": "off",
 		"prefer-arrow-callback": "off",
-    "no-shadow": "warn",
-    "default-param-last": "warn",
+		"no-shadow": "warn",
+		"default-param-last": "warn",
 
 		/* IMPORT */
 		"import/extensions": [
@@ -66,7 +66,8 @@
 				"jpeg": "always",
 				"jpg": "always",
 				"avif": "always",
-				"css": "always"
+				"css": "always",
+				"vue": "always"
 			}
 		],
 		"import/no-unresolved": 0,
@@ -76,5 +77,5 @@
 		"@typescript-eslint/no-unused-vars": ["error"],
 		"@typescript-eslint/no-empty-interface": ["off"]
 	},
-	"ignorePatterns": ["templates/**/*", "*.css.d.ts", "config-overrides.js"]
+	"ignorePatterns": ["src.old/**"]
 }

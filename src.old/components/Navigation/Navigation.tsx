@@ -7,7 +7,7 @@ export interface NavigationProps {
 }
 
 export const Navigation: React.FC<NavigationProps> = (props) => {
-	const { navigation } = props;
+	const { navigation, } = props;
 	return (
 		<Nav>
 			{navigation.map((nav) => (

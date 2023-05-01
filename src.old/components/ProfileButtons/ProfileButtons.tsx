@@ -9,15 +9,15 @@ export interface ProfileButtonsProps {
 	readonly role: number;
 }
 
-export const ProfileButtons: React.FC<ProfileButtonsProps> = ({ role }) => {
-	const [, { data: sender = '' }] = useLogin();
+export const ProfileButtons: React.FC<ProfileButtonsProps> = ({ role, }) => {
+	const [, { data: sender = '', }] = useLogin();
 	const [addRequest] = useAddRequestMutation();
 
 	const toBeAdmin = React.useCallback(() => {
-		addRequest({ sender, type: REQUEST_TYPE.TO_ADMIN });
+		addRequest({ sender, type: REQUEST_TYPE.TO_ADMIN, });
 	}, [addRequest, sender]);
 	const toBeUser = React.useCallback(() => {
-		addRequest({ sender, type: REQUEST_TYPE.TO_USER });
+		addRequest({ sender, type: REQUEST_TYPE.TO_USER, });
 	}, [addRequest, sender]);
 
 	let button;

@@ -5,10 +5,10 @@ import { useGetUserRequestsQuery } from '@/models/requests';
 import { useLoginMutation } from '@/models/auth';
 
 export const MyRequestsList: React.FC = () => {
-	const [, { data: address = '' }] = useLoginMutation({
+	const [, { data: address = '', }] = useLoginMutation({
 		fixedCacheKey: 'login',
 	});
-	const { data: requests = [], isLoading } = useGetUserRequestsQuery(address);
+	const { data: requests = [], isLoading, } = useGetUserRequestsQuery(address);
 	return (
 		<Container>
 			{isLoading ? (

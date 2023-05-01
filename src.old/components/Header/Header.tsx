@@ -19,7 +19,7 @@ const navigation: NavigationItemDesc[] = [
 				label: 'Добавить магазин',
 				path: '/shops/add',
 				roles: [ROLES.ADMIN],
-			},
+			}
 		],
 	},
 	{
@@ -39,14 +39,14 @@ const navigation: NavigationItemDesc[] = [
 				label: 'Все запросы',
 				path: '/requests/all',
 				roles: [ROLES.ADMIN],
-			},
+			}
 		],
 		roles: [ROLES.ADMIN, ROLES.SHOPER, ROLES.USER],
-	},
+	}
 ];
 
 export const Header = () => {
-	const [, { data: address }] = useLogin();
+	const [, { data: address, }] = useLogin();
 	return (
 		<Navbar>
 			<Navbar.Text>Продавай и покупай</Navbar.Text>

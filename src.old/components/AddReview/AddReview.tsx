@@ -8,7 +8,7 @@ export interface AddReviewProps {
 }
 
 export const AddReview: React.FC<AddReviewProps> = React.memo((props) => {
-	const { subjectAddress } = props;
+	const { subjectAddress, } = props;
 	return (
 		<Container>
 			<h3>Добавить отзыв</h3>

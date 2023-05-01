@@ -22,5 +22,5 @@ export const addCommentApi = async (
 	reviewId: number,
 	text: string
 ): Promise<void> => {
-	await contract.methods.addComment(subjectAddress, reviewId, text).send({ from: sender });
+	await contract.methods.addComment(subjectAddress, reviewId, text).send({ from: sender, });
 };

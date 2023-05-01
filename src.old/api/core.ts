@@ -11,7 +11,7 @@ export const contract: Contract = new web3.eth.Contract(
 	abi,
 	process.env.REACT_APP_CONTRACT_ADDRESS
 );
-export const { personal } = web3.eth;
+export const { personal, } = web3.eth;
 
 export const unlockAccount = async (wallet: Address): Promise<void> => {
 	await personal.unlockAccount(wallet, '0000', 0);
@@ -31,8 +31,8 @@ export interface SubscribeParams<T extends SubscribeData> {
 }
 
 export const subscribe = <T extends SubscribeData>(params: SubscribeParams<T>) => {
-	const { event, filter, callback } = params;
-	return contract.events[event]({ filter }, (error: Error, data: EventData) => {
+	const { event, filter, callback, } = params;
+	return contract.events[event]({ filter, }, (error: Error, data: EventData) => {
 		if (!error) {
 			callback(data.returnValues as T);
 		}

@@ -10,8 +10,8 @@ export interface CommentsListProps {
 }
 
 export const CommentsList: React.FC<CommentsListProps> = (props) => {
-	const { subjectAddress, reviewId } = props;
-	const { data: comments = [], isLoading } = useGetCommentsQuery({ subjectAddress, reviewId });
+	const { subjectAddress, reviewId, } = props;
+	const { data: comments = [], isLoading, } = useGetCommentsQuery({ subjectAddress, reviewId, });
 
 	return (
 		<Container>

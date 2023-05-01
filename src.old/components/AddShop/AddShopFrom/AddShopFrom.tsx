@@ -6,8 +6,8 @@ import { useCreateShopMutation } from '@/models/shops';
 import { useLogin } from '@/hooks/useLogin';
 
 export const AddShopFrom: React.FC = () => {
-	const { data: addresses = [], isLoading } = useGetAddressesQuery(undefined);
-	const [, { data: sender = '' }] = useLogin();
+	const { data: addresses = [], isLoading, } = useGetAddressesQuery(undefined);
+	const [, { data: sender = '', }] = useLogin();
 	const [createShop] = useCreateShopMutation();
 	const account = useField('0');
 	const login = useField('');

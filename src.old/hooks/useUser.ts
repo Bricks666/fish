@@ -3,8 +3,8 @@ import { useLogin } from './useLogin';
 import { zeroAddress } from '@/consts';
 
 export const useUser = () => {
-	const [, { data: address = zeroAddress }] = useLogin();
-	const { data: info = defaultUser, isLoading } = useGetUserQuery(address);
+	const [, { data: address = zeroAddress, }] = useLogin();
+	const { data: info = defaultUser, isLoading, } = useGetUserQuery(address);
 
-	return { info, isLoading };
+	return { info, isLoading, };
 };

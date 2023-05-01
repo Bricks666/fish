@@ -10,9 +10,9 @@ export interface AddCommentFormProps {
 	readonly reviewId: number;
 }
 
-export const AddCommentForm: React.FC<AddCommentFormProps> = ({ subjectAddress, reviewId }) => {
+export const AddCommentForm: React.FC<AddCommentFormProps> = ({ subjectAddress, reviewId, }) => {
 	const text = useField('');
-	const [, { data: sender = '' }] = useLoginMutation({
+	const [, { data: sender = '', }] = useLoginMutation({
 		fixedCacheKey: 'login',
 	});
 	const [trigger] = useAddCommentMutation();

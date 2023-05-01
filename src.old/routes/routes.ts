@@ -49,5 +49,5 @@ export const routes: Route[] = [
 	{
 		Component: ReviewPage,
 		path: '/reviews',
-	},
+	}
 ];

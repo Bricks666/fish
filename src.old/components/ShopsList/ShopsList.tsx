@@ -5,7 +5,7 @@ import { ShopCard } from '../ShopCard';
 import { useGetShopsQuery } from '@/models/shops';
 
 export const ShopsList: React.FC = () => {
-	const { isLoading, data: shops = [] } = useGetShopsQuery(undefined);
+	const { isLoading, data: shops = [], } = useGetShopsQuery(undefined);
 	return (
 		<Container>
 			{isLoading ? (

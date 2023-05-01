@@ -18,8 +18,8 @@ const contractRequest = async <
 	args: Args,
 	api: BaseQueryApi
 ) => {
-	const { methodName, sender, value, methodArgs = [] } = args;
-	const { type } = api;
+	const { methodName, sender, value, methodArgs = [], } = args;
+	const { type, } = api;
 	const method: ContractSendMethod = contract.methods[methodName](...methodArgs);
 	let data: Result | undefined;
 	let error: Error | undefined;
@@ -64,7 +64,7 @@ const ethRequest = async <
 	eth: Eth,
 	args: Args
 ) => {
-	const { methodName, methodArgs = [] } = args;
+	const { methodName, methodArgs = [], } = args;
 	let data: Result | undefined;
 	let error: Error | undefined;
 	try {
@@ -106,7 +106,7 @@ export const createWeb3BaseQuery = (contract: Contract, eth: Eth) => {
 			args: Args,
 			api: BaseQueryApi
 		): Promise<QueryReturnValue<Result, Error, Meta>> => {
-			const { type = 'contract' } = args;
+			const { type = 'contract', } = args;
 			switch (type) {
 				case 'contract': {
 					return contractRequest(contract, args, api);

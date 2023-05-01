@@ -23,4 +23,4 @@ export const addressesApi = createApi({
 	}),
 });
 
-export const { useGetAddressesQuery, useGetUserAddressesQuery } = addressesApi;
+export const { useGetAddressesQuery, useGetUserAddressesQuery, } = addressesApi;

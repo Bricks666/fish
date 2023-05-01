@@ -9,16 +9,16 @@ export interface AddReviewFormProps {
 	readonly subjectAddress: Address;
 }
 
-export const AddReviewForm: React.FC<AddReviewFormProps> = ({ subjectAddress }) => {
+export const AddReviewForm: React.FC<AddReviewFormProps> = ({ subjectAddress, }) => {
 	const text = useField('');
 	const mark = useField(5);
-	const [, { data: sender = '' }] = useLogin();
+	const [, { data: sender = '', }] = useLogin();
 	const [addReview] = useAddReviewMutation();
 
 	const onSubmit = React.useCallback<React.FormEventHandler<HTMLFormElement>>(
 		async (evt) => {
 			evt.preventDefault();
-			await addReview({ sender, subjectAddress, text: text.value, mark: mark.value });
+			await addReview({ sender, subjectAddress, text: text.value, mark: mark.value, });
 			mark.reset();
 			text.reset();
 		},

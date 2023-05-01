@@ -9,9 +9,9 @@ export interface SalesmanProps {
 }
 
 export const Salesman: React.FC<SalesmanProps> = (props) => {
-	const { salesmanId } = props;
+	const { salesmanId, } = props;
 	const shopId = Number(useSearchParam(SEARCH_PARAMS.shopId));
-	const { data: salesman } = useGetSalesmanQuery({
+	const { data: salesman, } = useGetSalesmanQuery({
 		shopId,
 		salesmanId,
 	});

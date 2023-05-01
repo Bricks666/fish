@@ -10,11 +10,11 @@ import { useLogin } from '@/hooks/useLogin';
 export interface ShopCardProps extends Shop {}
 
 export const ShopCard: React.FC<ShopCardProps> = React.memo((props) => {
-	const { name, city, id, address } = props;
-	const [, { data: sender = '' }] = useLogin();
+	const { name, city, id, address, } = props;
+	const [, { data: sender = '', }] = useLogin();
 	const [addRequest] = useAddRequestMutation();
 	const [deleteShop] = useDeleteShopMutation();
-	const { info } = useUser();
+	const { info, } = useUser();
 	const onSalesmanRequest = React.useCallback(() => {
 		addRequest({
 			sender,
@@ -23,14 +23,14 @@ export const ShopCard: React.FC<ShopCardProps> = React.memo((props) => {
 		});
 	}, [address, addRequest, sender]);
 	const onDeleteShop = React.useCallback(() => {
-		deleteShop({ sender, shopId: id });
+		deleteShop({ sender, shopId: id, });
 	}, [address, id, deleteShop]);
 
 	if (!info) {
 		return null;
 	}
 
-	const { role, onRequest } = info;
+	const { role, onRequest, } = info;
 
 	return (
 		<Card>

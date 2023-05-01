@@ -9,7 +9,7 @@ export const usersApi = createApi({
 	baseQuery: web3BaseQuery(),
 	endpoints: (builder) => ({
 		getSalesmen: builder.query<User[], GetSalesmenParams>({
-			query: ({ shopId }) => ({
+			query: ({ shopId, }) => ({
 				methodName: 'getSalesmen',
 				methodArgs: [shopId],
 			}),
@@ -20,7 +20,7 @@ export const usersApi = createApi({
 		}),
 
 		getSalesman: builder.query<User, GetSalesmanParams>({
-			query: ({ shopId, salesmanId }) => ({
+			query: ({ shopId, salesmanId, }) => ({
 				methodName: 'salesmen',
 				methodArgs: [shopId, salesmanId],
 			}),
@@ -53,5 +53,4 @@ export const usersApi = createApi({
 	}),
 });
 
-export const { useGetUserQuery, useGetBalanceQuery, useGetSalesmenQuery, useGetSalesmanQuery } =
-	usersApi;
+export const { useGetUserQuery, useGetBalanceQuery, useGetSalesmenQuery, useGetSalesmanQuery, } =	usersApi;

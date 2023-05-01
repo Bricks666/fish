@@ -8,7 +8,7 @@ export const commentsApi = createApi({
 	baseQuery: web3BaseQuery(),
 	endpoints: (builder) => ({
 		getComments: builder.query<Comment[], GetCommentsParams>({
-			query: ({ reviewId, subjectAddress }) => ({
+			query: ({ reviewId, subjectAddress, }) => ({
 				methodName: 'getComments',
 				methodArgs: [subjectAddress, reviewId],
 			}),
@@ -18,7 +18,7 @@ export const commentsApi = createApi({
 			providesTags: ['Comments'],
 		}),
 		addComment: builder.mutation<void, AddCommentParams>({
-			query: ({ reviewId, sender, subjectAddress, text }) => ({
+			query: ({ reviewId, sender, subjectAddress, text, }) => ({
 				methodName: 'addComment',
 				methodArgs: [subjectAddress, reviewId, text],
 				sender,
@@ -29,4 +29,4 @@ export const commentsApi = createApi({
 	tagTypes: ['Comments'],
 });
 
-export const { useAddCommentMutation, useGetCommentsQuery } = commentsApi;
+export const { useAddCommentMutation, useGetCommentsQuery, } = commentsApi;

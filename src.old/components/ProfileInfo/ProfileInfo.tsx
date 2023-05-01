@@ -7,8 +7,8 @@ import { useGetBalanceQuery } from '@/models/users';
 import { useUser } from '@/hooks/useUser';
 
 export const ProfileInfo: React.FC = () => {
-	const { info, isLoading } = useUser();
-	const { data: balance = '0' } = useGetBalanceQuery(info?.address || '', {
+	const { info, isLoading, } = useUser();
+	const { data: balance = '0', } = useGetBalanceQuery(info?.address || '', {
 		pollingInterval: 100,
 	});
 

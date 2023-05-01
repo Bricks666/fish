@@ -18,7 +18,7 @@ export const LOGOUT = 'auth/LOGOUT';
 
 export const authReducer = (
 	state = initialState,
-	{ type, payload }: PayloadAction<any>
+	{ type, payload, }: PayloadAction<any>
 ): AuthState => {
 	switch (type) {
 		case SET_AUTH: {

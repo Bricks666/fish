@@ -10,7 +10,7 @@ export interface NavigationItemProps extends NavigationItemDesc {}
 export const NavigationItem: React.FC<NavigationItemProps> = React.memo(function NavigationItem(
 	props
 ) {
-	const { label, path, roles, invert } = props;
+	const { label, path, roles, invert, } = props;
 	const item = (
 		<Nav.Item>
 			{typeof path === 'string' ? (
@@ -19,7 +19,7 @@ export const NavigationItem: React.FC<NavigationItemProps> = React.memo(function
 				</Nav.Link>
 			) : (
 				<NavDropdown title={label}>
-					{path.map(({ label, path, roles, invert }) => {
+					{path.map(({ label, path, roles, invert, }) => {
 						const item = (
 							<NavDropdown.Item as={Link as any} to={path} key={path}>
 								{label}

@@ -8,7 +8,7 @@ export const loginApi = async (
 ): Promise<void> => {
 	const hashPassword = web3.utils.sha3(password);
 	await unlockAccount(address);
-	await contract.methods.login(login, hashPassword).call({ from: address });
+	await contract.methods.login(login, hashPassword).call({ from: address, });
 };
 export const registrationApi = async (
 	address: Address,
@@ -16,5 +16,5 @@ export const registrationApi = async (
 	name: string
 ): Promise<void> => {
 	await unlockAccount(address);
-	await contract.methods.registration(login, name).send({ from: address });
+	await contract.methods.registration(login, name).send({ from: address, });
 };

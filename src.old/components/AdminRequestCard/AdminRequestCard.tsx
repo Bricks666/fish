@@ -8,8 +8,8 @@ import { useAcceptRequestMutation, useCancelRequestMutation } from '@/models/req
 export interface AdminRequestCardProps extends RequestCardProps {}
 
 export const AdminRequestCard: React.FC<AdminRequestCardProps> = (props) => {
-	const { status, id } = props;
-	const [, { data: sender = '' }] = useLogin();
+	const { status, id, } = props;
+	const [, { data: sender = '', }] = useLogin();
 	const [acceptRequest] = useAcceptRequestMutation();
 	const [cancelRequest] = useCancelRequestMutation();
 	const isFinish = status !== STATUSES.WAITING;

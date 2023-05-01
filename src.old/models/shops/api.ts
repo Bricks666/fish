@@ -18,7 +18,7 @@ export const shopsApi = createApi({
 		}),
 
 		getShop: builder.query<Shop, GetShopParams>({
-			query: ({ shopId }) => ({
+			query: ({ shopId, }) => ({
 				methodName: 'shops',
 				methodArgs: [shopId],
 			}),
@@ -29,7 +29,7 @@ export const shopsApi = createApi({
 		}),
 
 		deleteShop: builder.mutation<void, DeleteShopParams>({
-			query: ({ sender, shopId }) => ({
+			query: ({ sender, shopId, }) => ({
 				methodName: 'deleteShop',
 				methodArgs: [shopId],
 				sender,
@@ -38,7 +38,7 @@ export const shopsApi = createApi({
 		}),
 
 		createShop: builder.mutation<void, CreateShopParams>({
-			query: ({ sender, city, login, shopAddress, shopName }) => ({
+			query: ({ sender, city, login, shopAddress, shopName, }) => ({
 				methodName: 'addShop',
 				methodArgs: [shopAddress, login, shopName, city],
 				sender,
@@ -49,5 +49,4 @@ export const shopsApi = createApi({
 	tagTypes: ['Shops'],
 });
 
-export const { useGetShopsQuery, useGetShopQuery, useCreateShopMutation, useDeleteShopMutation } =
-	shopsApi;
+export const { useGetShopsQuery, useGetShopQuery, useCreateShopMutation, useDeleteShopMutation, } =	shopsApi;

@@ -7,7 +7,7 @@ import { useTypedDispatch } from '@/hooks/useTypedDispatch';
 import { useGetAddressesQuery } from '@/models/addresses';
 
 export const RegistrationForm: React.FC = () => {
-	const { data: addresses = [], isLoading } = useGetAddressesQuery(undefined);
+	const { data: addresses = [], isLoading, } = useGetAddressesQuery(undefined);
 	const account = useField('0');
 	const login = useField('');
 	const name = useField('');
@@ -21,7 +21,7 @@ export const RegistrationForm: React.FC = () => {
 				registrationThunk(account.value, login.value, name.value)
 			);
 			if (isRegistration) {
-				navigate('/login', { replace: true });
+				navigate('/login', { replace: true, });
 			}
 		},
 		[account.value, name.value, dispatch, login.value, navigate]

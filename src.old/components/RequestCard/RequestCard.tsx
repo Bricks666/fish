@@ -7,7 +7,7 @@ import { ROLES_NAME } from '@/consts';
 export interface RequestCardProps extends Request {}
 
 export const RequestCard: React.FC<React.PropsWithChildren<RequestCardProps>> = (props) => {
-	const { id, type, sender, currentRole, newRole, status, shopAddress, children } = props;
+	const { id, type, sender, currentRole, newRole, status, shopAddress, children, } = props;
 	return (
 		<Card>
 			<Card.Header>

@@ -12,7 +12,7 @@ export interface CommentsProps {
 }
 
 export const Comments: React.FC<CommentsProps> = (props) => {
-	const { reviewId, subjectAddress } = props;
+	const { reviewId, subjectAddress, } = props;
 	return (
 		<Container>
 			<h3>Комментарии</h3>

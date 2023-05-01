@@ -5,7 +5,7 @@ import {
 	ChangeReviewStatusParams,
 	GetReviewParams,
 	GetReviewsParams,
-	Review,
+	Review
 } from './types';
 
 export const reviewsApi = createApi({
@@ -13,21 +13,21 @@ export const reviewsApi = createApi({
 	baseQuery: web3BaseQuery(),
 	endpoints: (builder) => ({
 		getReviews: builder.query<Review[], GetReviewsParams>({
-			query: ({ subjectAddress }) => ({
+			query: ({ subjectAddress, }) => ({
 				methodName: 'getReviews',
 				methodArgs: [subjectAddress],
 			}),
 			providesTags: ['Reviews'],
 		}),
 		getReview: builder.query<Review, GetReviewParams>({
-			query: ({ subjectAddress, reviewId }) => ({
+			query: ({ subjectAddress, reviewId, }) => ({
 				methodName: 'getReview',
 				methodArgs: [subjectAddress, reviewId],
 			}),
 			providesTags: ['Reviews'],
 		}),
 		addReview: builder.mutation<void, AddReviewParams>({
-			query: ({ mark, sender, subjectAddress, text }) => ({
+			query: ({ mark, sender, subjectAddress, text, }) => ({
 				methodName: 'addReview',
 				methodArgs: [subjectAddress, text, mark],
 				sender,
@@ -35,7 +35,7 @@ export const reviewsApi = createApi({
 			invalidatesTags: ['Reviews'],
 		}),
 		likeReview: builder.mutation<void, ChangeReviewStatusParams>({
-			query: ({ sender, subjectAddress }) => ({
+			query: ({ sender, subjectAddress, }) => ({
 				methodName: 'likeReview',
 				methodArgs: [subjectAddress],
 				sender,
@@ -43,7 +43,7 @@ export const reviewsApi = createApi({
 			invalidatesTags: ['Reviews'],
 		}),
 		dislikeReview: builder.mutation<void, ChangeReviewStatusParams>({
-			query: ({ sender, subjectAddress }) => ({
+			query: ({ sender, subjectAddress, }) => ({
 				methodName: 'dislikeReview',
 				methodArgs: [subjectAddress],
 				sender,

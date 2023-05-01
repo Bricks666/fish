@@ -19,5 +19,5 @@ export const useField = <T>(defaultValue: T): UseFieldResult<T> => {
 		setValue(defaultValue);
 	}, [defaultValue]);
 
-	return { value, onChange, reset, isDirty: value !== defaultValue };
+	return { value, onChange, reset, isDirty: value !== defaultValue, };
 };
