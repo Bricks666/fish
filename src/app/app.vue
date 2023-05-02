@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { BButton } from 'bootstrap-vue';
 import { RouterLink } from 'vue-router';
 import { AppPages } from '@/pages';
 import { URLS } from '@/shared/config';
@@ -6,12 +7,10 @@ import { URLS } from '@/shared/config';
 
 <template>
 	Hello world!
-	<router-link v-slot="{ href, navigate }" :to="URLS.shops" custom>
-		<a-button type="link" :href="href" @click="navigate">Shops</a-button>
-	</router-link>
-	<app-pages />
+	<RouterLink v-slot="{ href, navigate }" :to="URLS.login" custom>
+		<BButton variant="primary" :href="href" @click="navigate">Login</BButton>
+	</RouterLink>
+	<AppPages />
 </template>
 
-<style scoped>
-@import url('ant-design-vue/dist/antd.css');
-</style>
+<style scoped></style>

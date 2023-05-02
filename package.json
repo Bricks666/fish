@@ -13,7 +13,9 @@
 		"format": "prettier --write src/"
 	},
 	"dependencies": {
-		"ant-design-vue": "^3.2.20",
+		"@vue/compat": "^3.2.47",
+		"bootstrap": "^4.6.1",
+		"bootstrap-vue": "^2.23.1",
 		"pinia": "^2.0.32",
 		"vue": "^3.2.47",
 		"vue-router": "^4.1.6",
