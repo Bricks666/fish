@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { Card, Button } from 'react-bootstrap';
-import { STATUSES } from '@/consts';
+import { STATUSES } from '@old/consts';
 import { RequestCard, RequestCardProps } from '../RequestCard';
-import { useLogin } from '@/hooks/useLogin';
-import { useAcceptRequestMutation, useCancelRequestMutation } from '@/models/requests';
+import { useLogin } from '@old/hooks/useLogin';
+import { useAcceptRequestMutation, useCancelRequestMutation } from '@old/models/requests';
 
 export interface AdminRequestCardProps extends RequestCardProps {}
 

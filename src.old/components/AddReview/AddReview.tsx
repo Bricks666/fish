@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Container } from 'react-bootstrap';
-import { Address } from '@/packages/web3';
+import { Address } from '@old/packages/web3';
 import { AddReviewForm } from './AddReviewForm';
 
 export interface AddReviewProps {

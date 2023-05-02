@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { Container } from 'react-bootstrap';
-import { ROLES } from '@/consts';
+import { ROLES } from '@old/consts';
 import { AddComment } from '../AddComment';
 import { RoleFilter } from '../RoleFilter';
 import { CommentsList } from './CommentsList';
-import { Address } from '@/packages/web3';
+import { Address } from '@old/packages/web3';
 
 export interface CommentsProps {
 	readonly reviewId: number;

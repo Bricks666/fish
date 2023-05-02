@@ -1,6 +1,6 @@
-import { defaultUser, useGetUserQuery } from '@/models/users';
+import { defaultUser, useGetUserQuery } from '@old/models/users';
 import { useLogin } from './useLogin';
-import { zeroAddress } from '@/consts';
+import { zeroAddress } from '@old/consts';
 
 export const useUser = () => {
 	const [, { data: address = zeroAddress, }] = useLogin();

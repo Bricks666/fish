@@ -1,4 +1,4 @@
-import { Address } from '@/packages/web3';
+import { Address } from '@old/packages/web3';
 import { RequestResponse } from './types';
 
 export const filterMyRequests = (

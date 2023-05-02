@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { Button, Col, Form, Row } from 'react-bootstrap';
-import { useField } from '@/hooks/useField';
-import { Address } from '@/packages/web3';
-import { useAddReviewMutation } from '@/models/reviews';
-import { useLogin } from '@/hooks/useLogin';
+import { useField } from '@old/hooks/useField';
+import { Address } from '@old/packages/web3';
+import { useAddReviewMutation } from '@old/models/reviews';
+import { useLogin } from '@old/hooks/useLogin';
 
 export interface AddReviewFormProps {
 	readonly subjectAddress: Address;

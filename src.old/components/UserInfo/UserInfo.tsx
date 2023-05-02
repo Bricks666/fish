@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Container, ListGroup } from 'react-bootstrap';
 import Web3 from 'web3';
-import { ROLES_NAME } from '@/consts';
-import { User } from '@/models/users';
+import { ROLES_NAME } from '@old/consts';
+import { User } from '@old/models/users';
 
 export interface UserInfoProps extends User {}
 

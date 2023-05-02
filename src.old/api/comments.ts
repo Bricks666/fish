@@ -1,5 +1,5 @@
-import { CommentResponse } from '@/models/comments';
-import { Address } from '@/packages/web3';
+import { CommentResponse } from '@old/models/comments';
+import { Address } from '@old/packages/web3';
 import { contract } from './core';
 
 export const getCommentsApi = async (

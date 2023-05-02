@@ -2,10 +2,10 @@
 import * as React from 'react';
 import { Button, Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { ROLES } from '@/consts/user';
+import { ROLES } from '@old/consts/user';
 import { Navigation } from '../Navigation';
 import { NavigationItemDesc } from '../NavigationItem';
-import { useLogin } from '@/hooks/useLogin';
+import { useLogin } from '@old/hooks/useLogin';
 
 const navigation: NavigationItemDesc[] = [
 	{

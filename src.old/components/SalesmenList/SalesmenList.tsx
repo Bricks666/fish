@@ -2,8 +2,8 @@ import * as React from 'react';
 import { Button, Container, ListGroup, Spinner } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { UserInfo } from '../UserInfo';
-import { SEARCH_PARAMS } from '@/consts/route';
-import { useGetSalesmenQuery } from '@/models/users';
+import { SEARCH_PARAMS } from '@old/consts/route';
+import { useGetSalesmenQuery } from '@old/models/users';
 
 export interface SalesmenListProps {
 	readonly shopId: number;

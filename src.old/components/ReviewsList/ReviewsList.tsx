@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { Container, ListGroup, Spinner } from 'react-bootstrap';
 import { ReviewCard } from '../ReviewCard';
-import { ROLES } from '@/consts';
-import { Address } from '@/packages/web3';
-import { useUser } from '@/hooks/useUser';
-import { useGetReviewsQuery } from '@/models/reviews';
+import { ROLES } from '@old/consts';
+import { Address } from '@old/packages/web3';
+import { useUser } from '@old/hooks/useUser';
+import { useGetReviewsQuery } from '@old/models/reviews';
 
 export interface ReviewsListProps {
 	readonly subjectAddress: Address;

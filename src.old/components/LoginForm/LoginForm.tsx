@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { Button, Container, Form, Spinner } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-import { useField } from '@/hooks/useField';
-import { useGetAddressesQuery } from '@/models/addresses';
-import { useLoginMutation } from '@/models/auth/api';
+import { useField } from '@old/hooks/useField';
+import { useGetAddressesQuery } from '@old/models/addresses';
+import { useLoginMutation } from '@old/models/auth/api';
 
 export interface LoginFormProps {}
 

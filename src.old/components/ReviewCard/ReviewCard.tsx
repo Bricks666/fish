@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { Card, Col, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { SEARCH_PARAMS } from '@/consts/route';
+import { SEARCH_PARAMS } from '@old/consts/route';
 import { Buttons } from './Buttons';
-import { Review } from '@/models/reviews';
-import { Address } from '@/packages/web3';
+import { Review } from '@old/models/reviews';
+import { Address } from '@old/packages/web3';
 
 export interface ReviewCardProps extends Review {
 	readonly authAddress: Address;

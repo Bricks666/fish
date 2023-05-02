@@ -1,9 +1,9 @@
 import { createApi } from '@reduxjs/toolkit/query/react';
 import { toHex } from 'web3-utils';
-import { web3BaseQuery } from '@/api/core';
+import { web3BaseQuery } from '@old/api/core';
 import { AddRequestParams, ChangeRequestStatusParams, Request, RequestResponse } from './types';
 import { converter } from './converter';
-import { Address } from '@/packages/web3';
+import { Address } from '@old/packages/web3';
 import { filterMyRequests } from './filter';
 
 export const requestsApi = createApi({

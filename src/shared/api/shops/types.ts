@@ -31,3 +31,13 @@ export interface DeleteShopParams extends WithSenderParams {
 export interface GetSalesmenAddressesParams {
 	readonly id: number;
 }
+
+export interface AddSalesmanParams extends WithSenderParams {
+	readonly id: number;
+	readonly salesmanAddress: Address;
+}
+
+export interface DeleteSalesmanParams extends WithSenderParams {
+	readonly id: number;
+	readonly salesmanAddress: Address;
+}

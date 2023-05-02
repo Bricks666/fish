@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Navigate } from 'react-router-dom';
-import { useLoginMutation } from '@/models/auth/api';
+import { useLoginMutation } from '@old/models/auth/api';
 
 export const AuthRoute: React.FC<React.PropsWithChildren> = (props) => {
 	const { children, } = props;

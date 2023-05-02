@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { Button, Form } from 'react-bootstrap';
-import { useField } from '@/hooks/useField';
-import { useAddCommentMutation } from '@/models/comments';
-import { Address } from '@/packages/web3';
-import { useLoginMutation } from '@/models/auth';
+import { useField } from '@old/hooks/useField';
+import { useAddCommentMutation } from '@old/models/comments';
+import { Address } from '@old/packages/web3';
+import { useLoginMutation } from '@old/models/auth';
 
 export interface AddCommentFormProps {
 	readonly subjectAddress: Address;

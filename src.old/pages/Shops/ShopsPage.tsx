@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import { AddShop } from '@/components/AddShop';
-import { Shop } from '@/components/Shop';
-import { ShopsList } from '@/components/ShopsList';
-import { MainLayout } from '@/layouts/MainLayout';
+import { AddShop } from '@old/components/AddShop';
+import { Shop } from '@old/components/Shop';
+import { ShopsList } from '@old/components/ShopsList';
+import { MainLayout } from '@old/layouts/MainLayout';
 
 const ShopsPage: React.FC = () => {
 	return (

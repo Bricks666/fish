@@ -1,11 +1,12 @@
 <script setup lang="ts">
-export interface ShopCardProps {
-	readonly title: string;
+import type { Shop } from '@/shared/api';
+
+export interface ShopCardProps extends Shop {
 }
 defineProps<ShopCardProps>();
 </script>
 <template>
-	<a-card style="background-color: green" >
-		<template #title>{{ title }}</template>
+	<a-card style="background-color: green">
+		<template #title>{{ name }}</template>
 	</a-card>
 </template>

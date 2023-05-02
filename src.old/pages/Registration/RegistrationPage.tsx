@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { RegistrationForm } from '@/components/RegistrationForm';
-import { MainLayout } from '@/layouts/MainLayout';
+import { RegistrationForm } from '@old/components/RegistrationForm';
+import { MainLayout } from '@old/layouts/MainLayout';
 
 const RegistrationPage: React.FC = () => {
 	return (

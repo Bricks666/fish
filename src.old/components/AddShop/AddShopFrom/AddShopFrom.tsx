@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { Container, Form, Spinner, Button } from 'react-bootstrap';
-import { useField } from '@/hooks/useField';
-import { useGetAddressesQuery } from '@/models/addresses';
-import { useCreateShopMutation } from '@/models/shops';
-import { useLogin } from '@/hooks/useLogin';
+import { useField } from '@old/hooks/useField';
+import { useGetAddressesQuery } from '@old/models/addresses';
+import { useCreateShopMutation } from '@old/models/shops';
+import { useLogin } from '@old/hooks/useLogin';
 
 export const AddShopFrom: React.FC = () => {
 	const { data: addresses = [], isLoading, } = useGetAddressesQuery(undefined);

@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { Container, Button } from 'react-bootstrap';
-import { ROLES } from '@/consts/user';
-import { REQUEST_TYPE } from '@/consts/request';
-import { useAddRequestMutation } from '@/models/requests';
-import { useLogin } from '@/hooks/useLogin';
+import { ROLES } from '@old/consts/user';
+import { REQUEST_TYPE } from '@old/consts/request';
+import { useAddRequestMutation } from '@old/models/requests';
+import { useLogin } from '@old/hooks/useLogin';
 
 export interface ProfileButtonsProps {
 	readonly role: number;

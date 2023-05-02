@@ -1,5 +1,5 @@
-import { ShopResponse } from '@/models/shops';
-import { Address } from '@/packages/web3';
+import { ShopResponse } from '@old/models/shops';
+import { Address } from '@old/packages/web3';
 import { contract } from './core';
 
 export const getShopAddressesApi = async (): Promise<string[]> => {

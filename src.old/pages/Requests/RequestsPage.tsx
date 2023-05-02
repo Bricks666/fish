@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import { MyRequestsList } from '@/components/MyRequestsList';
-import { RequestsList } from '@/components/RequestsList';
-import { MainLayout } from '@/layouts/MainLayout';
+import { MyRequestsList } from '@old/components/MyRequestsList';
+import { RequestsList } from '@old/components/RequestsList';
+import { MainLayout } from '@old/layouts/MainLayout';
 
 const RequestsPage: React.FC = () => {
 	return (

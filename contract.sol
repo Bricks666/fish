@@ -363,7 +363,7 @@ contract Reviews is Users {
 		address[] dislikes; // адреса опровергнувших
 	}
 
-	mapping(address => Review[]) public reveiws;
+	mapping(address => Review[]) public reviews;
 
 	event newReview(address indexed subjectAddress, uint256 id);
 	event markReview(address indexed subjectAddress, uint256 indexed reviewId, Mark mark); //1-like 0- dislike
@@ -376,8 +376,8 @@ contract Reviews is Users {
 
 	modifier isNotLikedReview(address subjectAddress, uint256 reviewId) {
 		bool flag = false;
-		for (uint256 i = 0; i < reveiws[subjectAddress][reviewId].likes.length; i++) {
-			if (msg.sender == reveiws[subjectAddress][reviewId].likes[i]) {
+		for (uint256 i = 0; i < reviews[subjectAddress][reviewId].likes.length; i++) {
+			if (msg.sender == reviews[subjectAddress][reviewId].likes[i]) {
 				flag = true;
 				break;
 			}
@@ -388,8 +388,8 @@ contract Reviews is Users {
 
 	modifier isNotDislikedReview(address subjectAddress, uint256 reviewId) {
 		bool flag = false;
-		for (uint256 i = 0; i < reveiws[subjectAddress][reviewId].dislikes.length; i++) {
-			if (msg.sender == reveiws[subjectAddress][reviewId].dislikes[i]) {
+		for (uint256 i = 0; i < reviews[subjectAddress][reviewId].dislikes.length; i++) {
+			if (msg.sender == reviews[subjectAddress][reviewId].dislikes[i]) {
 				flag = true;
 				break;
 			}
@@ -399,7 +399,7 @@ contract Reviews is Users {
 	}
 
 	function getReviews(address subjectAddress) external view returns (Review[] memory) {
-		return reveiws[subjectAddress];
+		return reviews[subjectAddress];
 	}
 
 	function getReview(address subjectAddress, uint256 reviewId)
@@ -407,7 +407,7 @@ contract Reviews is Users {
 		view
 		returns (Review memory)
 	{
-		return reveiws[subjectAddress][reviewId];
+		return reviews[subjectAddress][reviewId];
 	}
 
 	function addReview(
@@ -424,7 +424,7 @@ contract Reviews is Users {
 		isNotLikedReview(subjectAddress, reviewId)
 		isNotDislikedReview(subjectAddress, reviewId)
 	{
-		reveiws[subjectAddress][reviewId].likes.push(msg.sender);
+		reviews[subjectAddress][reviewId].likes.push(msg.sender);
 		emit markReview(subjectAddress, reviewId, Mark.LIKE);
 	}
 
@@ -434,7 +434,7 @@ contract Reviews is Users {
 		isNotLikedReview(subjectAddress, reviewId)
 		isNotDislikedReview(subjectAddress, reviewId)
 	{
-		reveiws[subjectAddress][reviewId].dislikes.push(msg.sender);
+		reviews[subjectAddress][reviewId].dislikes.push(msg.sender);
 		emit markReview(subjectAddress, reviewId, Mark.DISLIKE);
 	}
 
@@ -443,8 +443,8 @@ contract Reviews is Users {
 		string memory text,
 		uint256 mark
 	) private {
-		uint256 countReview = reveiws[subjectAddress].length;
-		reveiws[subjectAddress].push(
+		uint256 countReview = reviews[subjectAddress].length;
+		reviews[subjectAddress].push(
 			Review(countReview, text, subjectAddress, mark, zeroAddress, zeroAddress)
 		);
 		emit newReview(subjectAddress, countReview);

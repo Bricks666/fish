@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useUser } from '@/hooks/useUser';
+import { useUser } from '@old/hooks/useUser';
 
 export interface RoleFilterProps {
 	readonly roles: number[];

@@ -1,6 +1,6 @@
 import { createApi } from '@reduxjs/toolkit/query/react';
-import { web3BaseQuery } from '@/api/core';
-import { Address } from '@/packages/web3';
+import { web3BaseQuery } from '@old/api/core';
+import { Address } from '@old/packages/web3';
 import { converter } from './converter';
 import { GetSalesmanParams, GetSalesmenParams, User, UserResponse } from './types';
 

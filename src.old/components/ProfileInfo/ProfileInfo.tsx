@@ -2,9 +2,9 @@ import * as React from 'react';
 import { ListGroup, Spinner } from 'react-bootstrap';
 import { ProfileButtons } from '../ProfileButtons';
 import { UserInfo } from '../UserInfo';
-import { convert } from '@/utils/converts';
-import { useGetBalanceQuery } from '@/models/users';
-import { useUser } from '@/hooks/useUser';
+import { convert } from '@old/utils/converts';
+import { useGetBalanceQuery } from '@old/models/users';
+import { useUser } from '@old/hooks/useUser';
 
 export const ProfileInfo: React.FC = () => {
 	const { info, isLoading, } = useUser();

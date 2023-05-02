@@ -6,7 +6,7 @@ import { SalesmenList } from '../SalesmenList';
 import { Reviews } from '../Reviews';
 import { Navigation } from '../Navigation';
 import { NavigationItemDesc } from '../NavigationItem';
-import { useGetShopQuery } from '@/models/shops';
+import { useGetShopQuery } from '@old/models/shops';
 
 const navigation: NavigationItemDesc[] = [
 	{

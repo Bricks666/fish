@@ -1,4 +1,4 @@
 import { TypedUseSelectorHook, useSelector } from 'react-redux';
-import { AppState } from '@/models';
+import { AppState } from '@old/models';
 
 export const useTypedSelector: TypedUseSelectorHook<AppState> = useSelector;

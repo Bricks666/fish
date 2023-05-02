@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Button } from 'react-bootstrap';
-import { useDislikeReviewMutation, useLikeReviewMutation } from '@/models/reviews';
-import { Address } from '@/packages/web3';
-import { useLogin } from '@/hooks/useLogin';
+import { useDislikeReviewMutation, useLikeReviewMutation } from '@old/models/reviews';
+import { Address } from '@old/packages/web3';
+import { useLogin } from '@old/hooks/useLogin';
 
 export interface ButtonsProps {
 	readonly subjectAddress: Address;

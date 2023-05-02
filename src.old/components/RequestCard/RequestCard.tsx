@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Card } from 'react-bootstrap';
-import { Request } from '@/models/requests';
-import { REQUEST_TYPE, REQUEST_TYPE_NAME, STATUSES_NAME } from '@/consts/request';
-import { ROLES_NAME } from '@/consts';
+import { Request } from '@old/models/requests';
+import { REQUEST_TYPE, REQUEST_TYPE_NAME, STATUSES_NAME } from '@old/consts/request';
+import { ROLES_NAME } from '@old/consts';
 
 export interface RequestCardProps extends Request {}
 

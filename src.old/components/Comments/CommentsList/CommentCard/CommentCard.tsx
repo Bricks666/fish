@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Card } from 'react-bootstrap';
-import { Comment } from '@/models/comments';
+import { Comment } from '@old/models/comments';
 
 export interface CommentCardProps extends Comment {}
 

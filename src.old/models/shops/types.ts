@@ -1,5 +1,5 @@
-import { MutationRequestParams } from '@/interfaces/model';
-import { Address } from '@/packages/web3';
+import { MutationRequestParams } from '@old/interfaces/model';
+import { Address } from '@old/packages/web3';
 
 export interface Shop {
 	readonly id: number;

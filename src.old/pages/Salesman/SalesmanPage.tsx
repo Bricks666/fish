@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { Reviews } from '@/components/Reviews';
-import { Salesman } from '@/components/Salesman';
-import { SEARCH_PARAMS } from '@/consts';
-import { useSearchParam } from '@/hooks/useSearchParam';
-import { MainLayout } from '@/layouts/MainLayout';
+import { Reviews } from '@old/components/Reviews';
+import { Salesman } from '@old/components/Salesman';
+import { SEARCH_PARAMS } from '@old/consts';
+import { useSearchParam } from '@old/hooks/useSearchParam';
+import { MainLayout } from '@old/layouts/MainLayout';
 
 const SalesmanPage: React.FC = () => {
 	const salesmanId = useSearchParam(SEARCH_PARAMS.subjectId);

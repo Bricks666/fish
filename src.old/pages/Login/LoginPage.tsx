@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { Alert, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { LoginForm } from '@/components/LoginForm';
-import { MainLayout } from '@/layouts/MainLayout';
-import { useLoginMutation } from '@/models/auth/api';
+import { LoginForm } from '@old/components/LoginForm';
+import { MainLayout } from '@old/layouts/MainLayout';
+import { useLoginMutation } from '@old/models/auth/api';
 
 const LoginPage: React.FC = () => {
 	const [, { isError, }] = useLoginMutation({ fixedCacheKey: 'login', });

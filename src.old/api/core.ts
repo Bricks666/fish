@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Contract, EventData } from 'web3-eth-contract';
 import Web3 from 'web3';
-import { Address, createWeb3BaseQuery } from '@/packages/web3';
+import { Address, createWeb3BaseQuery } from '@old/packages/web3';
 import { abi } from '../data';
 
 const networkPath = `${process.env.REACT_APP_NETWORK_HOST}:${process.env.REACT_APP_NETWORK_PORT}`;

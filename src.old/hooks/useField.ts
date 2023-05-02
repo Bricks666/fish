@@ -1,5 +1,5 @@
 import { ChangeEventHandler, useCallback, useState } from 'react';
-import { VoidFunction } from '@/interfaces/common';
+import { VoidFunction } from '@old/interfaces/common';
 
 export interface UseFieldResult<T> {
 	readonly value: T;

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { Container, Spinner } from 'react-bootstrap';
-import { routes } from '@/routes';
+import { routes } from '@old/routes';
 import { AuthRoute } from '../AuthRoute';
 
 export interface AppRoutesProps {}

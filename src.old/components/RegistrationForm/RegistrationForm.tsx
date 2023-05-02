@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { Container, Form, Button, Spinner } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-import { useField } from '@/hooks/useField';
-import { registrationThunk } from '@/models/auth';
-import { useTypedDispatch } from '@/hooks/useTypedDispatch';
-import { useGetAddressesQuery } from '@/models/addresses';
+import { useField } from '@old/hooks/useField';
+import { registrationThunk } from '@old/models/auth';
+import { useTypedDispatch } from '@old/hooks/useTypedDispatch';
+import { useGetAddressesQuery } from '@old/models/addresses';
 
 export const RegistrationForm: React.FC = () => {
 	const { data: addresses = [], isLoading, } = useGetAddressesQuery(undefined);

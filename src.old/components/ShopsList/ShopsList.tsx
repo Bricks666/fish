@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Container, ListGroup, Spinner, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { ShopCard } from '../ShopCard';
-import { useGetShopsQuery } from '@/models/shops';
+import { useGetShopsQuery } from '@old/models/shops';
 
 export const ShopsList: React.FC = () => {
 	const { isLoading, data: shops = [], } = useGetShopsQuery(undefined);

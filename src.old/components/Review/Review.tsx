@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { ReviewCard } from '../ReviewCard';
-import { ROLES } from '@/consts/user';
-import { Address } from '@/packages/web3';
-import { useUser } from '@/hooks/useUser';
-import { useGetReviewQuery } from '@/models/reviews';
+import { ROLES } from '@old/consts/user';
+import { Address } from '@old/packages/web3';
+import { useUser } from '@old/hooks/useUser';
+import { useGetReviewQuery } from '@old/models/reviews';
 
 export interface ReviewProps {
 	readonly id: number;

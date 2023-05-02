@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { Card, Button } from 'react-bootstrap';
-import { REQUEST_TYPE } from '@/consts/request';
-import { ROLES } from '@/consts/user';
-import { useUser } from '@/hooks/useUser';
-import { Shop, useDeleteShopMutation } from '@/models/shops';
-import { useAddRequestMutation } from '@/models/requests';
-import { useLogin } from '@/hooks/useLogin';
+import { REQUEST_TYPE } from '@old/consts/request';
+import { ROLES } from '@old/consts/user';
+import { useUser } from '@old/hooks/useUser';
+import { Shop, useDeleteShopMutation } from '@old/models/shops';
+import { useAddRequestMutation } from '@old/models/requests';
+import { useLogin } from '@old/hooks/useLogin';
 
 export interface ShopCardProps extends Shop {}
 

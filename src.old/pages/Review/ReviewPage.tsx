@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { Comments } from '@/components/Comments';
-import { Review } from '@/components/Review';
-import { SEARCH_PARAMS } from '@/consts';
-import { useSearchParam } from '@/hooks/useSearchParam';
-import { MainLayout } from '@/layouts/MainLayout';
+import { Comments } from '@old/components/Comments';
+import { Review } from '@old/components/Review';
+import { SEARCH_PARAMS } from '@old/consts';
+import { useSearchParam } from '@old/hooks/useSearchParam';
+import { MainLayout } from '@old/layouts/MainLayout';
 
 const ReviewPage: React.FC = () => {
 	const id = Number(useSearchParam(SEARCH_PARAMS.reviewId));

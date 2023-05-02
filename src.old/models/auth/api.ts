@@ -1,8 +1,8 @@
 import { createApi } from '@reduxjs/toolkit/query/react';
 import { keccak256 } from 'web3-utils';
-import { web3BaseQuery } from '@/api/core';
+import { web3BaseQuery } from '@old/api/core';
 import { LoginParams } from './types';
-import { Address } from '@/packages/web3';
+import { Address } from '@old/packages/web3';
 
 export const authApi = createApi({
 	reducerPath: 'api/auth',

@@ -1,5 +1,5 @@
 import { createApi } from '@reduxjs/toolkit/query/react';
-import { web3BaseQuery } from '@/api/core';
+import { web3BaseQuery } from '@old/api/core';
 import {
 	AddReviewParams,
 	ChangeReviewStatusParams,

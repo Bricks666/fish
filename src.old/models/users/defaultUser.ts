@@ -1,4 +1,4 @@
-import { ROLES, zeroAddress } from '@/consts';
+import { ROLES, zeroAddress } from '@old/consts';
 import { User } from './types';
 
 export const defaultUser: User = {

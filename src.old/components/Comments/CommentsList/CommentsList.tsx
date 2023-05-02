@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Container, ListGroup, Spinner } from 'react-bootstrap';
-import { Address } from '@/packages/web3';
+import { Address } from '@old/packages/web3';
 import { CommentCard } from './CommentCard';
-import { useGetCommentsQuery } from '@/models/comments';
+import { useGetCommentsQuery } from '@old/models/comments';
 
 export interface CommentsListProps {
 	readonly subjectAddress: Address;

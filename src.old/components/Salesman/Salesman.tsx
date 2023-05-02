@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { UserInfo } from '../UserInfo';
-import { SEARCH_PARAMS } from '@/consts/route';
-import { useSearchParam } from '@/hooks/useSearchParam';
-import { useGetSalesmanQuery } from '@/models/users';
+import { SEARCH_PARAMS } from '@old/consts/route';
+import { useSearchParam } from '@old/hooks/useSearchParam';
+import { useGetSalesmanQuery } from '@old/models/users';
 
 export interface SalesmanProps {
 	readonly salesmanId: number;

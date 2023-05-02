@@ -1,5 +1,5 @@
-import { ReviewResponse } from '@/models/reviews';
-import { Address } from '@/packages/web3';
+import { ReviewResponse } from '@old/models/reviews';
+import { Address } from '@old/packages/web3';
 import { contract } from './core';
 
 export const getReviewsApi = async (subjectAddress: Address): Promise<ReviewResponse[]> => {

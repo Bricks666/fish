@@ -1,4 +1,4 @@
-import { useLoginMutation } from '@/models/auth';
+import { useLoginMutation } from '@old/models/auth';
 
 export const useLogin = () => {
 	return useLoginMutation({
