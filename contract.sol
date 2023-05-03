@@ -41,7 +41,7 @@ contract Users is Utils {
 	constructor() {
 		createUser(
 			'ivan',
-			0x7bCc08b169dCd1a3f07d9e0313D9F315C1c765Eb,
+			msg.sender,
 			getByteString('000000'),
 			'Ivanov Ivan Ivanovich',
 			ROLES.ADMIN,

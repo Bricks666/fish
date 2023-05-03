@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { BForm, BFormInput, BFormGroup, BButton } from 'bootstrap-vue';
-import { Web3AddressesSelect } from '@/entities/web3';
 import { reactive, unref } from 'vue';
-import { authUserModel } from '@/entities/auth-user';
+import { authUserModel } from '@/entities/users';
+import { Web3AddressesSelect } from '@/entities/web3';
 import type { RegistrationParams } from '@/shared/api';
 
 const { registration } = authUserModel.useAuthUserStore();

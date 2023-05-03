@@ -2,12 +2,12 @@
 import { BButton, BFormGroup, BForm, BFormInput } from 'bootstrap-vue';
 import { reactive, unref } from 'vue';
 import { Web3AddressesSelect } from '@/entities/web3';
-import { authUserModel } from '@/entities/auth-user';
+import { authUserModel } from '@/entities/users';
 import type { LoginParams } from '@/shared/api';
 
 const { login } = authUserModel.useAuthUserStore();
 const form = reactive<LoginParams>({ address: '', password: '', login: '' });
-const onSubmit = (evt: SubmitEvent) => {
+const onSubmit = () => {
 	login(unref(form));
 };
 </script>

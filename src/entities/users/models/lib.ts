@@ -1,5 +1,5 @@
 import type { UserResponse } from '@/shared/api';
-import type { User } from './types';
+import type { User } from '../types';
 
 export const prepareUser = (user: UserResponse): User => {
 	return {
