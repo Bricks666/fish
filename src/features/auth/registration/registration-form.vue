@@ -1,30 +1,31 @@
 <script setup lang="ts">
-import { BButton, BFormGroup, BForm, BFormInput } from 'bootstrap-vue';
-import { reactive, unref } from 'vue';
+import { BForm, BFormInput, BFormGroup, BButton } from 'bootstrap-vue';
 import { Web3AddressesSelect } from '@/entities/web3';
+import { reactive, unref } from 'vue';
 import { authUserModel } from '@/entities/auth-user';
-import type { LoginParams } from '@/shared/api';
+import type { RegistrationParams } from '@/shared/api';
 
-const { login } = authUserModel.useAuthUserStore();
-const form = reactive<LoginParams>({ address: '', password: '', login: '' });
+const { registration } = authUserModel.useAuthUserStore();
+const form = reactive<RegistrationParams>({ address: '', name: '', login: '' });
 const onSubmit = (evt: SubmitEvent) => {
-	login(unref(form));
+	registration(unref(form));
 };
 </script>
+
 <template>
-	<b-form @submit.prevent="onSubmit">
+	<b-form @submit="onSubmit">
 		<b-form-group label="Адрес кошелька">
 			<web3-addresses-select v-model="form.address" />
 		</b-form-group>
 		<b-form-group label="Логин">
 			<b-form-input v-model="form.login" />
 		</b-form-group>
-		<b-form-group label="Пароль">
-			<b-form-input v-model="form.password" type="password" />
+		<b-form-group label="Имя">
+			<b-form-input v-model="form.name" />
 		</b-form-group>
 		<div :class="$style.controls">
 			<slot name="extra-controls"></slot>
-			<b-button type="submit" variant="primary">Войти</b-button>
+			<b-button variant="primary" type="submit">Регистрация</b-button>
 		</div>
 	</b-form>
 </template>
