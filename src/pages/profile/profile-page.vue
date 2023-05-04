@@ -1,10 +1,19 @@
 <script setup lang="ts">
-import { MainLayout } from '@/shared/ui';
+import { BCard } from 'bootstrap-vue';
+import { PageHeader } from '@/widgets/page';
 import { ProfileInfo } from '@/widgets/users';
+import { MainLayout } from '@/shared/ui';
 </script>
 <template>
 	<main-layout>
-		<h1 class="h3">Профиль пользователя</h1>
-		<profile-info />
+		<template #header>
+			<page-header />
+		</template>
+		<b-card>
+			<template #header>
+				<h1 class="h3">Профиль пользователя</h1>
+			</template>
+			<profile-info />
+		</b-card>
 	</main-layout>
 </template>

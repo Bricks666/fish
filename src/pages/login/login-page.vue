@@ -1,13 +1,13 @@
 <script setup lang="ts">
+import { BCard, BLink } from 'bootstrap-vue';
+import { onMounted } from 'vue';
+import { RouterLink } from 'vue-router';
 import { LoginForm } from '@/features/auth';
 import { useWeb3AddressesStore } from '@/entities/web3';
-import { AuthLayout } from '@/shared/ui';
-import { onMounted } from 'vue';
-import { BCard, BLink } from 'bootstrap-vue';
-import { RouterLink } from 'vue-router';
 import { URLS } from '@/shared/config';
+import { AuthLayout } from '@/shared/ui';
 
-const { start } = useWeb3AddressesStore();
+const { start, } = useWeb3AddressesStore();
 
 onMounted(start);
 </script>

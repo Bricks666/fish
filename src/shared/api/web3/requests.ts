@@ -8,7 +8,7 @@ const networkPath = `${NETWORK_HOST}:${NETWORK_PORT}`;
 
 export const web3: Web3 = new Web3(networkPath);
 export const contract: Contract = new web3.eth.Contract(abi, CONTRACT);
-export const { personal } = web3.eth;
+export const { personal, } = web3.eth;
 
 export const unlockAccount = async (
 	wallet: Address,
@@ -30,8 +30,8 @@ export const getBalance = async (address: Address): Promise<string> => {
 };
 
 export const subscribe = <T extends SubscribeData>(params: SubscribeParams<T>) => {
-	const { event, filter, callback } = params;
-	return contract.events[event]({ filter }, (error: Error, data: EventData) => {
+	const { event, filter, callback, } = params;
+	return contract.events[event]({ filter, }, (error: Error, data: EventData) => {
 		if (!error) {
 			callback(data.returnValues as T);
 		}

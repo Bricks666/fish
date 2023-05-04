@@ -4,6 +4,7 @@ import { BContainer } from 'bootstrap-vue';
 
 <template>
 	<b-container :class="$style.layout">
+		<slot name="header"></slot>
 		<slot>Missed container content</slot>
 	</b-container>
 </template>
@@ -11,6 +12,7 @@ import { BContainer } from 'bootstrap-vue';
 <style module>
 .layout {
 	display: grid;
+	gap: 1em;
 
 	height: 100%;
 }

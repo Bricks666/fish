@@ -5,8 +5,8 @@ import { authUserModel } from '@/entities/users';
 import { Web3AddressesSelect } from '@/entities/web3';
 import type { RegistrationParams } from '@/shared/api';
 
-const { registration } = authUserModel.useAuthUserStore();
-const form = reactive<RegistrationParams>({ address: '', name: '', login: '' });
+const { registration, } = authUserModel.useAuthUserStore();
+const form = reactive<RegistrationParams>({ address: '', name: '', login: '', });
 const onSubmit = (evt: SubmitEvent) => {
 	registration(unref(form));
 };

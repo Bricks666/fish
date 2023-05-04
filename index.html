@@ -3,6 +3,18 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- web3 setup (for Vitejs react project only) -->
+		<script>
+			window.global = window; // https://github.com/vitejs/vite/issues/3817#issuecomment-864450199
+		</script>
+		<script type="module">
+			import process from 'process';
+			import { Buffer } from 'buffer';
+			import EventEmitter from 'events';
+			window.Buffer = Buffer;
+			window.process = process;
+			window.EventEmitter = EventEmitter;
+		</script>
 		<title>Golden fish</title>
 	</head>
 	<body class="page__body">

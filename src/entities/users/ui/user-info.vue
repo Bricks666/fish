@@ -14,7 +14,7 @@ const showShop = computed(() => {
 });
 </script>
 <template>
-	<b-list-group is="dl">
+	<b-list-group is="dl" :class="$style.list">
 		<b-list-group-item is="dt">Логин</b-list-group-item>
 		<b-list-group-item is="dd">{{ login }}</b-list-group-item>
 		<b-list-group-item is="dt">Адрес кошелька</b-list-group-item>
@@ -30,3 +30,11 @@ const showShop = computed(() => {
 		<slot></slot>
 	</b-list-group>
 </template>
+
+<style module>
+.list {
+	display: grid;
+	grid-template-columns: max-content 1fr;
+	row-gap: 1em;
+}
+</style>

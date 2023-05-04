@@ -7,6 +7,6 @@ export const getUserAddress = async (): Promise<Address[]> => {
 };
 
 export const getUser = async (params: GetUserParams): Promise<UserResponse> => {
-	const { address } = params;
+	const { address, } = params;
 	return web3Api.contract.methods.users(address).call();
 };

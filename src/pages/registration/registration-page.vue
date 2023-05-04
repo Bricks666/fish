@@ -1,9 +1,9 @@
 <script setup lang="ts">
+import { BCard, BLink } from 'bootstrap-vue';
+import { RouterLink } from 'vue-router';
 import { RegistrationForm } from '@/features/auth';
 import { URLS } from '@/shared/config';
 import { AuthLayout } from '@/shared/ui';
-import { BCard, BLink } from 'bootstrap-vue';
-import { RouterLink } from 'vue-router';
 </script>
 <template>
 	<auth-layout>
