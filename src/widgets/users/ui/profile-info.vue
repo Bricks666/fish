@@ -11,7 +11,7 @@ const balance = useBalance(address);
 </script>
 <template>
 	<user-info v-bind="authUser.result">
-		<b-list-group-item is="dt">Баланс</b-list-group-item>
-		<b-list-group-item is="dd">{{ fromWei(balance, 'ether') }} ETH</b-list-group-item>
+		<b-list-group-item tag="dt">Баланс</b-list-group-item>
+		<b-list-group-item tag="dd">{{ fromWei(balance, 'ether') }} ETH</b-list-group-item>
 	</user-info>
 </template>

@@ -2,8 +2,8 @@ import { defineStore } from 'pinia';
 import { computed, type ComputedRef } from 'vue';
 import { ROLES } from '@/shared/config';
 import { createHandlessDataFetch, type HandlessDataFetch } from '@/shared/lib';
+import { getDefaultUser } from '../lib';
 import type { User } from '../types';
-import { getDefaultUser } from './lib';
 
 export const KEY = 'AUTH_USER_STORE';
 

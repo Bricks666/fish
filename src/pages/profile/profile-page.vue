@@ -9,9 +9,10 @@ import { MainLayout } from '@/shared/ui';
 		<template #header>
 			<page-header />
 		</template>
+		<h1 class="h3">Профиль пользователя</h1>
 		<b-card>
 			<template #header>
-				<h1 class="h3">Профиль пользователя</h1>
+				<h2 class="h4">Информация о пользователе</h2>
 			</template>
 			<profile-info />
 		</b-card>

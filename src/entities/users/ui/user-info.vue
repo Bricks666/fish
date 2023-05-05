@@ -2,8 +2,8 @@
 import { BListGroup, BListGroupItem } from 'bootstrap-vue';
 import { computed } from 'vue';
 import { hexToNumberString } from 'web3-utils';
-import type { User } from '@/entities/users';
-import { ROLES_NAME } from '@/shared/config';
+import { ROLES_NAMES } from '@/shared/config';
+import type { User } from '../types';
 
 export interface UserInfoProps extends User {}
 
@@ -14,18 +14,18 @@ const showShop = computed(() => {
 });
 </script>
 <template>
-	<b-list-group is="dl" :class="$style.list">
-		<b-list-group-item is="dt">Логин</b-list-group-item>
-		<b-list-group-item is="dd">{{ login }}</b-list-group-item>
-		<b-list-group-item is="dt">Адрес кошелька</b-list-group-item>
-		<b-list-group-item is="dd">{{ address }}</b-list-group-item>
-		<b-list-group-item is="dt">Имя</b-list-group-item>
-		<b-list-group-item is="dd">{{ name }}</b-list-group-item>
-		<b-list-group-item is="dt">Роль</b-list-group-item>
-		<b-list-group-item is="dd">{{ ROLES_NAME[role] }}</b-list-group-item>
+	<b-list-group tag="dl" :class="$style.list" flush>
+		<b-list-group-item tag="dt">Логин</b-list-group-item>
+		<b-list-group-item tag="dd">{{ login }}</b-list-group-item>
+		<b-list-group-item tag="dt">Адрес кошелька</b-list-group-item>
+		<b-list-group-item tag="dd">{{ address }}</b-list-group-item>
+		<b-list-group-item tag="dt">Имя</b-list-group-item>
+		<b-list-group-item tag="dd">{{ name }}</b-list-group-item>
+		<b-list-group-item tag="dt">Роль</b-list-group-item>
+		<b-list-group-item tag="dd">{{ ROLES_NAMES[role] }}</b-list-group-item>
 		<template v-if="showShop">
-			<b-list-group-item is="dt">Магазин</b-list-group-item>
-			<b-list-group-item is="dd">{{ shopAddress }}</b-list-group-item>
+			<b-list-group-item tag="dt">Магазин</b-list-group-item>
+			<b-list-group-item tag="dd">{{ shopAddress }}</b-list-group-item>
 		</template>
 		<slot></slot>
 	</b-list-group>
@@ -35,6 +35,7 @@ const showShop = computed(() => {
 .list {
 	display: grid;
 	grid-template-columns: max-content 1fr;
+	grid-auto-rows: max-content;
 	row-gap: 1em;
 }
 </style>

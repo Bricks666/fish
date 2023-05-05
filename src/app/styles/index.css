@@ -1,1 +1,4 @@
+@import url('bootstrap/dist/css/bootstrap.css');
+@import url('bootstrap-vue/dist/bootstrap-vue.css');
+@import url('./reset.css');
 @import url('./page.css');

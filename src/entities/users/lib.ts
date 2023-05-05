@@ -1,7 +1,7 @@
 import type { UserResponse } from '@/shared/api';
 import { isEmptyAddress } from '@/shared/lib';
-import type { User } from '../types';
 import { guest } from './config';
+import type { User } from './types';
 
 export const prepareUser = (user: UserResponse): User => {
 	return {

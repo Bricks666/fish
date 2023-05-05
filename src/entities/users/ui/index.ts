@@ -1,1 +1,1 @@
-export { default as UserInfo } from './user-info.vue';
+export { default as UserInfo, type UserInfoProps } from './user-info.vue';
