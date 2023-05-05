@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import { BButton, BFormGroup, BForm, BFormInput } from 'bootstrap-vue';
 import { reactive, unref } from 'vue';
-import { authUserModel } from '@/entities/users';
 import { Web3AddressesSelect } from '@/entities/web3';
 import type { LoginParams } from '@/shared/api';
+import { useStore } from './model';
 
-const { login, } = authUserModel.useAuthUserStore();
-const form = reactive<LoginParams>({ address: '', password: '', login: '', });
+const login = useStore();
+const form = reactive<LoginParams>({ address: '', password: '', login: '' });
 const onSubmit = () => {
-	login(unref(form));
+	login.start(unref(form));
 };
 </script>
 <template>
@@ -24,7 +24,7 @@ const onSubmit = () => {
 		</b-form-group>
 		<div :class="$style.controls">
 			<slot name="extra-controls"></slot>
-			<b-button type="submit" variant="primary">Войти</b-button>
+			<b-button type="submit" variant="primary" :disabled="login.loading">Войти</b-button>
 		</div>
 	</b-form>
 </template>

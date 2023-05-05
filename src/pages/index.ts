@@ -23,7 +23,11 @@ export const routes: RouteRecordRaw[] = [
 		component: ProfilePage,
 	},
 	{
-		path: URLS.requests,
+		path: URLS.myRequests,
+		component: RequestsPage,
+	},
+	{
+		path: URLS.allRequests,
 		component: RequestsPage,
 	},
 	{
@@ -37,6 +41,6 @@ export const routes: RouteRecordRaw[] = [
 	{
 		path: URLS.salesman,
 		component: SalesmanPage,
-	}
+	},
 ];
 export { default as AppPages } from './app-pages.vue';

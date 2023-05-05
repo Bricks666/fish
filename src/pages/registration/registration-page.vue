@@ -1,9 +1,15 @@
 <script setup lang="ts">
 import { BCard, BLink } from 'bootstrap-vue';
+import { onMounted } from 'vue';
 import { RouterLink } from 'vue-router';
 import { RegistrationForm } from '@/features/auth';
+import { addressesStore } from '@/entities/web3';
 import { URLS } from '@/shared/config';
 import { AuthLayout } from '@/shared/ui';
+
+const addresses = addressesStore.useStore();
+
+onMounted(addresses.start);
 </script>
 <template>
 	<auth-layout>

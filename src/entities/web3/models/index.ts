@@ -1,1 +1,1 @@
-export * from './addresses';
+export * as addressesStore from './addresses';

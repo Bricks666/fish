@@ -7,12 +7,10 @@ import { filterItemsByRole, isDropdownNavigation, isSimpleNavigation } from '../
 import DropdownNavigationItem from './dropdown-navigation-item.vue';
 import SimpleNavigationItem from './simple-navigation-item.vue';
 
-const authUserStore = authUserModel.useAuthUserStore();
-const role = toRef(authUserStore.user, 'role');
+const authUser = authUserModel.useStore();
+const role = toRef(authUser.result, 'role');
 
 const items = computed(() => filterItemsByRole(navigationItems, role.value));
-
-watch(items, (items) => console.log(items));
 </script>
 <template>
 	<b-nav>

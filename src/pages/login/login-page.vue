@@ -3,13 +3,13 @@ import { BCard, BLink } from 'bootstrap-vue';
 import { onMounted } from 'vue';
 import { RouterLink } from 'vue-router';
 import { LoginForm } from '@/features/auth';
-import { useWeb3AddressesStore } from '@/entities/web3';
+import { addressesStore } from '@/entities/web3';
 import { URLS } from '@/shared/config';
 import { AuthLayout } from '@/shared/ui';
 
-const { start, } = useWeb3AddressesStore();
+const addresses = addressesStore.useStore();
 
-onMounted(start);
+onMounted(addresses.start);
 </script>
 <template>
 	<auth-layout>
