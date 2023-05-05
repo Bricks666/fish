@@ -2,12 +2,11 @@
 import { BButton } from 'bootstrap-vue';
 import { acceptModel, cancelModel } from './models';
 
-export interface RequestCardActionsProps {
+export interface AnswerRequestProps {
 	readonly id: number;
-	readonly isFinish: boolean;
 }
 
-const props = defineProps<RequestCardActionsProps>();
+const props = defineProps<AnswerRequestProps>();
 const accept = acceptModel.useStore();
 const cancel = cancelModel.useStore();
 
@@ -21,8 +20,6 @@ const onCancel = () => {
 </script>
 
 <template>
-	<template v-if="!isFinish">
-		<b-button variant="success" @click="onAccept">Принять</b-button>
-		<b-button variant="danger" @click="onCancel">Отклонить</b-button>
-	</template>
+	<b-button variant="success" @click="onAccept">Принять</b-button>
+	<b-button variant="danger" @click="onCancel">Отклонить</b-button>
 </template>

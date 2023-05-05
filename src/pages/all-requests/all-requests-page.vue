@@ -2,7 +2,8 @@
 import { BCardGroup } from 'bootstrap-vue';
 import { onMounted } from 'vue';
 import { PageHeader } from '@/widgets/page';
-import { requestsModel, TemplateRequestCard } from '@/entities/requests';
+import { RequestCard } from '@/widgets/requests';
+import { requestsModel } from '@/entities/requests';
 import { MainLayout } from '@/shared/ui';
 
 const requests = requestsModel.useStore();
@@ -16,10 +17,7 @@ onMounted(requests.start);
 		</template>
 		<h1 class="h3">Все запросы</h1>
 		<b-card-group>
-			<template-request-card
-				v-for="request in requests.result"
-				:key="request.id"
-				v-bind="request" />
+			<request-card v-for="request in requests.result" v-bind="request" :key="request.id" />
 		</b-card-group>
 	</main-layout>
 </template>

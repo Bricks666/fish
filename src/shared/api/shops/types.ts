@@ -1,11 +1,5 @@
 import type { Address, WithSenderParams } from '@/shared/types';
 
-export interface Shop {
-	readonly id: number;
-	readonly address: Address;
-	readonly name: string;
-	readonly city: string;
-}
 export interface ShopResponse {
 	readonly id: string;
 	readonly Address: Address;
