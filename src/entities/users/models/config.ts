@@ -1,6 +1,6 @@
-import { toHex } from "web3-utils";
-import type { User } from "../types";
-import { ROLES } from "@/shared/config";
+import { toHex } from 'web3-utils';
+import { ROLES } from '@/shared/config';
+import type { User } from '../types';
 
 export const guest: User = {
 	address: toHex(0),

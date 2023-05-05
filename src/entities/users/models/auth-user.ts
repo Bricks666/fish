@@ -12,11 +12,11 @@ export interface AuthUserStore extends HandlessDataFetch<User, User> {
 }
 
 export const useStore = defineStore(KEY, (): AuthUserStore => {
-	const { error, loaded, loading, result } = createHandlessDataFetch<User, User>({
+	const { error, loaded, loading, result, } = createHandlessDataFetch<User, User>({
 		defaultValue: getDefaultUser(),
 	});
 
 	const isAuth = computed(() => result.value.role !== ROLES.GUEST);
 
-	return { result, error, loaded, loading, isAuth };
+	return { result, error, loaded, loading, isAuth, };
 });

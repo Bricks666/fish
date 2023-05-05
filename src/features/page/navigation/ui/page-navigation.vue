@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { BNav } from 'bootstrap-vue';
-import { computed, toRef, watch } from 'vue';
+import { computed, toRef } from 'vue';
 import { authUserModel } from '@/entities/users';
 import { navigationItems } from '../config';
 import { filterItemsByRole, isDropdownNavigation, isSimpleNavigation } from '../lib';

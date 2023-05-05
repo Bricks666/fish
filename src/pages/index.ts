@@ -41,6 +41,6 @@ export const routes: RouteRecordRaw[] = [
 	{
 		path: URLS.salesman,
 		component: SalesmanPage,
-	},
+	}
 ];
 export { default as AppPages } from './app-pages.vue';

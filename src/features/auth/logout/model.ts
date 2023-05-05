@@ -8,7 +8,7 @@ export const useStore = defineStore(KEY, () => {
 	const authUser = authUserModel.useStore();
 
 	const logout = () => {
-		authUser.$patch({ result: getDefaultUser() });
+		authUser.$patch({ result: getDefaultUser(), });
 	};
 
 	return createDataFetch({

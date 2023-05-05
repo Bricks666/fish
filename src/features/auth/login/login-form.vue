@@ -6,7 +6,7 @@ import type { LoginParams } from '@/shared/api';
 import { useStore } from './model';
 
 const login = useStore();
-const form = reactive<LoginParams>({ address: '', password: '', login: '' });
+const form = reactive<LoginParams>({ address: '', password: '', login: '', });
 const onSubmit = () => {
 	login.start(unref(form));
 };

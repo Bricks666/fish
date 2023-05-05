@@ -1,7 +1,7 @@
 import { ref, watchEffect, type Ref } from 'vue';
 import { web3Api } from '@/shared/api';
-import type { Address } from '@/shared/types';
 import { isEmptyAddress } from '@/shared/lib';
+import type { Address } from '@/shared/types';
 
 export const useBalance = (address: Ref<Address>) => {
 	const balance = ref('0');

@@ -1,7 +1,7 @@
 import {
 	createHandlessDataFetch,
 	type CreateHandlessDataFetchParams,
-	type HandlessDataFetch,
+	type HandlessDataFetch
 } from './create-handless-data-fetch';
 
 type FetchHandler<Result, Args extends Array<unknown>> = (
@@ -33,10 +33,10 @@ export const createDataFetch = <
 	DefaultValue extends Mapped | null = null,
 	Mapped = Result
 >(
-	params: CreateDataFetchParams<Result, Args, DefaultValue, Mapped>
-): DataFetch<Result, Args, DefaultValue, Mapped> => {
-	const { handler, defaultValue, mapResult } = params;
-	const { error, loaded, loading, result } = createHandlessDataFetch<Mapped, DefaultValue>({
+		params: CreateDataFetchParams<Result, Args, DefaultValue, Mapped>
+	): DataFetch<Result, Args, DefaultValue, Mapped> => {
+	const { handler, defaultValue, mapResult, } = params;
+	const { error, loaded, loading, result, } = createHandlessDataFetch<Mapped, DefaultValue>({
 		defaultValue,
 	});
 
@@ -57,5 +57,5 @@ export const createDataFetch = <
 		return result.value as Result;
 	};
 
-	return { loading, error, loaded, result, start };
+	return { loading, error, loaded, result, start, };
 };

@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import type { Shop } from '@/shared/api';
 
-export interface ShopCardProps extends Shop {
-}
+export interface ShopCardProps extends Shop {}
 defineProps<ShopCardProps>();
 </script>
 <template>

@@ -1,5 +1,2 @@
-<script setup lang="ts">
-</script>
-<template>
-  Requests page
-</template>
+<script setup lang="ts"></script>
+<template>Requests page</template>

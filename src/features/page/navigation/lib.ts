@@ -25,7 +25,7 @@ export const filterItemsByRole = (
 
 		if (isAllow && isDropdownNavigation(item)) {
 			// Чтобы отфильтровать вложенные пути
-			const copy = { ...item };
+			const copy = { ...item, };
 			copy.children = filterItemsByRole(copy.children, role) as SimpleNavigationItem[];
 		}
 

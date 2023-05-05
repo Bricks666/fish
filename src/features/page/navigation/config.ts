@@ -23,8 +23,8 @@ export const navigationItems: NavigationItemParams[] = [
 				label: 'Все запросы',
 				path: URLS.allRequests,
 				roles: [ROLES.ADMIN],
-			},
+			}
 		],
 		roles: [ROLES.ADMIN, ROLES.SHOPER, ROLES.USER],
-	},
+	}
 ];

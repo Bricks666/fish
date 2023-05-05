@@ -21,7 +21,7 @@ export interface RequestResponse {
 }
 
 export interface GetRequestParams {
-  readonly id: number
+	readonly id: number;
 }
 
 export interface AddRequestParams {

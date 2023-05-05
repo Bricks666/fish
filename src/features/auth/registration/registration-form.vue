@@ -6,7 +6,7 @@ import type { RegistrationParams } from '@/shared/api';
 import { useStore } from './model';
 
 const registration = useStore();
-const form = reactive<RegistrationParams>({ address: '', name: '', login: '' });
+const form = reactive<RegistrationParams>({ address: '', name: '', login: '', });
 const onSubmit = () => {
 	registration.start(unref(form));
 };
