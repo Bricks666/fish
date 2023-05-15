@@ -7,7 +7,7 @@ export const prepareUser = (user: UserResponse): User => {
 	return {
 		address: user.Address,
 		login: user.login,
-		name: user.FIO,
+		name: user.name,
 		onRequest: user.onRequest,
 		role: Number(user.role),
 		shopAddress: user.shopAddress || null,

@@ -7,7 +7,8 @@ import { useStore } from './model';
 
 const registration = useStore();
 const form = reactive<RegistrationParams>({ address: '', name: '', login: '', });
-const onSubmit = () => {
+const onSubmit = (evt: any) => {
+	evt?.preventDefault();
 	registration.start(unref(form));
 };
 </script>
@@ -23,19 +24,8 @@ const onSubmit = () => {
 		<b-form-group label="Имя">
 			<b-form-input v-model="form.name" />
 		</b-form-group>
-		<div :class="$style.controls">
-			<slot name="extra-controls"></slot>
-			<b-button variant="primary" type="submit" :disabled="registration.loading"
-				>Регистрация</b-button
-			>
-		</div>
+		<b-button variant="primary" type="submit" :disabled="registration.loading" block
+			>Зарегистрироваться</b-button
+		>
 	</b-form>
 </template>
-<style module>
-.controls {
-	display: flex;
-	align-items: center;
-	justify-content: flex-end;
-	gap: 1em;
-}
-</style>

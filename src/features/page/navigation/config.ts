@@ -1,11 +1,11 @@
-import { ROLES, URLS } from '@/shared/config';
+import { URLS } from '@/shared/config';
 import type { NavigationItemParams } from './types';
 
 export const navigationItems: NavigationItemParams[] = [
 	{
 		label: 'Профиль',
 		path: '/profile',
-		roles: [ROLES.GUEST],
+		// roles: [ROLES.GUEST],
 		invert: true,
 	},
 	{
@@ -22,9 +22,9 @@ export const navigationItems: NavigationItemParams[] = [
 			{
 				label: 'Все запросы',
 				path: URLS.allRequests,
-				roles: [ROLES.ADMIN],
+				// roles: [ROLES.ADMIN],
 			}
 		],
-		roles: [ROLES.ADMIN, ROLES.SHOPER, ROLES.USER],
+		// roles: [ROLES.ADMIN, ROLES.SALESMAN, ROLES.USER],
 	}
 ];

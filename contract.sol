@@ -20,7 +20,7 @@ contract Users is Utils {
 		string login;
 		address Address;
 		bytes32 password;
-		string FIO;
+		string name;
 		ROLES role;
 		bool onRequest;
 		address shopAddress; //для продавца - адрес магазина, в котором работает
@@ -85,25 +85,26 @@ contract Users is Utils {
 		return usersAddresses;
 	}
 
-	function login(string memory login, bytes32 password)
-		external
-		view
-		isReg(msg.sender)
-		returns (address)
-	{
-		require(getByteString(users[msg.sender].login) == getByteString(login), 'Check login');
-		require(users[msg.sender].password == password, 'You wrong password');
+	function login(
+		string memory login,
+		bytes32 password
+	) external view isReg(msg.sender) returns (address) {
+		require(
+			getByteString(users[msg.sender].login) == getByteString(login),
+			"You haven't registered"
+		);
+		require(users[msg.sender].password == password, 'Password is wrong');
 		return msg.sender;
 	}
 
-	function registration(string memory login, string memory FIO) external {
+	function registration(string memory login, string memory name) external {
 		require(
 			getByteString(users[msg.sender].login) == getByteString(''),
 			'You are already registered'
 		);
-		require(getByteString(login) != getByteString(''), 'Check login');
-		require(getByteString(FIO) != getByteString(''), 'Check FIO');
-		createUser(login, msg.sender, getByteString('000000'), FIO, ROLES.USER, address(0));
+		require(getByteString(login) != getByteString(''), 'Invalid login');
+		require(getByteString(name) != getByteString(''), 'Invalid name');
+		createUser(login, msg.sender, getByteString('000000'), name, ROLES.USER, address(0));
 	}
 
 	function changeRole(address user, ROLES newRole) internal {
@@ -120,12 +121,12 @@ contract Users is Utils {
 		string memory login,
 		address userAddress,
 		bytes32 password,
-		string memory fio,
+		string memory name,
 		ROLES role,
 		address shopAddress
 	) internal {
 		usersAddresses.push(userAddress);
-		users[userAddress] = User(login, userAddress, password, fio, role, false, shopAddress);
+		users[userAddress] = User(login, userAddress, password, name, role, false, shopAddress);
 		emit newUser(userAddress);
 	}
 }
@@ -195,7 +196,7 @@ contract Shops is Users {
 			deleteSalesman(shopId, i);
 		}
 
-    address shopAddress = shops[shopId].Address;
+		address shopAddress = shops[shopId].Address;
 
 		delete users[shopAddress];
 		delete shopIndexes[shopAddress];
@@ -284,11 +285,10 @@ contract Requests is Shops {
 		return requests;
 	}
 
-	function addRequest(TYPE requestType, address shopAddress)
-		public
-		isReg(msg.sender)
-		notOnRequest(msg.sender)
-	{
+	function addRequest(
+		TYPE requestType,
+		address shopAddress
+	) public isReg(msg.sender) notOnRequest(msg.sender) {
 		ROLES newRole;
 		if (requestType == TYPE.BE_ADMIN) {
 			newRole = ROLES.ADMIN;
@@ -402,11 +402,10 @@ contract Reviews is Users {
 		return reviews[subjectAddress];
 	}
 
-	function getReview(address subjectAddress, uint256 reviewId)
-		external
-		view
-		returns (Review memory)
-	{
+	function getReview(
+		address subjectAddress,
+		uint256 reviewId
+	) external view returns (Review memory) {
 		return reviews[subjectAddress][reviewId];
 	}
 
@@ -418,7 +417,10 @@ contract Reviews is Users {
 		createReview(subjectAddress, text, mark);
 	}
 
-	function likeReview(address subjectAddress, uint256 reviewId)
+	function likeReview(
+		address subjectAddress,
+		uint256 reviewId
+	)
 		external
 		isReg(msg.sender)
 		isNotLikedReview(subjectAddress, reviewId)
@@ -428,7 +430,10 @@ contract Reviews is Users {
 		emit markReview(subjectAddress, reviewId, Mark.LIKE);
 	}
 
-	function dislikeReview(address subjectAddress, uint256 reviewId)
+	function dislikeReview(
+		address subjectAddress,
+		uint256 reviewId
+	)
 		external
 		isReg(msg.sender)
 		isNotLikedReview(subjectAddress, reviewId)
@@ -438,11 +443,7 @@ contract Reviews is Users {
 		emit markReview(subjectAddress, reviewId, Mark.DISLIKE);
 	}
 
-	function createReview(
-		address subjectAddress,
-		string memory text,
-		uint256 mark
-	) private {
+	function createReview(address subjectAddress, string memory text, uint256 mark) private {
 		uint256 countReview = reviews[subjectAddress].length;
 		reviews[subjectAddress].push(
 			Review(countReview, text, subjectAddress, mark, zeroAddress, zeroAddress)
@@ -465,11 +466,10 @@ contract Comments is Users {
 
 	constructor() {}
 
-	function getComments(address subjectAddress, uint256 reviewId)
-		external
-		view
-		returns (Comment[] memory)
-	{
+	function getComments(
+		address subjectAddress,
+		uint256 reviewId
+	) external view returns (Comment[] memory) {
 		return comments[subjectAddress][reviewId];
 	}
 

@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { BCard, BLink } from 'bootstrap-vue';
 import { onMounted } from 'vue';
-import { RouterLink } from 'vue-router';
 import { LoginForm } from '@/features/auth';
 import { addressesStore } from '@/entities/web3';
 import { URLS } from '@/shared/config';
@@ -13,24 +12,28 @@ onMounted(addresses.start);
 </script>
 <template>
 	<auth-layout>
+		<div>
+			<h1 class="h3" :class="$style.title">Добро пожаловать!</h1>
+			<p :class="$style.subtitle">
+				Еще нет аккаунта? <b-link :to="URLS.registration">Зарегистрироваться</b-link>
+			</p>
+		</div>
 		<b-card :class="$style.card">
-			<h1 class="h3" :class="$style.title">Вход</h1>
-			<login-form>
-				<template #extra-controls>
-					<router-link v-slot="{ href, navigate }" :to="URLS.registration" custom>
-						<b-link :href="href" @click="navigate"> Регистрация </b-link></router-link
-					>
-				</template>
-			</login-form>
+			<login-form />
 		</b-card>
 	</auth-layout>
 </template>
 
 <style module>
-.card {
-	width: min(100%, 450px);
-}
 .title {
 	text-align: center;
+}
+
+.subtitle {
+	text-align: center;
+}
+
+.card {
+	width: min(calc(100vw - 32px), 450px);
 }
 </style>

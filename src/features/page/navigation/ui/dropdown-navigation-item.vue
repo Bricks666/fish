@@ -15,12 +15,12 @@ export interface DropdownNavigationItemProps {
 defineProps<DropdownNavigationItemProps>();
 </script>
 <template>
-	<b-nav-item-dropdown :text="{ label }">
+	<b-nav-item-dropdown :text="label">
 		<b-dropdown-item
-			:is="RouterLink"
 			v-for="child in children"
 			:key="child.path"
 			:to="child.path"
+			:tag="RouterLink"
 			>{{ child.label }}</b-dropdown-item
 		>
 	</b-nav-item-dropdown>

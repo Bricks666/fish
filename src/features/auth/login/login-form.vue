@@ -22,17 +22,6 @@ const onSubmit = () => {
 		<b-form-group label="Пароль">
 			<b-form-input v-model="form.password" type="password" />
 		</b-form-group>
-		<div :class="$style.controls">
-			<slot name="extra-controls"></slot>
-			<b-button type="submit" variant="primary" :disabled="login.loading">Войти</b-button>
-		</div>
+		<b-button type="submit" variant="primary" :disabled="login.loading" block>Войти</b-button>
 	</b-form>
 </template>
-<style module>
-.controls {
-	display: flex;
-	align-items: center;
-	justify-content: flex-end;
-	gap: 1em;
-}
-</style>

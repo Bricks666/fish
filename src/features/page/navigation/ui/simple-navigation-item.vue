@@ -10,5 +10,5 @@ export interface SimpleNavigationItemProps {
 defineProps<SimpleNavigationItemProps>();
 </script>
 <template>
-	<b-nav-item :is="RouterLink" :to="path">{{ label }} </b-nav-item>
+	<b-nav-item :tag="RouterLink" :to="path">{{ label }} </b-nav-item>
 </template>
