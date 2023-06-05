@@ -8,6 +8,7 @@ export interface HandlessDataFetch<Result, DefaultValue extends Result | null> {
 	readonly loading: Ref<boolean>;
 	readonly error: Ref<Error | null>;
 	readonly loaded: Ref<boolean>;
+	readonly refetching: Ref<boolean>;
 	readonly result: Ref<Result | DefaultValue>;
 }
 
@@ -18,7 +19,8 @@ export const createHandlessDataFetch = <Result, DefaultValue extends Result | nu
 	const loading = ref<boolean>(false);
 	const error = ref<Error | null>(null);
 	const loaded = ref<boolean>(false);
+	const refetching = ref<boolean>(false);
 	const result = ref(defaultValue ?? (null as DefaultValue)) as Ref<Result | DefaultValue>;
 
-	return { loading, error, loaded, result, };
+	return { loading, error, loaded, result, refetching, };
 };

@@ -21,12 +21,10 @@ export default defineConfig({
 		alias: {
 			'@': fileURLToPath(new URL('./src', import.meta.url)),
 			vue: '@vue/compat',
+
 			process: 'process/browser',
 			zlib: 'browserify-zlib',
 			util: 'util',
 		},
-	},
-	define: {
-		global: 'window',
 	},
 });

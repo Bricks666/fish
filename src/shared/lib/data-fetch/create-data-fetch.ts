@@ -25,6 +25,7 @@ export interface DataFetch<
 	Mapped
 > extends HandlessDataFetch<Mapped, DefaultValue> {
 	readonly start: FetchHandler<Result, Args>;
+	readonly restart: FetchHandler<Result, Args>;
 }
 
 export const createDataFetch = <
@@ -36,7 +37,10 @@ export const createDataFetch = <
 		params: CreateDataFetchParams<Result, Args, DefaultValue, Mapped>
 	): DataFetch<Result, Args, DefaultValue, Mapped> => {
 	const { handler, defaultValue, mapResult, } = params;
-	const { error, loaded, loading, result, } = createHandlessDataFetch<Mapped, DefaultValue>({
+	const { error, loaded, loading, result, refetching, } = createHandlessDataFetch<
+		Mapped,
+		DefaultValue
+	>({
 		defaultValue,
 	});
 
@@ -51,11 +55,29 @@ export const createDataFetch = <
 			loaded.value = false;
 		} catch (err) {
 			error.value = err as Error;
+			console.error(err);
 		} finally {
 			loading.value = false;
 		}
 		return result.value as Result;
 	};
 
-	return { loading, error, loaded, result, start, };
+	const restart = async (...args: Args) => {
+		refetching.value = true;
+		try {
+			let data = await handler(...args);
+			if (mapResult) {
+				data = mapResult(data) as any;
+			}
+			result.value = data as any;
+			loaded.value = false;
+		} catch (err) {
+			error.value = err as Error;
+		} finally {
+			refetching.value = false;
+		}
+		return result.value as Result;
+	};
+
+	return { loading, error, loaded, result, refetching, start, restart, };
 };

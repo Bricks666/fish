@@ -14,7 +14,8 @@ const onSubmit = () => {
 <template>
 	<b-form @submit.prevent="onSubmit">
 		<b-form-group label="Адрес кошелька">
-			<web3-addresses-select v-model="form.address" />
+			<!-- Почему то только так нормально биндится -->
+			<web3-addresses-select v-model:model-value="form.address" />
 		</b-form-group>
 		<b-form-group label="Логин">
 			<b-form-input v-model="form.login" />

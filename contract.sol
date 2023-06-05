@@ -1,3 +1,5 @@
+pragma solidity >=0.8.12 <0.8.20;
+
 contract Utils {
 	address[] zeroAddress;
 

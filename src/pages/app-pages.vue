@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import { BSpinner } from 'bootstrap-vue';
 import { RouterView } from 'vue-router';
+import { PageSpinner } from '@/shared/ui';
 </script>
 
 <template>
 	<suspense>
 		<router-view />
 		<template #fallback>
-			<b-spinner variant="primary" />
+			<page-spinner />
 		</template>
 	</suspense>
 </template>

@@ -8,14 +8,18 @@ export interface Web3AddressesSelectProps {
 }
 
 defineProps<Web3AddressesSelectProps>();
-defineEmits(['update:modelValue']);
+const emit = defineEmits(['update:modelValue']);
 
 const addresses = addressesStore.useStore();
+
+const onChange = (value: string) => {
+	emit('update:modelValue', value);
+};
 </script>
 <template>
-	<BFormSelect :value="modelValue" @change="$emit('update:modelValue', $event.target.value)">
+	<b-form-select :value="modelValue" @change="onChange">
 		<option v-for="address in addresses.result" :key="address" :value="address">
 			{{ address }}
 		</option>
-	</BFormSelect>
+	</b-form-select>
 </template>

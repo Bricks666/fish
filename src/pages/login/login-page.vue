@@ -13,8 +13,8 @@ onMounted(addresses.start);
 <template>
 	<auth-layout>
 		<div>
-			<h1 class="h3" :class="$style.title">Добро пожаловать!</h1>
-			<p :class="$style.subtitle">
+			<h1 class="h3 text-center">Добро пожаловать!</h1>
+			<p class="text-center">
 				Еще нет аккаунта? <b-link :to="URLS.registration">Зарегистрироваться</b-link>
 			</p>
 		</div>
@@ -25,14 +25,6 @@ onMounted(addresses.start);
 </template>
 
 <style module>
-.title {
-	text-align: center;
-}
-
-.subtitle {
-	text-align: center;
-}
-
 .card {
 	width: min(calc(100vw - 32px), 450px);
 }

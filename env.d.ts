@@ -3,18 +3,19 @@
 interface ImportMetaEnv {
 	readonly VITE_APP_NETWORK_HOST: string;
 	readonly VITE_APP_NETWORK_PORT: number;
-	readonly VITE_APP_CONTRACT_ADDRESS: string;
+	readonly VITE_APP_ETHER_SERVICE: string;
+	readonly VITE_APP_CONTRACT_NAME: string;
 }
 
 interface ImportMeta {
-  readonly env: ImportMetaEnv
+	readonly env: ImportMetaEnv;
 }
 
 declare module 'vue' {
-  import { CompatVue } from '@vue/runtime-dom'
-  const Vue: CompatVue
-  export default Vue
-  export * from '@vue/runtime-dom'
-  const { configureCompat } = Vue
-  export { configureCompat }
+	import { CompatVue } from '@vue/runtime-dom';
+	const Vue: CompatVue;
+	export default Vue;
+	export * from '@vue/runtime-dom';
+	const { configureCompat } = Vue;
+	export { configureCompat };
 }

@@ -1,14 +1,31 @@
 import Web3 from 'web3';
 import type { Contract, EventData } from 'web3-eth-contract';
-import { abi, CONTRACT, NETWORK_HOST, NETWORK_PORT } from '../../config';
+import { abi, CONTRACT_NAME, ETHER_SERVICE_HOST, NETWORK_HOST, NETWORK_PORT } from '../../config';
 import type { Address } from '../../types';
-import type { SubscribeData, SubscribeParams } from './types';
+import type { ContractInfo, SubscribeData, SubscribeParams } from './types';
 
 const networkPath = `${NETWORK_HOST}:${NETWORK_PORT}`;
 
 export const web3: Web3 = new Web3(networkPath);
-export const contract: Contract = new web3.eth.Contract(abi, CONTRACT);
+// eslint-disable-next-line import/no-mutable-exports
+export let contract: Contract | null = null;
 export const { personal, } = web3.eth;
+
+export const initContract = async () => {
+	const path = `${ETHER_SERVICE_HOST}/contracts/${CONTRACT_NAME}`;
+	const response = await fetch(path, {
+		mode: 'cors',
+	});
+
+	if (!response.ok) {
+		throw await response.json();
+	}
+
+	const info: ContractInfo = await response.json();
+	const { address, } = info;
+	contract = new web3.eth.Contract(abi, address);
+	return true;
+};
 
 export const unlockAccount = async (
 	wallet: Address,
