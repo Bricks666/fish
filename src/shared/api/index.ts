@@ -1,4 +1,4 @@
-export * from './web3';
+export { web3Api } from './web3';
 export * from './auth';
 export * from './comments';
 export * from './requests';

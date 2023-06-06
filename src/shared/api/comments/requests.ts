@@ -1,4 +1,4 @@
-import { web3Api } from '../web3';
+import { createContractRequest } from '../contract';
 import type {
 	CommentResponse,
 	GetCommentsParams,
@@ -6,16 +6,20 @@ import type {
 	AddCommentParams
 } from './types';
 
-export const getComments = async (params: GetCommentsParams): Promise<CommentResponse[]> => {
-	const { reviewId, subjectAddress, } = params;
-	return web3Api.contract.methods.getComments(subjectAddress, reviewId).call();
-};
-export const getComment = async (params: GetCommentParams): Promise<CommentResponse> => {
-	const { id, reviewId, subjectAddress, } = params;
-	return web3Api.contract.methods.getComment(subjectAddress, reviewId, id).call();
-};
+export const getComments = createContractRequest<GetCommentsParams, Promise<CommentResponse[]>>(
+	async (params) => {
+		const { reviewId, subjectAddress, contract, } = params;
+		return contract.methods.getComments(subjectAddress, reviewId).call();
+	}
+);
+export const getComment = createContractRequest<GetCommentParams, Promise<CommentResponse>>(
+	async (params) => {
+		const { id, reviewId, subjectAddress, contract, } = params;
+		return contract.methods.getComment(subjectAddress, reviewId, id).call();
+	}
+);
 
-export const addComment = async (params: AddCommentParams): Promise<void> => {
-	const { reviewId, sender, subjectAddress, text, } = params;
-	await web3Api.contract.methods.addComment(subjectAddress, reviewId, text).send({ from: sender, });
-};
+export const addComment = createContractRequest<AddCommentParams, Promise<void>>(async (params) => {
+	const { reviewId, sender, subjectAddress, text, contract, } = params;
+	await contract.methods.addComment(subjectAddress, reviewId, text).send({ from: sender, });
+});

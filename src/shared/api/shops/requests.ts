@@ -1,5 +1,5 @@
+import { createContractRequest } from '../contract';
 import type { UserResponse } from '../users';
-import { web3Api } from '../web3';
 import type {
 	GetShopParams,
 	ShopResponse,
@@ -10,36 +10,46 @@ import type {
 	DeleteSalesmanParams
 } from './types';
 
-export const getShop = async (params: GetShopParams): Promise<ShopResponse> => {
-	const { id, } = params;
-	return web3Api.contract.methods.shops(id).call();
-};
+export const getShop = createContractRequest<GetShopParams, Promise<ShopResponse>>(
+	async (params) => {
+		const { id, contract, } = params;
+		return contract.methods.shops(id).call();
+	}
+);
 
-export const getShops = async (): Promise<ShopResponse[]> => {
-	return web3Api.contract.methods.getShops().call();
-};
+export const getShops = createContractRequest<Promise<ShopResponse[]>>(async (params) => {
+	const { contract, } = params;
+	return contract.methods.getShops().call();
+});
 
-export const addShop = async (params: AddShopParams): Promise<void> => {
-	const { city, login, sender, address, name, } = params;
-	await web3Api.contract.methods.addShop(address, login, name, city).send({ from: sender, });
-};
+export const addShop = createContractRequest<AddShopParams, Promise<void>>(async (params) => {
+	const { city, login, sender, address, name, contract, } = params;
+	await contract.methods.addShop(address, login, name, city).send({ from: sender, });
+});
 
-export const deleteShop = async (params: DeleteShopParams): Promise<void> => {
-	const { sender, shopId, } = params;
-	await web3Api.contract.methods.deleteShop(shopId).send({ from: sender, });
-};
+export const deleteShop = createContractRequest<DeleteShopParams, Promise<void>>(async (params) => {
+	const { sender, shopId, contract, } = params;
+	await contract.methods.deleteShop(shopId).send({ from: sender, });
+});
 
-export const getSalesmen = async (params: GetSalesmenAddressesParams): Promise<UserResponse[]> => {
-	const { id, } = params;
-	return web3Api.contract.methods.getSalesmen(id).call();
-};
+export const getSalesmen = createContractRequest<
+	GetSalesmenAddressesParams,
+	Promise<UserResponse[]>
+>(async (params) => {
+	const { id, contract, } = params;
+	return contract.methods.getSalesmen(id).call();
+});
 
-export const addSalesman = async (params: AddSalesmanParams): Promise<void> => {
-	const { id, salesmanAddress, sender, } = params;
-	return web3Api.contract.methods.addSalesman(id, salesmanAddress).send({ from: sender, });
-};
+export const addSalesman = createContractRequest<AddSalesmanParams, Promise<void>>(
+	async (params) => {
+		const { id, salesmanAddress, sender, contract, } = params;
+		return contract.methods.addSalesman(id, salesmanAddress).send({ from: sender, });
+	}
+);
 
-export const deleteSalesman = async (params: DeleteSalesmanParams): Promise<void> => {
-	const { id, salesmanAddress, sender, } = params;
-	return web3Api.contract.methods.deleteSalesman(id, salesmanAddress).send({ from: sender, });
-};
+export const deleteSalesman = createContractRequest<DeleteSalesmanParams, Promise<void>>(
+	async (params) => {
+		const { id, salesmanAddress, sender, contract, } = params;
+		return contract.methods.deleteSalesman(id, salesmanAddress).send({ from: sender, });
+	}
+);
